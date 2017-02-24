@@ -1,4 +1,4 @@
-<p align="center"><img src="http://iiitdmjfest.org/img/IIITDMJ%20LOGO.png">Inter-IIIT Cultural and Technical Festival</p>
+<p align="center"><img src="http://iiitdmjfest.org/img/IIITDMJ%20LOGO.png"><h2>Inter-IIIT Cultural and Technical Festival</h2></p>
 
 ## About
 
