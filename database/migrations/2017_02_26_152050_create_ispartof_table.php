@@ -18,8 +18,6 @@ class CreateIspartofTable extends Migration
             $table->char('user_id',15);
             $table->char('event_id',15);
             $table->char('group_id',15);
-
-
             $table->timestamps();
         });
     }
