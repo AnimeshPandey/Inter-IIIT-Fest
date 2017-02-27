@@ -1,0 +1,39 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.main-container {
+  height: 100%;
+  background-image: url("../img/mario/Mario_Walking.gif"), url("../img/mario/ground.png"), url("../img/mario/bushes.png"), url("../img/mario/back.png");
+    background-size: 60px 60px ,auto,auto,auto;
+  background-color: #F8E0B0;
+  background-repeat: no-repeat, repeat-x, repeat-x, repeat-x;
+  background-position: left 30% bottom 24px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+  -webkit-animation: back 15s infinite linear;
+          animation: back 15s infinite linear;
+}
+
+@-webkit-keyframes back {
+  0% {
+    background-position: left -30px bottom 24px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+  }
+  50% {
+    background-position: left 50% bottom 24px, left -816px bottom 0px, left -508px bottom 24px, left -256px bottom 0px;
+  }
+  100% {
+    background-position: left 105% bottom 24px, left -1632px bottom 0px, left -1016px bottom 24px, left -512px bottom 0px;
+  }
+}
+
+@keyframes back {
+  0% {
+    background-position: left -30px bottom 24px, left 0px bottom 0px, left 0px bottom 24px, left 0px bottom 0px;
+  }
+  50% {
+    background-position: left 50% bottom 24px, left -816px bottom 0px, left -508px bottom 24px, left -256px bottom 0px;
+  }
+  100% {
+    background-position: left 105% bottom 24px, left -1632px bottom 0px, left -1016px bottom 24px, left -512px bottom 0px;
+  }
+}
