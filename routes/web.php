@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Socialite;
+
 Route::get('/', function () {
     return view('welcome');
 });
