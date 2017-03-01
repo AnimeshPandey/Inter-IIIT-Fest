@@ -231,7 +231,6 @@ return [
 
         // The Socialite package alias
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'User' => \App\User::class,
 
     ],
 
