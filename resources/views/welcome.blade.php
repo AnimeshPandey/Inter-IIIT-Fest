@@ -13,6 +13,9 @@
         <link rel="stylesheet" href="/css/animate.css">
         <link rel="stylesheet" href="/css/style.css">
 
+        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+        </script>
+
         <title>Inter IIIT Cultural &amp; Technical Fest</title>
     </head>
 
@@ -55,9 +58,10 @@
         </section>
             <h1 class="header col s10 offset-s1 m2 offset-m5">About</h1>
             <section class="about container col">
-                <p class="col s12">Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur is an institute of national importance is one of the premier emerging institutes of India. It shall be a Global Centre of excellence in engineering education and research by building itself as an Enterprise of Knowledge. It has been a launching pad for their journey of self-development and hence begins their participation in extra-curricular activities in campus and beyond.<br><br>
-The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG & ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
-</p>
+                <p class="col s12">
+                    Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur is an institute of national importance is one of the premier emerging institutes of India. It shall be a Global Centre of excellence in engineering education and research by building itself as an Enterprise of Knowledge. It has been a launching pad for their journey of self-development and hence begins their participation in extra-curricular activities in campus and beyond.<br><br>
+                    The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG & ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
+                </p>
             </section>
             <section class="club-nav nav-left">
                 <div class="nav-option cultural" data-club-name="dance">
@@ -152,7 +156,48 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including hip hop, Jazz, salsa,   Contemporary, folk dances.
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                        <ol>
+                        <li>There will be two rounds: prelims and finals.</li>
+                        <li>In the prelims, participants will perform a prepared routine of maximum two minutes. The performance must be a part of the routine that is to be presented in the second round.</li>
+                        <li>In the finals, the participants have to perform a prepared routine of maximum five minutes including a prop (It must not include any live animals or naked flame or water or breaking glasses).</li>
+                        <li>Points will be deducted for exceeding the time limit.</li>
+                        <li>Participants should get their songs/music in mp3 format in a pen-drive only. Live music is not allowed. The name of track should be the participants name followed by the college name.</li>
+                        <li>Participants can use props suited to their performance which doesn’t cause damage in any other way.</li>
+                        </ol>
+                        Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+
+                        <body>
+
+
+
+                        <div id = 'msg'>This message will be replaced using Ajax.
+                            <form >
+                                <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                <input type ="hidden" value="AD1" name="event_id">
+                                <input type="submit" name="">
+                            </form>
+
+                        </div>
+
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="col s12 m9 event-desc" id="fof">
                         <h5 class="col s6">Solo Dance Competition</h5>
                         <p class="col s12">
@@ -178,8 +223,16 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                     <div class="col s12 m9 event-desc active" id="shirt">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
-                        Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don't let it go. Participate in Tshirt painting and who knows what you might end up with?
-                        </p>
+                                            Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don't let it go. Participate in Tshirt painting and who knows what you might end up with?
+                    1.Materials Required - A4 Size Papers, Pencils, Cardboards, Paint Brushes, Acrylic Colors, Mono Color T-Shirts.
+                    2.Any number of team (2-3 members) can participate.
+                    3.Theme will be given on spot.
+                    4.During first 30 minutes participants have to get their design approved by the judges.
+                    5.Any number of attempts is allowed.
+                    6.First 10 participants getting approved design will get the T-Shirt and all others will be disqualified.
+                    7.3 hours event.
+                    The design is to be made with limited number of colors which will be provided
+                                            </p>
                     </div>
                     <div class="col s12 m9 event-desc" id="waste">
                         <h5 class="col s4"></h5>
@@ -470,8 +523,8 @@ So don't miss a chance to be a part of this exhilarating quizing arena to battle
                 </div>
             </section>
         </div>
-        
-        
+
+
         <script src="/js/jquery-2.1.4.js"></script>
         <script src="/js/wow.min.js"></script>
         <script>
@@ -481,10 +534,10 @@ So don't miss a chance to be a part of this exhilarating quizing arena to battle
 
                 $(".main-nav a").on('click',function(){
                     var menu = $(this).attr('id');
-                    
+
                     $('.main-nav').find('a.active').removeClass('active');
                     $(this).addClass('active');
-                    
+
                     if(menu == "home"){
                         $('.club-nav').hide();
                         $('.events').fadeOut(500);
@@ -552,7 +605,27 @@ So don't miss a chance to be a part of this exhilarating quizing arena to battle
 
             })
 
+
         </script>
+
+        <script>
+
+            $(function(){
+                $("form").on("submit",function (e){
+                    e.preventDefault();
+                    $.ajax({
+                        type:'POST',
+                        url:'/getmsg',
+                        data: $('form').serialize(),
+                        success:function(result){
+                            $("#msg").html(result.msg);
+                        }
+                    });
+                });
+            });
+        </script>
+
+
     </body>
 
 </html>

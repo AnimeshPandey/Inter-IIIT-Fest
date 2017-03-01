@@ -16,8 +16,16 @@ class CreateRegisterforTable extends Migration
         Schema::create('registerfor', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('package',["yes","no"]);
-            $table->char('event_id',8);
-            $table->char('user_id',15);
+
+            $table->foreign('user_id',15);
+            ->references('users_id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('event_id',15);
+            ->references('event_id')->on('events')
+                ->onDelete('cascade');
+
+
             $table->timestamps();
         });
     }

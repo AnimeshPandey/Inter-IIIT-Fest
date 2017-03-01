@@ -15,9 +15,18 @@ class CreateIspartofTable extends Migration
     {
         Schema::create('ispartof', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('user_id',15);
-            $table->char('event_id',15);
-            $table->char('group_id',15);
+            $table->foreign('user_id',15);
+            ->references('users_id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('event_id',15);
+            ->references('event_id')->on('events')
+                ->onDelete('cascade');
+
+            $table->foreign('group_id',15);
+            ->references('group_id')->on('group')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
