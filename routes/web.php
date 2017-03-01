@@ -25,12 +25,9 @@ Auth::routes();
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-<<<<<<< HEAD
-
 Auth::routes();
 
+Route::post('/signup','RegisterController@Signup');
+
 Route::get('/home', 'HomeController@index');
-Route::post('/Signup','RegisterController@Signup');
-=======
-Route::get('/home', 'HomeController@index');
->>>>>>> 3392ed875a12192748cc421ddd46ef245a1d18b3
+
