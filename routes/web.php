@@ -21,9 +21,8 @@ Route::get('/events',function(){
 
 Auth::routes();
 
+// OAuth Routes
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('/home', 'HomeController@index');
-
-Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
-
-

@@ -6,7 +6,6 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Socialite;
 
 class RegisterController extends Controller
 {
@@ -77,10 +76,9 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider()
-    {
+    public function redirectToProvider(){
 
-        return Socialite::driver('facebook')->redirect();
+        return redirect('/');
     }
 
     /**
@@ -88,50 +86,8 @@ class RegisterController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
-    {
+    public function handleProviderCallback(){
 
-        try{
-        $socialUser = Socialite::driver('facebook')->user();
-
-        }
-
-        catch(\Exception $e){
-            return redirect('/')
-        }
-
-        // to check if we have logged provider
-        $socialProvider = SocialProvider::where('provider_id',$socialUser->getId())->first()
-
-        if(!$socialProvider){
-
-            //create a new user and provider
-            $user = User::firstOrCreate(
-
-                ['email'=> $socialUser->getEmail(),
-                 'name'=> $socialUser->getName()
-                ]
-
-                );
-            $user->socialProvider()->create(
-
-                ['provider_id' => $socialUser->getId, 'provider' => 'facebook']
-
-
-                );
-
-
-        }
-
-        else
-        {
-            $user = $socialProvider->user; 
-        }
-
-        auth()->login($user);
-
-        return redirect('/home');
-
-        // $user->token;
+        return redirect('/');
     }
 }
