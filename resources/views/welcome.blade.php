@@ -9,11 +9,60 @@
         <link rel="stylesheet" href="/fonts/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="shortcut icon" href="/img/IIITDMJ%20LOGO.png">
         <link rel="stylesheet" href="/css/mario.css"/>
-        <link rel="stylesheet" href="/css/materialize.min.css">
+        <link rel="stylesheet" href="/css/materialize.css">
         <link rel="stylesheet" href="/css/animate.css">
         <link rel="stylesheet" href="/css/style.css">
+        
 
         <title>Inter IIIT Cultural &amp; Technical Fest</title>
+        
+        <style>
+        #materialize-modal-overlay-1{
+        	/*z-index:99998 !important;*/
+        	width: 100% !important;
+        	height: 100% !important;
+        }
+        #modal1{
+        	/*z-index:99999 !important;*/
+        }
+        .picker{
+        	z-index:9999999 !important;
+        }
+	#commentForm {
+		
+	}
+	#commentForm label {
+		
+	}
+	#commentForm label.error, #commentForm input.submit {
+		
+	}
+	#signupForm {
+		
+	}
+	#signupForm label.error {
+		margin-left: 10px;
+		width: auto;
+		display:;
+	}
+	
+    /*::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}    */
+       
+	</style>
     </head>
 
     <body>
@@ -24,9 +73,101 @@
                 <a class="col s12 m2" id="about">About</a>
                 <a class="col s12 m2" id="events">Events</a>
                 <a class="col s12 m2" id="team">Team</a>
-                <a class="col s12 m2" id="sponsors">Sponsors</a>
                 <a class="col s12 m2" id="contact">Contact</a>
+                <a class="col s12 m2" id="signup" href="#modal1">Sign Up</a>
             </div>
+
+            
+            <!-- Sign Up Modal -->
+            
+              <!-- Modal Structure -->
+  <div id="modal1" class="modal" style="width: 50%; height:80%;">
+      <form class="cmxform" id="signupForm" method="get" action="">
+    <div class="modal-content row">
+     
+        
+        
+		<fieldset style="text-align:center; width:100%;">
+            <legend style="font-size:2em;color:#00897b;">&ensp;Sign Up&ensp;</legend>
+            <br>
+
+                <div class="col m12">
+                    <div class="">
+                    <input class="validate" id="name" name="name" type="text" placeholder="Enter Your Name" style="
+            border:1px solid rgba(0,0,0,0.25);
+            padding-top:0.2em;
+            padding-left:0.6em;
+            padding-bottom:0.2em;
+            padding-right:0.2em;"></div>
+            </div>
+            
+            
+				<div class="col m12">
+                    
+                    <div class="">
+				 <input  class="datepicker validate" id="dob" name="dob" type="date" placeholder="Enter Your Date Of Birth" style="
+            border:1px solid rgba(0,0,0,0.25);
+            padding-top:0.2em;
+            padding-left:0.6em;
+            padding-bottom:0.2em;
+            padding-right:0.2em;z-index:99999999;">
+                    </div>
+            </div>
+			
+			
+			<div class="col m12">
+                    
+                    <div class="">
+				
+				<input class="validate" id="password" name="password" type="password" placeholder="Set Your Password" style="
+            border:1px solid rgba(0,0,0,0.25);
+            padding-top:0.2em;
+            padding-left:0.6em;
+            padding-bottom:0.2em;
+            padding-right:0.2em;">
+                </div></div>
+			<div class="col m12">
+                    
+                    <div class="">
+				
+				<input class="validate" id="confirm_password" name="confirm_password" type="password"  placeholder="Confirm Your Password" style="
+            border:1px solid rgba(0,0,0,0.25);
+            padding-top:0.2em;
+            padding-left:0.6em;
+            padding-bottom:0.2em;
+            padding-right:0.2em;">
+                </div></div>
+            
+			
+                <div class="col m12">
+                    
+                    
+				
+				<input class="validate" id="email" name="email" type="email" placeholder="Enter Your E-Mail" style="
+            border:1px solid rgba(0,0,0,0.25);
+            padding-top:0.2em;
+            padding-left:0.6em;
+            padding-bottom:0.2em;
+            padding-right:0.2em;">
+                    </div>
+            
+            
+            
+            <div class="col m12"><br>
+			<button class="modal-action waves-effect waves-teal teal btn" style=""><input class="submit" type="submit" value="Sign me up!"></button></div>
+			<legend>
+      
+        
+    </div></legend>
+			
+		</fieldset>
+	
+        </div>
+	
+      </form>
+  </div>
+            
+            
             <a href="https://www.facebook.com/iiitdm.jbp/" target="_blank" id="fb"><i class="fa fa-facebook"></i></a>
             <section class="home mask row">
                 <section class="col s12 m10 head valign-wrapper">
@@ -150,7 +291,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                     <div class="col s12 m9 event-desc active" id="dancellennium">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
-                        The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including hip hop, Jazz, salsa,   Contemporary, folk dances.
+                        The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including Hip Hop, Jazz, Salsa, Contemporary, Folk dances.
                         </p>
                     </div>
                     <div class="col s12 m9 event-desc" id="fof">
@@ -474,6 +615,8 @@ So don't miss a chance to be a part of this exhilarating quizing arena to battle
         
         <script src="/js/jquery-2.1.4.js"></script>
         <script src="/js/wow.min.js"></script>
+        <script src="/js/materialize.min.js"</script>
+        <script type="text/javascript" src="/js/jquery.validate.js"></script>
         <script>
             new WOW().init();
             $(function(){
@@ -553,6 +696,81 @@ So don't miss a chance to be a part of this exhilarating quizing arena to battle
             })
 
         </script>
+        <script>
+ //            $.validator.setDefaults({
+	// 	submitHandler: function() {
+	// 		window.location.href = "index.html#modal2";
+	// 	}
+	// });
+
+	// $().ready(function() {
+	// 	// validate the comment form when it is submitted
+	// 	$("#commentForm").validate();
+
+	// 	// validate signup form on keyup and submit
+	// 	$("#signupForm").validate({
+	// 		rules: {
+				
+				
+	// 			password: {
+					
+	// 				minlength: 5
+	// 			},
+	// 			confirm_password: {
+					
+	// 				minlength: 5,
+	// 				equalTo: "#password"
+	// 			},
+	// 			email: {
+					
+	// 				email: true
+	// 			},
+				
+				
+	// 		},
+//			messages: {
+//                
+//				password: {
+//					required: "Please provide a password",
+//					minlength: "Your password must be at least 5 characters long"
+//				},
+//				confirm_password: {
+//					required: "Please provide a password",
+//					minlength: "Your password must be at least 5 characters long",
+//					equalTo: "Please enter the same password as above"
+//				},
+//				email: "Please enter a valid email address",
+//               
+//				name: "Please enter your name",
+//				
+//			}
+		// });
+
+		// propose username by combining first- and lastname
+	// 	$("#username").focus(function() {
+	// 		var firstname = $("#firstname").val();
+	// 		var lastname = $("#lastname").val();
+	// 		if (firstname && lastname && !this.value) {
+	// 			this.value = firstname + "." + lastname;
+	// 		}
+	// 	});
+
+		
+	// });
+        
+         $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+        $(document).ready(function(){
+         $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+            });
+            
+     
+	</script>
     </body>
 
 </html>
