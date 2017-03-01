@@ -21,14 +21,16 @@ Route::get('/events',function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// OAuth Routes
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
-
-
+<<<<<<< HEAD
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::post('/Signup','RegisterController@Signup');
+=======
+Route::get('/home', 'HomeController@index');
+>>>>>>> 3392ed875a12192748cc421ddd46ef245a1d18b3
