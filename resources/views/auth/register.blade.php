@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('signup') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -64,7 +64,7 @@
                             <label for="Date of Birth" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="Date of Birth" type="date" class="form-control" name="Date of Birth" required>
+                                <input id="Date of Birth" type="date" class="form-control" name="date_of_birth" required>
 
                                 @if ($errors->has('Date of Birth'))
                                     <span class="help-block">

@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+
+use Redirect;
 
 class RegisterController extends Controller
 {
@@ -95,7 +98,7 @@ class RegisterController extends Controller
 
     public function Signup(Request $data){
 
-        $user-> new User();
+        $user = new User();
         $user->name = $data->name;
         $user->email = $data->email;
         $user->password = $data->password;
@@ -107,7 +110,7 @@ class RegisterController extends Controller
         $id = $user->id;
 
         // generate festid
-        $flag = 170000
+        $flag = 170000;
         $Id = $flag + $user->id;
         $festid = 'TCF'.$Id;
 

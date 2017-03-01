@@ -27,7 +27,7 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 
 Auth::routes();
 
-Route::post('/signup','RegisterController@Signup');
+Route::post('/register','Auth\RegisterController@Signup');
 
 Route::get('/home', 'HomeController@index');
 
