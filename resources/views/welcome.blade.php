@@ -39,11 +39,11 @@
                 width: auto;
                 display: ;
             }
-            /*::-webkit-input-placeholder {
+            ::-webkit-input-placeholder {
        text-align: center;
     }
 
-    :-moz-placeholder { /* Firefox 18- */
+    :-moz-placeholder { /* Firefox 18-
 
             text-align: center;
         }
@@ -76,21 +76,64 @@
 
             <!-- Modal Structure -->
             <div id="modal1" class="modal" style="width: 50%; height:80%;">
-                <form class="cmxform" id="signupForm" method="get" action="">
+                <div class="row" id="options">
+                    <div class="col m6">
+                        <fieldset style="text-align:center; width:100%;">
+                            <legend style="font-size:2em;color:#00897b;">&ensp;Sign Up&ensp;</legend>
+                                <br>
+                                <div class="row" >
+                            <div class="col m12">
+                                <button class="modal-action waves-effect red btn" style="width:100%;margin-bottom:2.5em;font-size:0.9em;">Sign Up With Google&ensp;<i class="fa fa-google"></i></button>
+                            </div>
+                            <div class="col m12">
+                                <button class="modal-action waves-effect blue btn" style="width:100%;margin-bottom:2.5em;font-size:0.9em;">Sign Up With Facebook&ensp;<i class="fa fa-facebook"></i></button>
+                            </div>
+                            <div class="col m12">
+                                <button class="modal-action waves-effect waves-teal teal btn" id="test" style="width:100%;font-size:0.9em;">Register&ensp;<i class="fa fa-envelope"></i></button>
+                            </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col m6">
+                        <fieldset style="text-align:center;">
+                            <legend style="font-size:2em;color:#00897b;">&ensp;Log In&ensp;</legend>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" class="validate" placeholder="E-Mail" style="width:110%;margin-left:-0.7em;margin-bottom:-4em;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" placeholder="Password" class="validate" style="width:110%;margin-left:-0.7em;">
+
+                                    </div>
+                                <div class="input-field col m12">
+                                    <br>
+                                    <button class="modal-action waves-effect waves-teal teal btn" style="margin-bottom:0.3em;">
+                                    <input class="submit" type="submit" value="Log me in!" id="">
+                                    </button>
+
+                                </div>
+                                </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <form class="cmxform" id="signupForm" method="get" action="" style="display:none;">
                     <div class="modal-content row">
 
                         <fieldset style="text-align:center; width:100%;">
                             <legend style="font-size:2em;color:#00897b;">&ensp;Sign Up&ensp;</legend>
                             <br>
 
-                            <div class="col m12">
+                            <div class="input-field col m12">
 
                                     <input class="validate" id="name" name="name" type="text" placeholder="Enter Your Name" style="border:1px solid rgba(0,0,0,0.25);padding-top:0.2em;padding-left:0.6em;padding-bottom:0.2em;padding-right:0.2em;">
 
                             </div>
 
 
-                            <div class="col m12">
+                            <div class="input-field col m12">
 
 
                                     <input class="datepicker validate" id="dob" name="dob" type="date" placeholder="Enter Your Date Of Birth" style="border:1px solid rgba(0,0,0,0.25);padding-top:0.2em;padding-left:0.6em;padding-bottom:0.2em;padding-right:0.2em;z-index:99999999;">
@@ -98,14 +141,14 @@
                             </div>
 
 
-                            <div class="col m12">
+                            <div class="input-field col m12">
 
 
 
                                     <input class="validate" id="password" name="password" type="password" placeholder="Set Your Password" style="border:1px solid rgba(0,0,0,0.25);padding-top:0.2em;padding-left:0.6em;padding-bottom:0.2em;padding-right:0.2em;">
 
                             </div>
-                            <div class="col m12">
+                            <div class="input-field col m12">
 
 
 
@@ -114,28 +157,36 @@
                             </div>
 
 
-                            <div class="col m12">
+                            <div class="input-field col m12">
 
 
 
                                 <input class="validate" id="email" name="email" type="email" placeholder="Enter Your E-Mail" style="border:1px solid rgba(0,0,0,0.25);padding-top:0.2em;padding-left:0.6em;padding-bottom:0.2em;padding-right:0.2em;">
+
                             </div>
 
 
 
                             <div class="col m12">
                                 <br>
-                                <button class="modal-action waves-effect waves-teal teal btn" style="">
-                                    <input class="submit" type="submit" value="Sign me up!">
+                                <button class="modal-action waves-effect waves-teal teal btn" id="test" style="">
+                                    <input class="submit" type="submit" value="Sign me up!" id="">
                                 </button>
+
+                            </div>
+
+                            <div class="input-field col m12">
+                                <br>
+                                <button class="modal-action waves-effect btn-flat" id="cancel" style="">Cancel
+                                </button>
+
                             </div>
 
 
                             </fieldset>
                     </div>
-
-
                 </form>
+
             </div>
 
 
@@ -290,8 +341,6 @@
                                 </form>
                             </div>
                     </div>
-
-
 
                     <div class="col s12 m9 event-desc" id="fof">
                         <h5 class="col s6">Solo Dance Competition</h5>
@@ -713,6 +762,22 @@
                 $('.datepicker').pickadate({
                     selectMonths: true, // Creates a dropdown to control month
                     selectYears: 15 // Creates a dropdown of 15 years to control year
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function(){
+                $("#test").click(function(){
+                    $("#options").hide();
+                    $("#signupForm").show();
+                });
+            });
+
+            $(document).ready(function(){
+                $("#cancel").click(function(){
+                    $("#options").show();
+                    $("#signupForm").hide();
                 });
             });
         </script>
