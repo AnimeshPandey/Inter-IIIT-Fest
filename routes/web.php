@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/events',function(){
-	return view('events');
-});
+
+ Route::get('/', function () {
+     return view('welcome');
+ });
+
+ Route::post('/getmsg','AjaxController@index');
