@@ -9,7 +9,7 @@ class AjaxController extends Controller
     public function index(){
 
         DB::table('registerfor')->insert([
-            ['email' => 'taylor@example.com', 'votes' => 0],
+            ['event_id' => 'taylor@example.com', 'votes' => 0],
             ['email' => 'dayle@example.com', 'votes' => 0]
         ]);
 
