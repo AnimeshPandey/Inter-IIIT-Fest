@@ -97,11 +97,11 @@ class RegisterController extends Controller
         }
 
         catch(\Exception $e){
-            return redirect('/')
+            return redirect('/');
         }
 
         // to check if we have logged provider
-        $socialProvider = SocialProvider::where('provider_id',$socialUser->getId())->first()
+        $socialProvider = SocialProvider::where('provider_id',$socialUser->getId())->first();
 
         if(!$socialProvider){
 
@@ -115,7 +115,7 @@ class RegisterController extends Controller
                 );
             $user->socialProvider()->create(
 
-                ['provider_id' => $socialUser->getId, 'provider' => 'facebook']
+                ['provider_id' => $socialUser->getId(), 'provider' => 'facebook']
 
 
                 );
@@ -134,4 +134,31 @@ class RegisterController extends Controller
 
         // $user->token;
     }
+
+
+    public function Signup(Request $data){
+
+        $user-> new User();
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = $data->password;
+        $user->date_of_birth = $data->date_of_birth;
+        $user->gender = $data->gender;
+
+        $user->save(); //saving in db
+
+        $id = $user->id;
+
+        // generate festid
+        $flag = 170000
+        $Id = $flag + $user->id;
+        $festid = 'TCF'.$Id;
+
+
+        $user->fest_id = $festid;
+        $user->save(); // saving in db
+
+        return Redirect::back(); 
+}
+
 }
