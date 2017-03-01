@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class AjaxController extends Controller
 {
     public function index(){
 
-        DB::table('registerfor')->insert([
-            ['event_id' => 'taylor@example.com', 'votes' => 0],
-            ['email' => 'dayle@example.com', 'votes' => 0]
+        DB::table('registerfor')->insertGetID([
+            [/*'package' => "no",
+            'event_id' => 'AD1',*/
+            'user_id' => Auth::user() ]
         ]);
 
-        $msg = "This is a simple message.";
+        $msg = "Registration Successfull!";
         return response()->json(array('msg'=> $msg));
     }
 

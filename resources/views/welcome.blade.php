@@ -286,20 +286,10 @@
                             <div id='msg'>This message will be replaced using Ajax.
                                 <form>
                                     <input type="hidden" value="{{csrf_token()}}" name="_token">
-                                    <input type="hidden" value="AD1" name="event_id">
-                                    <input type="submit" name="">
+                                    <input type="submit">
                                 </form>
-
                             </div>
-
                     </div>
-
-
-
-
-
-
-
 
 
 
