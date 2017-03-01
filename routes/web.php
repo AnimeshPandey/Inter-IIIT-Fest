@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+ Route::post('/getmsg','AjaxController@index');
+
 Route::get('/events',function(){
 	return view('events');
 });
 
 Auth::routes();
 
+// OAuth Routes
+
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+Route::post('/login','Auth\LoginController@doLogin');
+
+
+Route::post('/register','Auth\RegisterController@Signup');
+
 Route::get('/home', 'HomeController@index');
-
-Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
-
-

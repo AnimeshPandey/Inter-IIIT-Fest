@@ -60,11 +60,52 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('Date of Birth') ? ' has-error' : '' }}">
+                            <label for="Date of Birth" class="col-md-4 control-label">Date of Birth</label>
+
+                            <div class="col-md-6">
+                                <input id="Date of Birth" type="date" class="form-control" name="date_of_birth" required>
+
+                                @if ($errors->has('Date of Birth'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('Date of Birth') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6">
+                                {{--The male and female Radio buttons--}}
+                                <input name="gender" type="radio" value="male">Male
+                                &ensp;
+                                &ensp;
+                                &ensp;
+                                <input name="gender" type="radio" value="female">Female
+                            </div>
+                                @if ($errors->has('Gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('Gender') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ url('/auth/google') }}" class="btn btn-google"><i class="fa fa-google"></i> Google</a>
+                                <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
                             </div>
                         </div>
                     </form>
