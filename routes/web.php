@@ -16,8 +16,22 @@ Route::get('/', function () {
 });
 
 
- Route::get('/', function () {
-     return view('welcome');
- });
 
  Route::post('/getmsg','AjaxController@index');
+
+Route::get('/events',function(){
+	return view('events');
+});
+
+Auth::routes();
+
+// OAuth Routes
+
+Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+
+Route::post('/register','Auth\RegisterController@Signup');
+
+Route::get('/home', 'HomeController@index');

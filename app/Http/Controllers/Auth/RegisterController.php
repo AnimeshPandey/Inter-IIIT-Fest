@@ -6,6 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+
+use Redirect;
 
 class RegisterController extends Controller
 {
@@ -68,4 +71,54 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+
+    /**
+     * Redirect the user to the facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider(){
+
+        return redirect('/');
+    }
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+
+    public function handleProviderCallback(){
+
+        return redirect('/');
+    }
+
+
+    public function Signup(Request $data){
+
+        $user = new User();
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = $data->password;
+        $user->date_of_birth = $data->date_of_birth;
+        $user->gender = $data->gender;
+
+        $user->save(); //saving in db
+
+        $id = $user->id;
+
+        // generate festid
+        $flag = 170000;
+        $Id = $flag + $user->id;
+        $festid = 'TCF'.$Id;
+
+
+        $user->fest_id = $festid;
+        $user->save(); // saving in db
+
+        return Redirect::back(); 
+}
+
 }
