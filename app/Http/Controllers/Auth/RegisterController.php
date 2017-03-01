@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-
+use Hash;
 use Redirect;
 
 class RegisterController extends Controller
@@ -101,7 +101,7 @@ class RegisterController extends Controller
         $user = new User();
         $user->name = $data->name;
         $user->email = $data->email;
-        $user->password = $data->password;
+        $user->password = Hash::make($data->password); //encrypt password
         $user->date_of_birth = $data->date_of_birth;
         $user->gender = $data->gender;
 
