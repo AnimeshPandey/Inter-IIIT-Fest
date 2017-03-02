@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Hash;
 use Redirect;
 use Illuminate\Support\Facades\Input;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -157,7 +158,7 @@ class RegisterController extends Controller
         $user->confirmation_code = $confirmation_code;
         $user->save(); // saving in db
 
-         Mail::send('verify', $confirmation_code, function($message) {
+         Mail::send('verify', [$confirmation_code], function($message) {
             $message->to(Input::get('email'), Input::get('name'))
                 ->subject('Verify your email address');
         });
