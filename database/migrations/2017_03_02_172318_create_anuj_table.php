@@ -4,25 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateAnujTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-
-
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
-
+        Schema::create('anuj', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',30);
-            $table->string('caption',100);
-            $table->enum('category',['mega','workshop','event']);
-            $table->string('genre',10);
-            $table->string('event_id');
+            $table->integer('owner_id');
+
+            $table->string('name');
+
+            $table->boolean('done');
+
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('anuj');
     }
 }
