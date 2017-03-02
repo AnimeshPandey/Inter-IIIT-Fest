@@ -66,7 +66,7 @@ class LoginController extends Controller
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
 
-        return redirect($this->redirectTo);
+        return Redirect::to('/register/details');
     }
 
     public function findOrCreateUser($user, $provider)
@@ -108,15 +108,25 @@ class LoginController extends Controller
         // create our user data for the authentication
         $userdata = array(
             'email'     => Input::get('email'),
-            'password'  => Input::get('password')
+            'password'  => Input::get('password'),
+
         );
 
+
+       
         // attempt to do the login
         if (Auth::attempt($userdata)) { //attempt checks for hashed password
 
        
             $user = User::where("email",$userdata['email'])->first(); //query
             Auth::login($user); //accepting user
+
+             if(! $user->confirmed)
+          {
+            flash::message("Please verify your email to continue.");
+            return Redirect::route('home');
+          }
+
             return Auth::user();
 
         }

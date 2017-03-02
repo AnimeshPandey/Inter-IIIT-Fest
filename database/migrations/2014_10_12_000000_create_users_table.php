@@ -30,6 +30,9 @@ class CreateUsersTable extends Migration
             $table->enum('package',["Yes","No"])->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('confirmed')->default(0); //2/3/17
+            $table->string('confirmation_code')->nullable(); //2/3/17
+            
         });
     }
 

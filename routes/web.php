@@ -23,6 +23,10 @@ Route::get('/events',function(){
 	return view('events');
 });
 
+Route::get('/info',function(){
+	return view('info');
+});
+
 Auth::routes();
 
 // OAuth Routes
@@ -37,3 +41,11 @@ Route::post('/login','Auth\LoginController@doLogin');
 Route::post('/register','Auth\RegisterController@Signup');
 
 Route::get('/home', 'HomeController@index');
+Route::post('/register/details','Auth\RegisterController@details');
+
+//2/3/17
+
+Route::get('register/verify/{confirmationCode}', [
+    'as' => 'confirmation_path',
+    'uses' => 'RegistrationController@confirm'
+]);
