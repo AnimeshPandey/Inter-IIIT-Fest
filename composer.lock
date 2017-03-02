@@ -196,11 +196,7 @@
                 "faker",
                 "fixtures"
             ],
-<<<<<<< HEAD
             "time": "2016-04-29 12:21:54"
-=======
-            "time": "2016-04-29T12:21:54+00:00"
->>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -262,11 +258,7 @@
                 "rest",
                 "web service"
             ],
-<<<<<<< HEAD
             "time": "2017-02-28 22:50:30"
-=======
-            "time": "2017-02-28T22:50:30+00:00"
->>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "guzzlehttp/promises",
@@ -382,11 +374,9 @@
                 "uri",
                 "url"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-27 10:51:17"
-=======
-            "time": "2017-02-27T10:51:17+00:00"
->>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
+
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -477,7 +467,8 @@
         },
         {
             "name": "laravel/framework",
-<<<<<<< HEAD
+
+
             "version": "v5.4.14",
             "source": {
                 "type": "git",
@@ -490,16 +481,24 @@
                 "reference": "b4f9e2b7d146d677e8c360df02beaa9391da1fb1",
 =======
             "version": "v5.4.13",
+=======
+            "version": "v5.4.15",
+>>>>>>> 746f104a79c7fa5bf8e1098dd97b7236014ef9f1
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3eebfaa759156e06144892b00bb95304aa5a71c1"
+                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7"
             },
             "dist": {
                 "type": "zip",
+
                 "url": "https://api.github.com/repos/laravel/framework/zipball/3eebfaa759156e06144892b00bb95304aa5a71c1",
                 "reference": "3eebfaa759156e06144892b00bb95304aa5a71c1",
 >>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
+=======
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ecc6468b8af30b77566a8519ce8898740ef691d7",
+                "reference": "ecc6468b8af30b77566a8519ce8898740ef691d7",
+>>>>>>> 746f104a79c7fa5bf8e1098dd97b7236014ef9f1
                 "shasum": ""
             },
             "require": {
@@ -615,11 +614,15 @@
                 "framework",
                 "laravel"
             ],
-<<<<<<< HEAD
+
+
             "time": "2017-03-01 15:59:14"
 =======
             "time": "2017-02-22T16:07:04+00:00"
 >>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
+=======
+            "time": "2017-03-02T14:41:40+00:00"
+>>>>>>> 746f104a79c7fa5bf8e1098dd97b7236014ef9f1
         },
         {
             "name": "laravel/socialite",
@@ -1151,7 +1154,7 @@
                 "pseudorandom",
                 "random"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-27 17:11:23"
 =======
             "time": "2017-02-27T17:11:23+00:00"
@@ -1325,7 +1328,7 @@
                 "interactive",
                 "shell"
             ],
-<<<<<<< HEAD
+
             "time": "2017-03-01 00:13:29"
 =======
             "time": "2017-03-01T00:13:29+00:00"
@@ -1528,7 +1531,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 14:07:22"
 =======
             "time": "2017-02-16T14:07:22+00:00"
@@ -1642,7 +1645,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 16:34:18"
 =======
             "time": "2017-02-16T16:34:18+00:00"
@@ -1808,7 +1811,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 22:46:52"
 =======
             "time": "2017-02-16T22:46:52+00:00"
@@ -1894,7 +1897,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 23:59:56"
 =======
             "time": "2017-02-16T23:59:56+00:00"
@@ -2006,7 +2009,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 14:07:22"
 =======
             "time": "2017-02-16T14:07:22+00:00"
@@ -2149,7 +2152,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 22:46:52"
 =======
             "time": "2017-02-16T22:46:52+00:00"
@@ -2216,7 +2219,7 @@
                 "debug",
                 "dump"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-16 22:46:52"
 =======
             "time": "2017-02-16T22:46:52+00:00"
@@ -2483,7 +2486,7 @@
                 "test double",
                 "testing"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-28 12:52:32"
 =======
             "time": "2017-02-28T12:52:32+00:00"
@@ -2801,7 +2804,7 @@
                 "testing",
                 "xunit"
             ],
-<<<<<<< HEAD
+
             "time": "2017-03-01 09:12:17"
 =======
             "time": "2017-03-01T09:12:17+00:00"
@@ -2942,7 +2945,7 @@
             "keywords": [
                 "timer"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-26 11:10:40"
 =======
             "time": "2017-02-26T11:10:40+00:00"
@@ -2995,7 +2998,7 @@
             "keywords": [
                 "tokenizer"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-27 10:12:30"
 =======
             "time": "2017-02-27T10:12:30+00:00"
@@ -3081,7 +3084,7 @@
                 "testing",
                 "xunit"
             ],
-<<<<<<< HEAD
+
             "time": "2017-02-19 07:22:16"
 =======
             "time": "2017-02-19T07:22:16+00:00"
@@ -3519,7 +3522,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-<<<<<<< HEAD
+
             "time": "2017-02-18 15:18:39"
 =======
             "time": "2017-02-18T15:18:39+00:00"
@@ -3716,7 +3719,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
+
             "time": "2017-02-16 22:46:52"
 =======
             "time": "2017-02-16T22:46:52+00:00"

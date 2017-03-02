@@ -221,7 +221,7 @@
                 <p class="col s12">
                     Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur is an institute of national importance is one of the premier emerging institutes of India. It shall be a Global Centre of excellence in engineering education and research by building itself as an Enterprise of Knowledge. It has been a launching pad for their journey of self-development and hence begins their participation in extra-curricular activities in campus and beyond.
                     <br>
-                    <br> The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG & ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
+                    <br> The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG &amp; ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
                 </p>
             </section>
             <section class="club-nav nav-left">
@@ -317,15 +317,10 @@
                             </ol>
                             Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
                         </p>
-
-                        <body>
-
-
-
-                            <div id='msg'>This message will be replaced using Ajax.
+                            <div id='msg'>
                                 <form>
                                     <input type="hidden" value="{{csrf_token()}}" name="_token">
-                                    <input type="submit">
+                                    <input type="submit" value="Register">
                                 </form>
                             </div>
                     </div>
@@ -355,40 +350,156 @@
                     <div class="col s12 m9 event-desc active" id="shirt">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
-                            Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don't let it go. Participate in Tshirt painting and who knows what you might end up with? 1.Materials Required - A4 Size Papers, Pencils, Cardboards, Paint Brushes, Acrylic Colors, Mono Color T-Shirts. 2.Any number of team (2-3 members) can participate. 3.Theme will be given on spot. 4.During first 30 minutes participants have to get their design approved by the judges. 5.Any number of attempts is allowed. 6.First 10 participants getting approved design will get the T-Shirt and all others will be disqualified. 7.3 hours event. The design is to be made with limited number of colors which will be provided
+                            Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don't let it go. Participate in Tshirt painting and who knows what you might end up with?
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                <li>Materials Required - A4 Size Papers, Pencils, Cardboards, Paint Brushes, Acrylic Colors, Mono Color T-Shirts.</li>
+                                <li>Any number of team (2-3 members) can participate.</li>
+                                <li>Theme will be given on spot.</li>
+                                <li>During first 30 minutes participants have to get their design approved by the judges.
+Any number of attempts is allowed.
+</li>
+                                <li>First 10 participants getting approved design will get the T-Shirt and all others will be disqualified.</li>
+                                <li>It will be a 3 hours event.</li>
+                                <li>The design is to be made with limited number of colors which will be provided.</li>
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+                    <div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="waste">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             There is a lot of stuff that we often throw out thinking it is useless, well it isn't. Here is your chance to steal the show with all the waste you throw and take prizes away for sure,Participate in best out of waste and show us your creativity.
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                <li>Materials Required - Icecream Sticks, Thermocol Sheet, Cardboards, Fevicol, Paper Tape, Newspapers.</li>
+                                <li>Any number of team (2 members) can participate.</li>
+                                <li>Theme will be given on spot.</li>
+                                <li>During first 30 minutes participants have to collect waste and junk from around.
+Some limited materials will be provided.
+</li>
+                                
+                                <li>It will be a 3 hours event.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+            <div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="poster">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             "A picture speaks more than a thousand words". Posters are the best way to describe a particular situation or circumstances in a minimalist manner . Each poster is unique in its own accord. So let the horses of your imagination run loose and participate in the poster making competition.
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                <li>Materials Required - A3 Size Sheets, Pencils, Cardboards, Paint Brushes, Pallets, Acrylic Colors, Markers.</li>
+                                <li>Any number of team (solo) can participate.</li>
+                                <li>Theme will be given on spot.</li>
+                                <li>One can use only provided materials.
+</li>
+                                
+                                <li>It will be a 3 hours event.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+        <div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="paper">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             We have two hands, two eyes and 1 brain. They main purpose of these senses is to create. Create something unique with the materials provided and stand a chance to win awesome prizes. Paper is simple yet powerful thing,so use this power bestowed on you and create!
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                <li>Materials Required - A3 Size Sheets, Pencils, Paper Cutter, Scissors, Glue, Double sided tapes.</li>
+                                <li>Any number of team (1-2 members) can participate.</li>
+                                <li>Any composition on paper with provided materials.</li>
+                                <li>It will be a 3 hours event.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+        <div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="doodling">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Let your thoughts flow on paper and doodle all you want, all you like, all you can. It's easy and fun,and surely it's something we all do in class, So why not take it to the next level? And there are prizes for grabs too! So why wait, just participate!
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                <li>Competition of doodling on paper.</li>
+                                <li>Materials Required - Sheets, Pencils, Sketch Pens, Color pens, Markers.</li>
+                                <li>Any number of team (solo) can participate.</li>
+                                <li>Theme will be given on spot.</li>
+                                <li>It will be a 3 hours event.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+<div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="rangoli">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Traditional Indian art of Rangoli is a custom in our country since ages. It's the first form of art that most of us come across since our childhood. Festivals, events are all lightened up by the Rangolis. As we say, no event is complete without a rangoli, so let the freak flag fly and create an art takes everybody's breath away. Participate in rangoli and show us what you got!
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                
+                                <li>Materials Required - Chalks, Color Powders, Filter.</li>
+                                <li>Any number of team (2-4 members) can participate.</li>
+                                <li>Theme will be given on spot.</li>
+                                <li>It will be a 3 hours event.</li>
+                                <li>The design is to be made with limited number of colors which will be provided.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+<div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
-                </div>
+            
                 <div class="event-desc-container col s12 m10 offset-m1" id="drama">
                     <div class="col s12 m3 event-name-tabs">
                         <a href="#monoact" class="col s12 tab active">Monoact</a>
@@ -400,6 +511,27 @@
                         <p class="col s12">
                             This is one man show . So pour your emotions and let the actor inside you cone out and say it all to the audience.
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                
+                                <li>A participant can have a maximum of 3 helpers, one each for lights and sound and the third one could be incorporated in the act as per need.</li>
+                                <li>Time Limit: 4-10 minutes.</li>
+                                <li>Any kind of Fluid, live animals, flames, heavy objects or any material which has a possibility of damaging the stage is not allowed.</li>
+                                <li>Points will be deducted on exceeding the time limit.</li>
+                                <li>Play could be in English, Hindi or Bilingual. Short phrases of other languages can be used.</li>
+                                <li>Any type of Inappropriate content or vulgarity will not be tolerated.</li>
+                                <li>Stage Props should be mentioned beforehand and can be used only after the consent of the Coordinating Team.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+<div id='msg'>
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                     <div class="col s12 m9 event-desc" id="nukkad">
                         <h5 class="col s4"></h5>
@@ -412,6 +544,28 @@
                         <p class="col s12">
                             We all have a story to tell, the stage is set and ready to see you showcasing the grace and fineness of your acting skills in the stage play event of this Inter IIIT Techno-Cultural Festival.
                         </p>
+                        <h5>Rules</h5>
+                        <p class="col s12">
+                            <ol>
+                                
+                                <li>Participants should submit a hard copy of the script of the Play before the mentioned deadline..</li>
+                                <li>Length of the play should be around 40 to 90 minutes, with a penalty for every extra minute. An extra time of 5 minutes will be given both for setting as well as clearing the stage.</li>
+                                <li>A technical check (both lights and sound) will be provided to each team before the starting of the event.</li>
+                                <li>Play could be in English, Hindi or Bilingual. Short phrases of other languages can be used.</li>
+                                <li>There is no restriction to team size but the stage limit is restricted to a maximum of 8 actors. </li>
+                                <li>Teams are allowed to have one member each for lights, sound and spot. In addition to that a maximum of three backstage helpers are allowed. Their names should be mentioned separately at the time of Registration.</li>
+                                <li>Any type of Inappropriate content or vulgarity will not be tolerated.</li>
+                                <li>Stage Props should be mentioned beforehand and can be used only after the consent of the Coordinating Team.</li>
+                                
+                            </ol>
+                            Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
+                        </p>
+                            <div class="msg">
+                                <form>
+                                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                                    <input type="submit" value="Register">
+                                </form>
+                            </div>
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="music">
@@ -734,7 +888,7 @@
                         url: '/getmsg',
                         data: $('form').serialize(),
                         success: function (result) {
-                            $("#msg").html(result.msg);
+                            $(".msg").html('<input type="submit" inactive value="Registration Successfull!">');
                         }
                     });
                 });
