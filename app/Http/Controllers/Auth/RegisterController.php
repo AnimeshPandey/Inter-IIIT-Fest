@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Hash;
 use Redirect;
 use Illuminate\Support\Facades\Input;
+use Mail;
 
 class RegisterController extends Controller
 {
