@@ -23,6 +23,10 @@ Route::get('/events',function(){
 	return view('events');
 });
 
+Route::get('/info',function(){
+	return view('info');
+});
+
 Auth::routes();
 
 // OAuth Routes
