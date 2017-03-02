@@ -9,14 +9,16 @@ use Auth;
 class AjaxController extends Controller
 {
     public function index(){
+        
+//        $id = Auth::user()->id;
 
-        DB::table('registerfor')->insertGetID([
-            [/*'package' => "no",
-            'event_id' => 'AD1',*/
-            'user_id' => Auth::user() ]
+        DB::table('registerfor')->insert([
+            ['package' => "no",
+            'event_id' => 'AD1',
+            'fest_id' => '4365740' ]
         ]);
 
-        $msg = "Registration Successfull!";
+        $msg = "<input inactive type='submit' value='Registration Sucessfull!'>";
         return response()->json(array('msg'=> $msg));
     }
 
