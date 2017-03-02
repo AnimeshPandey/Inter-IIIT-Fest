@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('fest_id');
             $table->string('name',30);
             $table->string('email',50)->unique();
-            $table->string('password',8);
+            $table->string('password',100);
             $table->bigInteger('contact')->nullable();
             $table->string('city',15)->nullable();
             $table->string('state',15)->nullable();

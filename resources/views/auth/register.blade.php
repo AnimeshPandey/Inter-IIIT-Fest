@@ -60,7 +60,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('Date of Birth') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('Date of Birth') ? ' has-error' : '' }}">
                             <label for="Date of Birth" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
@@ -90,7 +90,7 @@
                                         <strong>{{ $errors->first('Gender') }}</strong>
                                     </span>
                                 @endif
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

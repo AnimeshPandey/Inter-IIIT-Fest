@@ -127,13 +127,6 @@ class RegisterController extends Controller
         return redirect('/');
     }
 
-
-
-
-
-
-
-
     public function Signup(Request $data){
 
         $user = new User();
@@ -158,9 +151,8 @@ class RegisterController extends Controller
         $user->confirmation_code = $confirmation_code;
         $user->save(); // saving in db
 
-         Mail::send('verify', [$confirmation_code], function($message) {
-            $message->to(Input::get('email'), Input::get('name'))
-                ->subject('Verify your email address');
+         Mail::send('verify', ['code' => $confirmation_code], function($message) {
+            $message->to(Input::get('email'), Input::get('name'))->subject('Verify your email address');
         });
 
         Flash::message('Thanks for signing up! Please check your email.');

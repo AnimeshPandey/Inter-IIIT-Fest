@@ -123,7 +123,7 @@ class LoginController extends Controller
 
              if(! $user->confirmed)
           {
-            flash::message("Please verify your email to continue.");
+            Flash::message("Please verify your email to continue.");
             return Redirect::route('home');
           }
 
