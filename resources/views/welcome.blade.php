@@ -572,7 +572,7 @@ Some limited materials will be provided.
                             </ol>
                             Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
                         </p>
-<div id='msg'>
+                            <div class="msg">
                                 <form>
                                     <input type="hidden" value="{{csrf_token()}}" name="_token">
                                     <input type="submit" value="Register">
@@ -900,7 +900,7 @@ Some limited materials will be provided.
                         url: '/getmsg',
                         data: $('form').serialize(),
                         success: function (result) {
-                            $("#msg").html(result.msg);
+                            $(".msg").html('<input type="submit" inactive value="Registration Successfull!">');
                         }
                     });
                 });
