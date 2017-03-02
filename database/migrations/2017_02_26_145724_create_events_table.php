@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('caption',100);
             $table->enum('category',['mega','workshop']);
             $table->string('genre',10);
-            $table->char('event_id',8);
+            $table->string('event_id');
             $table->timestamps();
         });
     }

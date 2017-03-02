@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "hash": "d0db36ec0e579d05cc21d1f72a16e7bf",
     "content-hash": "b58efd96b306309ea9817a5fad700975",
     "packages": [
@@ -195,7 +196,11 @@
                 "faker",
                 "fixtures"
             ],
+<<<<<<< HEAD
             "time": "2016-04-29 12:21:54"
+=======
+            "time": "2016-04-29T12:21:54+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -257,7 +262,11 @@
                 "rest",
                 "web service"
             ],
+<<<<<<< HEAD
             "time": "2017-02-28 22:50:30"
+=======
+            "time": "2017-02-28T22:50:30+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "guzzlehttp/promises",
@@ -373,7 +382,11 @@
                 "uri",
                 "url"
             ],
+<<<<<<< HEAD
             "time": "2017-02-27 10:51:17"
+=======
+            "time": "2017-02-27T10:51:17+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -464,6 +477,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v5.4.14",
             "source": {
                 "type": "git",
@@ -474,6 +488,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/b4f9e2b7d146d677e8c360df02beaa9391da1fb1",
                 "reference": "b4f9e2b7d146d677e8c360df02beaa9391da1fb1",
+=======
+            "version": "v5.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "3eebfaa759156e06144892b00bb95304aa5a71c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3eebfaa759156e06144892b00bb95304aa5a71c1",
+                "reference": "3eebfaa759156e06144892b00bb95304aa5a71c1",
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
                 "shasum": ""
             },
             "require": {
@@ -589,7 +615,11 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2017-03-01 15:59:14"
+=======
+            "time": "2017-02-22T16:07:04+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "laravel/socialite",
@@ -1121,7 +1151,11 @@
                 "pseudorandom",
                 "random"
             ],
+<<<<<<< HEAD
             "time": "2017-02-27 17:11:23"
+=======
+            "time": "2017-02-27T17:11:23+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "psr/http-message",
@@ -1291,7 +1325,11 @@
                 "interactive",
                 "shell"
             ],
+<<<<<<< HEAD
             "time": "2017-03-01 00:13:29"
+=======
+            "time": "2017-03-01T00:13:29+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "ramsey/uuid",
@@ -1490,7 +1528,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 14:07:22"
+=======
+            "time": "2017-02-16T14:07:22+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/css-selector",
@@ -1600,7 +1642,11 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 16:34:18"
+=======
+            "time": "2017-02-16T16:34:18+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1762,7 +1808,11 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 22:46:52"
+=======
+            "time": "2017-02-16T22:46:52+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/http-kernel",
@@ -1844,7 +1894,11 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 23:59:56"
+=======
+            "time": "2017-02-16T23:59:56+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1952,7 +2006,11 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 14:07:22"
+=======
+            "time": "2017-02-16T14:07:22+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/routing",
@@ -2091,7 +2149,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 22:46:52"
+=======
+            "time": "2017-02-16T22:46:52+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "symfony/var-dumper",
@@ -2154,7 +2216,11 @@
                 "debug",
                 "dump"
             ],
+<<<<<<< HEAD
             "time": "2017-02-16 22:46:52"
+=======
+            "time": "2017-02-16T22:46:52+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2417,7 +2483,11 @@
                 "test double",
                 "testing"
             ],
+<<<<<<< HEAD
             "time": "2017-02-28 12:52:32"
+=======
+            "time": "2017-02-28T12:52:32+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "myclabs/deep-copy",
@@ -2731,7 +2801,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-03-01 09:12:17"
+=======
+            "time": "2017-03-01T09:12:17+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2868,7 +2942,11 @@
             "keywords": [
                 "timer"
             ],
+<<<<<<< HEAD
             "time": "2017-02-26 11:10:40"
+=======
+            "time": "2017-02-26T11:10:40+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "phpunit/php-token-stream",
@@ -2917,7 +2995,11 @@
             "keywords": [
                 "tokenizer"
             ],
+<<<<<<< HEAD
             "time": "2017-02-27 10:12:30"
+=======
+            "time": "2017-02-27T10:12:30+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "phpunit/phpunit",
@@ -2999,7 +3081,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-02-19 07:22:16"
+=======
+            "time": "2017-02-19T07:22:16+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3433,7 +3519,11 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
+<<<<<<< HEAD
             "time": "2017-02-18 15:18:39"
+=======
+            "time": "2017-02-18T15:18:39+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "sebastian/recursion-context",
@@ -3626,7 +3716,11 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-02-16 22:46:52"
+=======
+            "time": "2017-02-16T22:46:52+00:00"
+>>>>>>> 075a651b9c5c1a0bdfeddad60c90fc793b9cdf5e
         },
         {
             "name": "webmozart/assert",
