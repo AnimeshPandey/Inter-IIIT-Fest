@@ -11,6 +11,7 @@ use Hash;
 use Redirect;
 use Illuminate\Support\Facades\Input;
 use Mail;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -154,7 +155,9 @@ class RegisterController extends Controller
 
         // Flash::message('Thanks for signing up! Please check your email.');
 
-        return Response()->json(['festid' => $festid]);
+        Auth::login($user);
+
+        return Response()->json(['festid' => $festid, 'name' => $user->name]);
 
 }
     public function details(Request $data){

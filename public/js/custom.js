@@ -1,6 +1,11 @@
 new WOW().init();
 $(function(){
     $('.modal-trigger').leanModal();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 50 // Creates a dropdown of 15 years to control year
+    });
     var genre, clubName, eventName;
     
     $('.register-btn-container').on('click','a.custom',function(){
@@ -14,7 +19,7 @@ $(function(){
         setTimeout(function(){
             $('.main-container .login-modal').removeClass('m4 offset-m4').addClass('m6 offset-m3');
             $('.login-modal .modal-content h4').html('Register / Login').fadeIn();
-            $('.login-modal .modal-content .register-form, .login-modal .modal-content h5, .login-modal .modal-content h6').fadeOut();
+            $('.login-modal .modal-content .register-form, .login-modal .modal-content h5, .login-modal .modal-content h6, .login-modal .modal-content button').fadeOut();
             $('.login-modal .modal-content .register-btn-container, .login-modal .modal-content .login-form').fadeIn();
         },1000);
     });
@@ -30,13 +35,23 @@ $(function(){
                 $('.register-form button').html('Register').fadeIn();
                 $('.login-modal .modal-content .register-form').fadeOut();
                 $('.login-modal .modal-content h4').html('Signup Successful').fadeIn('slow');
-                $('.login-modal .modal-content').append('<h5 class="col s12">Your Fest ID is <span class="green-text">'+ data.festid +'</span></h5><h6 class="col s12">Kindly keep it safe for future references....</h6>');
+                $('.login-modal .modal-content').append('<h5 class="col s12">Your Fest ID is <span class="green-text">'+ data.festid +'</span></h5><h6 class="col s12">Kindly keep it safe for future references....</h6><button class="proceed btn-flat col s12 m6 offset-m3">Proceed</button>');
+                $(document).off('click','.lean-overlay');
+                $('.login-modal .details-form #festid').val(data.festid);
+                $('.login-modal .details-form #name').val(data.name);
             } 
             else if(status == 'error'){
                 $('.register-form button').html('Register').fadeIn();
                 alert('Server error!!');
             }
         });
+    });
+
+    $('.login-modal .modal-content').on('click','button.proceed',function(){
+        $('.login-modal .modal-content h4').html('Details').fadeIn();
+        $('.main-container .login-modal').removeClass('m4 offset-m4').addClass('m6 offset-m3');
+        $('.login-modal .modal-content .register-form, .login-modal .modal-content h5, .login-modal .modal-content h6, .login-modal .modal-content button.proceed').fadeOut();
+        $('.login-modal .details-form').fadeIn();
     });
 
     $('.login-form').on('submit','.login_form',function(e){

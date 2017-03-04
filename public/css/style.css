@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 6.5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 1px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 3px;
+}
+
 html,body{
     height: 100%;
     overflow: hidden;
@@ -163,11 +177,11 @@ a{
     letter-spacing: 1px;
 }
 
-.main-container .login-modal .modal-content .register-form{
+.main-container .login-modal .modal-content .register-form,.main-container .login-modal .modal-content .details-form{
     display: none;
 }
 
-.main-container .login-modal .modal-content .register-form .input-field{
+.main-container .login-modal .modal-content .register-form .input-field,.main-container .login-modal .modal-content .details-form .input-field{
     margin-top: 0px;
     padding: 3px 10px;
 }
@@ -179,7 +193,7 @@ a{
     margin: 10px 0px;
 }
 
-.main-container .login-modal .modal-content .register-form .input-field .btn-flat{
+.main-container .login-modal .modal-content .input-field .btn-flat{
     height: 40px;
     margin-top: 20px;
     background-color: #575757;

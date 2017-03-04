@@ -85,6 +85,66 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="col s12 details-form">
+                            <form class="details_form">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="input-field col s12 m6">
+                                    <input type="text" class="validate" name="festid" id="festid" readonly="true">
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input type="text" class="validate" name="name" id="name" required>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <select name="gender">
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label>Gender</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input type="date" class="datepicker" name="dob" required>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    Are you from an IIIT?
+                                    <label>
+                                        Off
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                        On
+                                    </label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input placeholder="Contact No." type="tel" class="validate" name="contact">
+                                </div>
+                                <div class="input-field col s12">
+                                    <select name="college" id="college_iiit" style="display: none;">
+                                        <option value="" disabled selected>College</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <input placeholder="College Name" id="college_other" type="text" class="validate" required style="display: none">
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input placeholder="City" type="text" class="validate" name="city" required>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <select name="state">
+                                        <option value="" disabled selected>Choose your State</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label>State</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <button class="btn-flat col s8 offset-s2">Register</button>
+                                </div>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             @endif
