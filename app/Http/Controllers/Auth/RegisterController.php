@@ -129,38 +129,32 @@ class RegisterController extends Controller
 
     public function Signup(Request $data){
 
-        $user = new User();
+        $user = new User;
         $user->name = $data->name;
         $user->email = $data->email;
         $user->password = Hash::make($data->password); //encrypt password
-       // $user->date_of_birth = $data->date_of_birth;
-       // $user->gender = $data->gender;
 
         $user->save(); //saving in db
 
         $id = $user->id;
 
-        // generate festid
         $flag = 170000;
-        $Id = $flag + $user->id;
-        $festid = 'TCF'.$Id;
-
+        $Id = $flag + $id;
+        $festid = "TCF".(string) $Id;
 
         $user->fest_id = $festid;
         $confirmation_code = str_random(30);
         $user->confirmation_code = $confirmation_code;
+        
         $user->save(); // saving in db
 
-         Mail::send('verify', ['code' => $confirmation_code], function($message) {
-            $message->to(Input::get('email'), Input::get('name'))->subject('Verify your email address');
-        });
+        // Mail::send('verify', ['code' => $confirmation_code], function($message) {
+        //     $message->to(Input::get('email'), Input::get('name'))->subject('Verify your email address');
+        // });
 
-        Flash::message('Thanks for signing up! Please check your email.');
+        // Flash::message('Thanks for signing up! Please check your email.');
 
-        return Redirect::route('home'); 
-        //2/3/17 redirect to details form
-
-
+        return Response()->json(['festid' => $festid]);
 
 }
     public function details(Request $data){

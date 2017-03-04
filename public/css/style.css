@@ -30,7 +30,7 @@ a{
 .main-container #fb i.fa{
     position: fixed;
     top: 10px;
-    right: 20px;
+    left: 20px;
     line-height: 2.5;
     font-size: 2em;
     text-align: center;
@@ -41,6 +41,7 @@ a{
     background-color: rgba(255,255,255,0.7);
     box-shadow:0 2px 8px 0 rgba(0,0,0,0.1),0 2px 10px 0 rgba(0,0,0,0.15);
     transition: 300ms;
+    z-index: 9999;
 }
 
 .main-container #fb i.fa:hover{
@@ -50,6 +51,152 @@ a{
 .main-container section.mask{
     margin: 0px;
     height: 100%;
+}
+
+.main-container .login-btn a{
+    text-align: center;
+    width: 160px;
+    margin-top: 2px;
+    float: right;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    color: #4a4a4a;
+    font-family: "Josefin Sans","Raleway" , sans-serif;
+    font-weight: 700;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 0px;
+/*    text-transform: capitalize;*/
+    letter-spacing: 1px;
+    font-size: 14px;
+    transform: 400ms;
+}
+
+.main-container .login-btn a:hover{
+    color: #8f8f8f;
+    background-color: white;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.16), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.main-container .modal{
+    border-radius: 0px;
+    border: 7px solid rgba(182, 182, 182, 0.5);
+    transition: 400ms;
+    overflow-y: hidden;
+}
+
+.main-container .login-modal.modal .modal-content{
+    padding: 10px 20px;
+}
+
+.main-container .login-modal.modal .modal-content h4{
+    text-align: center;
+    font-family: "Josefin Sans" , sans-serif;
+}
+
+.main-container .login-modal.modal .modal-content h5{
+    text-align: center;
+    margin: 40px 0px;
+    font-size: 22px;
+}
+
+.main-container .login-modal.modal .modal-content h6{
+    text-align: center;
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container{
+    padding: 20px 0px;
+    border-right: 1px solid rgba(0,0,0,0.15)
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container a{
+    padding: 0;
+    text-align: center;
+    margin: 15px 0px;
+    height: 40px;
+    line-height: 40px;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.5px;
+    font-family: "Roboto" ,sans-serif;
+    text-transform: capitalize
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container a i.fa{
+    float: left;
+    width: 45px;
+    border-right: 1px solid rgba(255, 255, 255, 0.75);
+    text-align: center;
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container a.google{
+    background-color: #ea4335;
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container a.fb{
+    background-color: #3b5998;
+}
+
+.main-container .login-modal.modal .modal-content .register-btn-container a.custom{
+    background-color: #575757;
+}
+
+.main-container .login-modal .modal-content .login-form{
+    padding: 17px 15px;
+}
+
+.main-container .login-modal .modal-content .login-form .input-field{
+    margin: 0px;
+    padding: 3px 10px;
+}
+
+.input-field input,.input-field textarea{
+    border: 1px solid lightgrey;
+    padding-left: 5px;
+    letter-spacing: 0.5px;
+    margin: 10px 0px;
+}
+
+.main-container .login-modal .modal-content .login-form .input-field .btn-flat{
+    height: 40px;
+    margin-top: 9px;
+    background-color: #575757;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 1px;
+}
+
+.main-container .login-modal .modal-content .register-form{
+    display: none;
+}
+
+.main-container .login-modal .modal-content .register-form .input-field{
+    margin-top: 0px;
+    padding: 3px 10px;
+}
+
+.input-field input,.input-field textarea{
+    border: 1px solid lightgrey;
+    padding-left: 5px;
+    letter-spacing: 0.5px;
+    margin: 10px 0px;
+}
+
+.main-container .login-modal .modal-content .register-form .input-field .btn-flat{
+    height: 40px;
+    margin-top: 20px;
+    background-color: #575757;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.main-container footer{
+    position: absolute;
+    bottom: 0px;
+}
+
+.main-container footer a{
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 800;
+    text-align: center;
 }
 
 section.head h1.heading{
@@ -105,30 +252,31 @@ section.main .partner{
 
 .mask .links{
     position: absolute;
-    bottom: 10px;
+    bottom: 25px;
     right: 10px;
     width: 10%;
+    z-index: 9999;
 }
 
 .links .link-card{
     display: inline-block;
     width: 100%;
-    padding: 20px 0px;
+    padding: 10px 0px;
     text-align: center;
 }
 
 .links .link-card .link-icon{
-    height: 70px;
+    height: 60px;
     margin: 0px;
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 .links .link-card .link-text{
     margin: 0px;
-    color: whitesmoke;
+    color: rgba(0,0,0,0.8);
     font-family: "Raleway" , sans-serif;
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 800;
+    font-size: 16px;
 }
 
 section.main h4.presents{
@@ -142,9 +290,10 @@ section.main h4.presents{
     z-index: 99;
     font-family: "Pacifico" ,cursive;
     letter-spacing: 1px;
-    text-shadow: 1px 1px #38893d;
-    color: rgba(128, 171, 133, 0.93);
+    text-shadow: 1px 1px #949494;
+    color: rgba(255, 255, 255, 0.93);
     display: none;
+    text-transform: capitalize;
 }
 
 .main-container .container{
@@ -153,6 +302,7 @@ section.main h4.presents{
     position: absolute;
     top: 7%;
     left: 5%;
+    padding-top: 90px;
 }
 
 .main-container .about{
@@ -161,13 +311,13 @@ section.main h4.presents{
 
 .main-container .about p{
     position: relative;
-    top: 100px;
+    top: 0px;
     padding: 50px 15px;
     font-size: 18px;
     letter-spacing: 1px;
     word-spacing: 2px;
     line-height: 1.85;
-    background-color: rgba(255, 255, 255, 0.36);
+    background-color: rgba(255, 255, 255, 0.66);
     color: #4a4a4a;
     text-align: center;
 }
@@ -185,14 +335,14 @@ section.main h4.presents{
 }
 
 .main-container .nav-right{
-    right: 35px;
+    right: 4px;
 }
 
 .main-container .club-nav .nav-option{
     position: relative;
     padding: 20% 2px;
-    height: calc(100% / 6);
-    width: 350%;
+    height: calc(100% / 8);
+    width: 305%;
     max-width: 300px;
     -webkit-transition: 300ms;
     transition: 300ms;
@@ -205,7 +355,7 @@ section.main h4.presents{
 }
 
 .main-container .club-nav .nav-option.technical{
-    margin: 25% 0px;
+    margin: 50% 0px;
 }
 
 .main-container .club-nav .nav-option:hover{
@@ -215,8 +365,8 @@ section.main h4.presents{
 }
 
 .main-container .club-nav .nav-option img{
-    width: 25%;
-    padding: 10px 7px;
+    height: 100%;
+    padding: 4px 7px;
 }
 
 .main-container .club-nav .nav-option.active img{
@@ -226,9 +376,9 @@ section.main h4.presents{
 .main-container .club-nav .nav-option h5.nav-label{
     margin: 0 5px;
     font-size: 1.35em;
-    line-height: 4.25rem;
+    line-height: 3rem;
     display: none;
-    width: 150px;
+    width: 130px;
     letter-spacing: 0.5px;
     font-weight: 800;
     font-family: "Josefin Sans" , sans-serif;
@@ -262,7 +412,7 @@ section.main h4.presents{
     position: relative;
     top: calc(50% - 175px);
     height: 350px;
-    background-color: rgba(255, 255, 255, 0.36);
+    background-color: rgba(255, 255, 255, 0.66);
     transition: 300ms;
 }
 
@@ -318,7 +468,7 @@ section.main h4.presents{
 
 .events .close-btn{
     position: fixed;
-    bottom: 80px;
+    bottom: 70px;
     left: calc(50% - 12.5px);
     height: 50px;
     width: 50px;
@@ -332,6 +482,14 @@ section.main h4.presents{
     font-family: "Raleway" , sans-serif;
     cursor: pointer;
     display: none;
+}
+
+.events .event-desc-container.offset-m1{
+    margin-left: 6%;
+}
+
+.events .event-desc-container.m10{
+    width: 88%;
 }
 
 .events .event-desc-container{
@@ -354,7 +512,7 @@ section.main h4.presents{
 .events .event-desc-container .event-name-tabs a.tab{
     font-size: 1.3em;
     line-height: 2.75;
-    background-color: rgba(255, 255, 255, 0.26);
+    background-color: rgba(255, 255, 255, 0.46);
     color: #4a4a4a;
     cursor: pointer;
     font-family: "Josefin Sans" , sans-serif;
@@ -364,11 +522,11 @@ section.main h4.presents{
 }
 
 .events .event-desc-container .event-name-tabs a.tab:hover{
-    background-color: rgba(255, 255, 255, 0.50);
+    background-color: rgba(255, 255, 255, 0.66);
 }
 
 .events .event-desc-container .event-name-tabs a.tab.active{
-    background-color: rgba(255, 255, 255, 0.70);
+    background-color: rgba(255, 255, 255, 0.80);
     border-right: 5px solid #88af88;
 }
 
@@ -376,11 +534,11 @@ section.main h4.presents{
     font-size: 15px;
     letter-spacing: 0.5px;
     word-spacing: 1px;
-    padding: 10px 15px;
+    padding: 0;
     height: 100%;
     max-height: 100%;
     overflow-y: auto;
-    background-color: rgba(255, 255, 255, 0.26);
+    background-color: rgba(255, 255, 255, 0.66);
     display: none;
     line-height: 1.3;
 }
@@ -390,7 +548,7 @@ section.main h4.presents{
 }
 
 .events .event-desc-container .event-desc h5{
-    margin: 0px;
+    margin: 3px 0px;
     font-size: 22px;
     font-family: "Josefin Sans" , sans-serif;
     font-weight: 700;
@@ -399,8 +557,76 @@ section.main h4.presents{
 
 .events .event-desc-container .event-desc p{
     margin: 10px 0px;
-    line-height: 1.35;
-    letter-spacing: 0.75px;
+    line-height: 1.25;
+    letter-spacing: 1px;
     word-spacing: 1.2px;
     font-size: 15px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.78);
+}
+
+.events .event-desc-container .btn-container{
+    padding: 0px 0px;
+    position: absolute;
+    bottom: -40px;
+}
+
+.events .event-desc-container .btn-container .btn{
+    height: 40px;
+    background-color: #88af88;
+    font-weight: 600;
+    font-family: "Josefin Sans" , sans-serif;
+    text-transform: capitalize;
+    font-size: 19px;
+    letter-spacing: 1px;
+    box-shadow: none;
+    border-radius: 0;
+    transition: 400ms;
+}
+
+.events .event-desc-container .btn-container .btn:hover{
+    background-color: white;
+    color: #88af88;
+    box-shadow:0 2px 8px 0 rgba(0,0,0,0.1),0 2px 10px 0 rgba(0,0,0,0.15);
+}
+
+.contact{
+    display: none;
+}
+
+.contact .contact-card-container{
+    padding: 20px 10px 150px 10px;
+    background-color: rgba(255, 255, 255, 0.66);
+}
+
+.contact .contact-card-container h4{
+    text-align: center;
+    font-size: 22px;
+}
+
+.contact .contact-card{
+    margin-top: 60px;
+}
+
+.contact .contact-card h4{
+    font-size: 28px;
+    font-family: "Josefin Sans" , sans-serif;
+    font-weight: 700;
+    color: rgba(0,0,0,0.8);
+}
+
+.contact .contact-card h5{
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.contact-card i.fa{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.contact-card i.fa span{
+    font-family: "Roboto" , sans-serif;
 }

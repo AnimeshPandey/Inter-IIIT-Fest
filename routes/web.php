@@ -1,4 +1,4 @@
- <?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -14,37 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-
- Route::post('/getmsg','AjaxController@index');
-
+Route::post('/getmsg','AjaxController@index');
 Route::get('/events',function(){
 	return view('events');
 });
-
 Route::get('/info',function(){
 	return view('info');
 });
-
-Auth::routes();
-
+// Auth::routes();
 // OAuth Routes
-
 Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-
-
 Route::post('/login','Auth\LoginController@doLogin');
-
-
+Route::get('/logout','Auth\LoginController@logout');
 Route::post('/register','Auth\RegisterController@Signup');
-
 Route::get('/home', 'HomeController@index');
 Route::post('/register/details','Auth\RegisterController@details');
-
 //2/3/17
-
 Route::get('register/verify/{confirmationCode}', [
     'as' => 'confirmation_path',
     'uses' => 'RegistrationController@confirm'

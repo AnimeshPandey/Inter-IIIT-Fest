@@ -62,82 +62,72 @@ class LoginController extends Controller
     public function handleProviderCallback(Request $request, $provider)
     {
         $user = Socialite::driver($provider)->user();
-        //dd($user);
         $authUser = $this->findOrCreateUser($user, $provider);
+
         Auth::login($authUser, true);
 
-        return Redirect::to('/register/details');
+        return Redirect::to('/');
     }
 
-    public function findOrCreateUser($user, $provider)
+    public function findOrCreateUser($socialuser, $provider)
     {
-        $authUser = User::where('email', $user->email)->first();
+        $authUser = User::where('social_id', $socialuser->id)->first();
         if ($authUser) {
             return $authUser;
         }else{
-           return User::create([
-                'name'     => $user->name,
-                'email'    => $user->email,
-                //'provider' => $provider,
-                'provider_id' => $user->id
-           ]);
+            $user = User::create([
+                        'name'     => $socialuser->name,
+                        'email'    => $socialuser->email,
+                        //'provider' => $provider,
+                        'social_id' => $socialuser->id
+                    ]);
+
+            $user->save();
+
+            $id = $user->id;
+
+            $flag = 170000;
+            $Id = $flag + $id;
+            $festid = "TCF".(string) $Id;
+
+            $user->fest_id = $festid;
+            $user->confirmed = 1;
+            
+            $user->save();
+
+            return $user;
         }
     }
 
     public function doLogin()
-{
-        // validate the info, create rules for the inputs
-        $rules = array(
-        'email'    => 'required|email', // make sure the email is an actual email
-        'password' => 'required|alphaNum|min:6' // password can only be alphanumeric and has to be greater than 3 characters
-        );  
-
-        // run the validation rules on the inputs from the form
-        $validator = Validator::make(Input::all(), $rules);
-
-        // if the validator fails, redirect back to the form
-        if ($validator->fails()) {
-        
-        return Redirect::to('login')
-            ->withErrors($validator) // send back all errors to the login form
-            ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
-        }
-
-         else {
-
+    {
         // create our user data for the authentication
         $userdata = array(
             'email'     => Input::get('email'),
             'password'  => Input::get('password'),
-
         );
-
-
-       
         // attempt to do the login
         if (Auth::attempt($userdata)) { //attempt checks for hashed password
-
        
             $user = User::where("email",$userdata['email'])->first(); //query
+
             Auth::login($user); //accepting user
 
-             if(! $user->confirmed)
-          {
-            Flash::message("Please verify your email to continue.");
-            return Redirect::route('home');
-          }
-
-            return Auth::user();
+            // if(! $user->confirmed)
+            // {
+            //     Flash::message("Please verify your email to continue.");
+            //     return Redirect::route('home');
+            // }
+            return Response()->json(['pass' => 1]);
 
         }
-
         else {        
-
-            // validation not successful, send back to form 
-            return Redirect::to('login');
-
+            return Response()->json(['pass' => 0]);
         }
-
     }
+
+    public function logout(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 }
