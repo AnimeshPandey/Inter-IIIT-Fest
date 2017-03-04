@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('college',50)->nullable();
             $table->enum('gender',["Male","Female"]);
             $table->enum('iiitflag',["Yes","No"])->nullable();
-            $table->string('social_id',20)->default("Custom");
+            $table->string('social_id',50)->default("Custom");
             $table->date('date_of_birth',8);
             $table->enum('package',["Yes","No"])->nullable();
             $table->rememberToken();

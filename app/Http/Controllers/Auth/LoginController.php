@@ -79,7 +79,7 @@ class LoginController extends Controller
                 'name'     => $user->name,
                 'email'    => $user->email,
                 //'provider' => $provider,
-                'provider_id' => $user->id
+                'social_id' => $user->id
            ]);
         }
     }
