@@ -28,7 +28,7 @@
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
-            @if(Auth::check())
+            @if(Auth::check() && Auth::user()->city != null)
                 <div class="login-btn col 12 m2">
                     <a class="btn-flat col 12 modal-trigger" href="#user">{{ Auth::user()->fest_id }}</a>
                 </div>
@@ -36,7 +36,7 @@
                     
 
                 </div>
-            @else
+            @elseif(Auth::check() && Auth::user()->city == null)
                 <div class="login-btn col 12 m2">
                     <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
                 </div>
@@ -86,6 +86,7 @@
                             </form>
                         </div>
                         <div class="col s12 details-form">
+                            <h6 class="col s12">Kindly fill this form to continue...</h6>
                             <form class="details_form">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="input-field col s12 m6">
@@ -104,28 +105,28 @@
                                     <label>Gender</label>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input type="date" class="datepicker" name="dob" required>
+                                    <input placeholder="Date of Birth" type="date" class="datepicker" name="date_of_birth" required>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    Are you from an IIIT?
-                                    <label>
-                                        Off
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        On
-                                    </label>
+                                    <p>
+                                        <input type="checkbox" id="iiitswitch" />
+                                        <label for="iiitswitch">Are you from an IIIT ?</label>
+                                        <input type="hidden" id="iiitflag" name="iiitflag" />
+                                    </p>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input placeholder="Contact No." type="tel" class="validate" name="contact">
                                 </div>
-                                <div class="input-field col s12">
-                                    <select name="college" id="college_iiit" style="display: none;">
+                                <div class="input-field col s12" id="college_iiit" style="display: none;">
+                                    <select name="college">
                                         <option value="" disabled selected>College</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>
                                     </select>
-                                    <input placeholder="College Name" id="college_other" type="text" class="validate" required style="display: none">
+                                </div>
+                                <div class="input-field col s12" id="college_other">
+                                    <input placeholder="College Name" type="text" class="validate" name="college">
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input placeholder="City" type="text" class="validate" name="city" required>
@@ -629,6 +630,19 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
         <script src="/js/materialize.min.js"></script>
         <script src="/js/wow.min.js"></script>
         <script src="/js/custom.js"></script>
+        @if(Auth::check() && Auth::user()->city == null)
+            <script>
+                $(function(){
+                    $('#login').openModal({dismissible : false});
+                    $('.login-modal .modal-content h4').html('User Details').fadeIn();
+                    $('.login-modal .modal-content .login-form, .login-modal .modal-content .register-btn-container').fadeOut();
+                    $(document).off('click','.lean-overlay');
+                    $('.login-modal .details-form').fadeIn();
+                    $('.login-modal .details-form #festid').val('{{ Auth::user()->fest_id }}');
+                    $('.login-modal .details-form #name').val('{{ Auth::user()->name }}');
+                });  
+            </script>
+        @endif
     </body>
 
 </html>

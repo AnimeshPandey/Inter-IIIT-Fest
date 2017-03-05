@@ -21,17 +21,16 @@ Route::get('/events',function(){
 Route::get('/info',function(){
 	return view('info');
 });
-// Auth::routes();
-// OAuth Routes
-Route::get('auth/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
-Route::post('/login','Auth\LoginController@doLogin');
-Route::get('/logout','Auth\LoginController@logout');
-Route::post('/register','Auth\RegisterController@Signup');
-Route::get('/home', 'HomeController@index');
-Route::post('/register/details','Auth\RegisterController@details');
+
+Route::get('auth/{provider}', 'loginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'loginController@handleProviderCallback');
+Route::post('/login','loginController@doLogin');
+Route::get('/logout','loginController@logout');
+Route::post('/register','registerController@Signup');
+
+Route::post('/register/details','registerController@details');
 //2/3/17
 Route::get('register/verify/{confirmationCode}', [
     'as' => 'confirmation_path',
-    'uses' => 'RegistrationController@confirm'
+    'uses' => 'registrationController@confirm'
 ]);

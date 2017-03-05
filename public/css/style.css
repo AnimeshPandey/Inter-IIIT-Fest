@@ -96,6 +96,7 @@ a{
     border: 7px solid rgba(182, 182, 182, 0.5);
     transition: 400ms;
     overflow-y: hidden;
+    max-height: 85%;
 }
 
 .main-container .login-modal.modal .modal-content{
@@ -115,6 +116,7 @@ a{
 
 .main-container .login-modal.modal .modal-content h6{
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .main-container .login-modal.modal .modal-content .register-btn-container{
@@ -167,6 +169,7 @@ a{
     padding-left: 5px;
     letter-spacing: 0.5px;
     margin: 10px 0px;
+    border-radius: 2px !important;
 }
 
 .main-container .login-modal .modal-content .login-form .input-field .btn-flat{

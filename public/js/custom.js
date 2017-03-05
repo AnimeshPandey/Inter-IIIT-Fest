@@ -4,7 +4,9 @@ $(function(){
     $('select').material_select();
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 50 // Creates a dropdown of 15 years to control year
+        selectYears: 50,
+        max: new Date(),
+        format: 'yyyy-mm-dd'
     });
     var genre, clubName, eventName;
     
@@ -54,6 +56,45 @@ $(function(){
         $('.login-modal .details-form').fadeIn();
     });
 
+    var iiitswitch = $('#iiitswitch');
+    iiitswitch.on('change', function(){
+        if(iiitswitch.is(':checked')){
+            $('#college_other').hide();
+            $('#college_iiit').show();
+        }
+        else{
+            $('#college_iiit').hide();
+            $('#college_other').show();   
+        }
+    });
+
+    $('.details-form').on('submit','.details_form',function(e){
+        var det_form = $(this);
+
+        $('.details-form button').html('Submitting.....').fadeIn();
+        
+        e.preventDefault(); 
+        $.post('/register/details',det_form.serialize(),function(data,status){
+            if(status == "success"){
+                if(data.success){
+                    $('.details-form button').html('Submit').fadeIn();
+                    $('.login-modal .modal-content .details-form').fadeOut();
+                    $('.login-modal .modal-content h4').html('Details Updated').fadeIn('slow');
+                    setTimeout(function(){
+                        $('#login').closeModal();
+                    }, 2000);
+                }
+                else{
+                    alert('Some Error has occurred.');   
+                }
+            } 
+            else if(status == 'error'){
+                $('.details-form button').html('Submit').fadeIn();
+                alert('Server error!!');
+            }
+        });
+    });
+
     $('.login-form').on('submit','.login_form',function(e){
         var reg_form = $(this);
 
@@ -78,28 +119,6 @@ $(function(){
         });
     });
     
-    /*$(".register_form").validate({
-        rules: {
-           password: { 
-                required: true,
-           }, 
-           cnfPassword: { 
-                equalTo: "#password",
-           }
-        }
-    });
-        
-    $('.register-form .input-field').on('change','#confirm_password',function(){
-        var cnf = $(this);
-        var pwd = $('#password').html();
-        var cnf_pwd = cnf.html();
-        if(pwd != cnf_pwd){
-            cnf.addClass('invalid');
-        }
-        else{
-            cnf.removeClass('invalid');
-        }
-    });*/
     
     $(".main-nav a").on('click',function(){
         var menu = $(this).attr('id');
