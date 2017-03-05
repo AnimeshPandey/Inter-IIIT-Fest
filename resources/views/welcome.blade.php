@@ -4,10 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link href="https://fonts.googleapis.com/css?family=Pacifico|Josefin+Sans|Raleway:200,400" rel="stylesheet">
         <link rel="stylesheet" href="/fonts/font-awesome-4.6.3/css/font-awesome.min.css">
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
         <link rel="shortcut icon" href="/img/IIITDMJ%20LOGO.png">
         <link rel="stylesheet" href="/css/mario.css"/>
         <link rel="stylesheet" href="/css/materialize.min.css">
@@ -28,15 +28,22 @@
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
-            @if(Auth::check() && Auth::user()->city != null)
+            @if(Auth::check())
                 <div class="login-btn col 12 m2">
-                    <a class="btn-flat col 12 modal-trigger" href="#user">{{ Auth::user()->fest_id }}</a>
+                    <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user-dropdown">{{ Auth::user()->fest_id }}</a>
+                    <ul id='user-dropdown' class='dropdown-content'>
+                        <li><a href="#!">{{ Auth::user()->name }}</a></li>
+                        <li><a href="#!">Registered Events</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
                 </div>
                 <div id="user-modal modal" id="user">
-                    
-
+                    <div class="modal-content">
+                            
+                    </div>
                 </div>
-            @elseif(Auth::check() && Auth::user()->city == null)
+            @else
                 <div class="login-btn col 12 m2">
                     <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
                 </div>
@@ -115,10 +122,10 @@
                                     </p>
                                 </div>
                                 <div class="input-field col s12 m6">
-                                    <input placeholder="Contact No." type="tel" class="validate" name="contact">
+                                    <input placeholder="Contact No." type="tel" class="validate" name="contact_other">
                                 </div>
                                 <div class="input-field col s12" id="college_iiit" style="display: none;">
-                                    <select name="college">
+                                    <select name="college_iiit">
                                         <option value="" disabled selected>College</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -274,24 +281,36 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including hip hop, Jazz, salsa,   Contemporary, folk dances.
                         </p>
-<!--
+                        @if(Auth::check())
                         <div class="btn-container col s12 m9">
-                            <button class="col s6 m5 btn">Register</button>
-                            <button class="col s6 m5 offset-m2 btn">View Package</button>
+                            <button class="register col s6 m5 btn" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
                         </div>
--->
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="fof">
                         <h5 class="col s6">Solo Dance Competition</h5>
                         <p class="col s12">
                             A daring platform to showcase your moves and compete against the best dancers in the country, master the skill of expression, energy and emotions.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="solo_dance" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="carinosa">
                         <h5 class="col s6">Duet Dance Competition</h5>
                         <p class="col s12">
                             Come into an alliance with your partner if you can groove to the rhythm of your comrade and showcase your grace. You rely on physical skills and chemistry, but up until now, that chemistry’s been pretty heterosexual. Do so with all the chemistry in the world put in 2 souls.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="duet_dance" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="arts">
@@ -308,36 +327,72 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don&#39;t let it go. Participate in Tshirt painting and who knows what you might end up with?
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="tshirt_painting" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="waste">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             There is a lot of stuff that we often throw out thinking it is useless, well it isn&#39;t. Here is your chance to steal the show with all the waste  you throw and take prizes away for sure,Participate in best out of waste and show us your creativity.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="best_of_waste" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="poster">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             "A picture speaks more than a thousand words". Posters are the best way to describe a particular situation or circumstances in a minimalist manner . Each poster is unique in its own accord. So let the horses of your imagination run loose and participate in the poster making competition.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="poster_making" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="paper">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             We have two hands, two eyes and 1 brain. They main purpose of these senses is to create. Create something unique with the materials provided and stand a chance to win awesome prizes. Paper is  simple yet powerful thing,so use this power bestowed on you and create!
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="paper_cutting" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="doodling">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Let your thoughts flow on paper and doodle all you want, all you like, all you can. It's easy and fun,and surely it's something we all do in class, So why not take it to the next level? And there are prizes for grabs too!  So why wait, just participate!
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="doodling" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="rangoli">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Traditional Indian art of Rangoli is a custom in our country since ages. It's the first form of art that most of us come across since our childhood. Festivals, events are all lightened up by the Rangolis. As we say, no event is complete without a rangoli, so let the freak flag fly and create an art takes everybody's breath away. Participate in rangoli and show us what you got!
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="rangoli" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="drama">
@@ -351,18 +406,36 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         This is one man show . So pour your emotions and let the actor inside you cone out and say it all to the audience.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="monoact" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="nukkad">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Get up raise your voice and make the crowd think. Come and showcase the creativity in you against the odd of not having the stage set. There are many pressing issues that needs to be addressed, use the art of entertainment and convey the message to the community through this street play event.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="nukkad" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="oneact">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             We all have a story to tell, the stage is set and ready to see you showcasing the grace and fineness of your acting skills in the stage play event of this Inter IIIT Techno-Cultural Festival.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="oneact" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="music">
@@ -377,24 +450,48 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         Get ready to get mesmerized by the whimsical performances by the singing sensations of the country in the first ever Inter IIIT Techno-Cultural Festival. This will surely take you to the magical world of music.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="solo_singing" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="duet">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             The audience will surely be enthralled by the nightingale volices of the duo.This event will portray plethora of music ranging from Sufi to Rock and Indian Classical to Folk. So Gear up to showcase your talent and set the stage on fire.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="duet" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="unplug">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             The participants will surely blow your mind. It is a platform where the bands play acoustic instruments to fascinate the audience with their amusing performances.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="unplugged" data-registered="0" data-event-type="group">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="instrumental">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             In music, an instrumental solo piece is a composition played by the performer. So get ready for some heart touching performances by the young and talented youth of the country.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="instrumental" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="literary">
@@ -411,30 +508,60 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         Encounter the unyielding spirit of game!!
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="spell_bee" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="debate">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Cogitate Expound Debate.This event is a  contest of argumentation between two teams or individuals. So come out and fight for your say.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="debate" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="writing">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Manoeuvre yourself into a new world and start making things up. Showcase your creative and imaginative skills through your writing in our Creative Writing Event and let the horses of your imagination run loose.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="writing" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="gd">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Discuss Engage Canvass Dissent OVER and OUT.. The fierce battle of opinions, fought with weapons of words, where the warriors will be armoured by the language of their bodies and charioteered by the call of their intellect, shall heat up the atmosphere.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="gd" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="extemp">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Spur the moment by your presence of mind and get ready to amaze the audience by the awareness, confidence and fluency in language.
                         </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="extempore" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="programming">
@@ -643,6 +770,15 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                 });  
             </script>
         @endif
+
+        <script>
+            var reg_events = {!!html_entity_decode($reg_events)!!};
+            var reg_btn = $('.events .event-desc button.register');
+
+            for(i in reg_events){
+                $('.events .event-desc').find("[data-event-id='" + reg_events[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
+            }
+        </script>
     </body>
 
 </html>

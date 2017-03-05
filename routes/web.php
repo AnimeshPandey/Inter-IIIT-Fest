@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'eventController@index');
 Route::post('/getmsg','AjaxController@index');
 Route::get('/events',function(){
 	return view('events');
@@ -29,6 +27,8 @@ Route::get('/logout','loginController@logout');
 Route::post('/register','registerController@Signup');
 
 Route::post('/register/details','registerController@details');
+
+Route::post('/register/event','eventController@register');
 //2/3/17
 Route::get('register/verify/{confirmationCode}', [
     'as' => 'confirmation_path',

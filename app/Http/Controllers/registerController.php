@@ -68,12 +68,15 @@ class registerController extends Controller
         $user->contact = $data->contact;
         $user->city = $data->city;
         $user->state = $data->state;
-        $user->college = $data->college;
         $user->gender = $data->gender;
         $user->date_of_birth = $data->date_of_birth;
         $user->iiitflag = $data->iiitflag;
-
+        if($data->iiitflag == 'Yes')
+            $user->college = $data->college_iiit;
+        else
+            $user->college = $data->college_other;
         $user->save();
+        
         return Response()->json(['success' => 1]);
     }
 

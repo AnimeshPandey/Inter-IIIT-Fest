@@ -8,6 +8,7 @@ $(function(){
         max: new Date(),
         format: 'yyyy-mm-dd'
     });
+    $('.dropdown-button').dropdown();
     var genre, clubName, eventName;
     
     $('.register-btn-container').on('click','a.custom',function(){
@@ -61,10 +62,12 @@ $(function(){
         if(iiitswitch.is(':checked')){
             $('#college_other').hide();
             $('#college_iiit').show();
+            $('.login-modal .details-form #iiitflag').val('Yes');
         }
         else{
             $('#college_iiit').hide();
             $('#college_other').show();   
+            $('.login-modal .details-form #iiitflag').val('No');
         }
     });
 
@@ -190,6 +193,30 @@ $(function(){
         $(this).addClass('active');
         $('.event-desc-container').find('.event-desc.active').fadeOut(200).removeClass('active');
         $('.event-desc-container').find(eventName).addClass('active').fadeIn(300);
+    });
+
+    $(".events .event-desc").on('click','button.register', function(){
+        var event = $(this);
+        var event_id = event.attr("data-event-id");
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+        var data = {'_token' : csrf_token, 'event' : event_id};
+        
+        $.post("/register/event/", data, function(result,status){
+            if(status == "success"){
+                if(result.registered){
+                    event.html('Registered');
+                    event.prop('disabled', true);
+                    event.attr("data-registered",1);
+                }
+                else{
+                    alert("Error Registering");
+                }
+            }
+            else if(status == "error"){
+                alert("Server Error!!");
+            }
+        });
     });
 
 })
