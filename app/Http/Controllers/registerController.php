@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Hash;
 use App\User;
+use App\group;
 
 class registerController extends Controller
 {
@@ -78,6 +79,27 @@ class registerController extends Controller
         $user->save();
         
         return Response()->json(['success' => 1]);
+    }
+
+    public function group(Request $data){
+
+        $group = new group;
+
+        $group->name = $data->group_name;
+        $group->college = $data->group_college;
+
+        $group->save();
+
+        $id = $group->id;
+        $count = 170000 + $id;
+        $groupid = "TCFG".$count;
+
+        $group->group_id = $groupid;
+
+        $group->save();
+
+        return Response()->json(['created' => 1, "groupid" => $groupid]);
+
     }
 
 }

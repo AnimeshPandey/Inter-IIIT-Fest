@@ -24,6 +24,11 @@ $(function(){
             $('.login-modal .modal-content h4').html('Register / Login').fadeIn();
             $('.login-modal .modal-content .register-form, .login-modal .modal-content h5, .login-modal .modal-content h6, .login-modal .modal-content button').fadeOut();
             $('.login-modal .modal-content .register-btn-container, .login-modal .modal-content .login-form').fadeIn();
+
+            $('.group-modal h4').html('Group Event').fadeIn();
+            $('.group-modal .group-details, .group-modal .affirm-group').fadeOut();
+            $('.group-modal .group-options').fadeIn();
+
         },1000);
     });
     
@@ -196,27 +201,87 @@ $(function(){
     });
 
     $(".events .event-desc").on('click','button.register', function(){
-        var event = $(this);
-        var event_id = event.attr("data-event-id");
+        var event_btn = $(this);
+        var event_id = event_btn.attr("data-event-id");
+        var event_type = event_btn.attr("data-event-type");
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
-        var data = {'_token' : csrf_token, 'event' : event_id};
-        
-        $.post("/register/event/", data, function(result,status){
+        event_btn.html('Registering....');
+
+        if(event_type == 'single'){
+            var data = {'_token' : csrf_token, 'event' : event_id};
+            
+            $.post("/register/event/single", data, function(result,status){
+                if(status == "success"){
+                    if(result.registered){
+                        event_btn.html('Registered').prop('disabled', true).attr("data-registered",1);
+                        $('[data-event-id="'+event_id+'"]').attr('data-registered',1);
+                    }
+                    else{
+                        alert("Error Registering");
+                    }
+                }
+                else if(status == "error"){
+                    alert("Server Error, Contact web team for assistance.");
+                    event_btn.html('Register');
+                }
+            });
+        }
+        else if(event_type == 'group'){
+            $('#modal-'+event_id).openModal();
+        }
+    });
+
+    $('.events .event-desc .group-modal').on('submit','.register_group',function(e){
+        var btn = $(this).find('button');
+        var event_id = btn.attr('data-event-id');
+        var data = $(this).serialize() + '&event_id='+event_id;
+
+        btn.html('Registering....');
+        e.preventDefault();
+        $.post("register/event/group", data, function(result,status){
             if(status == "success"){
-                if(result.registered){
-                    event.html('Registered');
-                    event.prop('disabled', true);
-                    event.attr("data-registered",1);
+                if(flag == "OK"){
+                    btn.html('Registered').prop('disabled', true).attr('data-registered',1);
+                }
+                else if(flag == "duplicate"){
+
                 }
                 else{
-                    alert("Error Registering");
+                    alert('Some Error has occurred!! Kindly report this to the web team.');
                 }
             }
             else if(status == "error"){
-                alert("Server Error!!");
+                alert("Server Error, Contact web team for assistance.");
+                btn.html('Register');
             }
         });
+    });
+
+    $('.events .event-desc .group-modal').on('submit','.group_details',function(e){
+        var data = $(this).serialize();
+
+        e.preventDefault();
+        $.post("register/group", data, function(result,status){
+            if(status == "success"){
+                if(result.created){
+                    $('.events .event-desc .group-modal .group-details').fadeOut();
+                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12>Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Use it to register for group events.</h6></div>');            
+                }
+                else{
+                    alert('Some Error has occurred!!');
+                }
+            }
+            else if(status == "error"){
+                alert("Server Error, Contact web team for assistance.");
+            }
+        });
+    });
+
+    $('.events .event-desc .group-modal').on('click','button.create-group',function(){
+        $('.events .event-desc .group-modal h4').html('Group Details').fadeIn();
+        $('.events .event-desc .group-modal .group-options').fadeOut();
+        $('.events .event-desc .group-modal .group-details').fadeIn();
     });
 
 })

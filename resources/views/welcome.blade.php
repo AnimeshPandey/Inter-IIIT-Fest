@@ -286,6 +286,38 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                             <button class="register col s6 m5 btn" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
                             <button class="package col s6 m5 offset-m2 btn">View Package</button>
                         </div>
+                        <div id="modal-dancellennium" class="group-modal modal col s12 m4">
+                            <div class="modal-content row">
+                                <h4 class="col s12">Group Event</h4>
+                                <div class="group-options col s12">
+                                    <h6 class="col s12" style="text-align: left">This is a group event....</h6>
+                                    <div class="input-field col s12 m10 offset-m1">
+                                        <form class="register_group">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="text" class="col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
+                                            <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
+                                        </form>
+                                    </div>
+                                    <div class="col s12 divider"></div>
+                                    <h5 class="col s12">OR</h5>
+                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
+                                </div>
+                                <div class="group-details col s12" style="display:none">
+                                    <form class="group_details">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <input type="text" name="group_name" id="group_name" placeholder="Enter Group Name">
+                                        </div>
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <input type="text" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}">
+                                        </div>
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="fof">

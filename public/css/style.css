@@ -99,22 +99,22 @@ a{
     max-height: 85%;
 }
 
-.main-container .login-modal.modal .modal-content{
+.main-container .modal .modal-content{
     padding: 10px 20px;
 }
 
-.main-container .login-modal.modal .modal-content h4{
+.main-container .modal .modal-content h4{
     text-align: center;
     font-family: "Josefin Sans" , sans-serif;
 }
 
-.main-container .login-modal.modal .modal-content h5{
+.main-container .modal .modal-content h5{
     text-align: center;
     margin: 40px 0px;
     font-size: 22px;
 }
 
-.main-container .login-modal.modal .modal-content h6{
+.main-container .modal .modal-content h6{
     text-align: center;
     margin-bottom: 10px;
 }
@@ -172,7 +172,7 @@ a{
     border-radius: 2px !important;
 }
 
-.main-container .login-modal .modal-content .login-form .input-field .btn-flat{
+.main-container .modal .modal-content .btn-flat{
     height: 40px;
     margin-top: 9px;
     background-color: #575757;
@@ -605,6 +605,29 @@ section.main h4.presents{
     background-color: white;
     color: #88af88;
     box-shadow:0 2px 8px 0 rgba(0,0,0,0.1),0 2px 10px 0 rgba(0,0,0,0.15);
+}
+
+.events .group-modal .modal-content .input-field{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.events .group-modal .modal-content h4{
+    margin-bottom: 25px;
+}
+
+.events .group-modal .modal-content h5{
+    position: relative;
+    top: -45px;
+}
+
+.events .group-modal .divider{
+    margin: 30px 0px;
+}
+
+.events .group-modal .modal-content button.create-group{
+    margin-top: -20px;
+    text-transform: none;
 }
 
 .contact{

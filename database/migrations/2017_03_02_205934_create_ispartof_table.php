@@ -19,7 +19,6 @@ class CreateIspartofTable extends Migration
             $table->string('event_id');
             $table->string('group_id');
 
-
             // $table->foreign('fest_id')->references('fest_id')->on('users')->onDelete('cascade');
             // $table->foreign('event_id')->references('event_id')->on('events')->onDelete('cascade');
             // $table->foreign('group_id')->references('group_id')->on('group')->onDelete('cascade');
