@@ -17,7 +17,7 @@
         <title>Inter IIIT Cultural &amp; Technical Fest</title>
     </head>
 
-    <body>
+    <body> <!-- oncontextmenu="return false;"> -->
 
         <div class="main-container row">
             <div class="main-nav col s12 m8 offset-m2 wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s">
@@ -30,8 +30,8 @@
             </div>
             @if(Auth::check())
                 <div class="login-btn col 12 m2">
-                    <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user-dropdown">{{ Auth::user()->fest_id }}</a>
-                    <ul id='user-dropdown' class='dropdown-content'>
+                    <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
+                    <ul id='user_dropdown' class='dropdown-content'>
                         <li><a href="#!">{{ Auth::user()->name }}</a></li>
                         <li><a href="#!">Registered Events</a></li>
                         <li class="divider"></li>
@@ -126,24 +126,69 @@
                                 </div>
                                 <div class="input-field col s12" id="college_iiit" style="display: none;">
                                     <select name="college_iiit">
-                                        <option value="" disabled selected>College</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
+                                        <option value="default" disabled selected>Select your Institute</option>
+                                        <option value="allahabad">Indian Institute of Information Technology, Allahabad</option>
+                                        <option value="chittor">Indian Institute of Information Technology, Chittoor, Sri City</option>
+                                        <option value="dharwad">Indian Institute of Information Technology, Dharwad</option>
+                                        <option value="guwahati">Indian Institute of Information Technology, Guwahati</option>
+                                        <option value="gwalior">Indian Institute of Information Technology and Management, Gwalior</option>
+                                        <option value="jabalpur">Indian Institute of Information Technology, Design and Manufacturing, Jabalpur</option>
+                                        <option value="kalyani">Indian Institute of Information Technology, Kalyani</option>
+                                        <option value="kancheepuram">Indian Institute of Information Technology, Design and Manufacturing, Kancheepuram</option>
+                                        <option value="kota">Indian Institute of Information Technology, Kota</option>
+                                        <option value="kottayam">Indian Institute of Information Technology, Kottayam</option>
+                                        <option value="kurnool">Indian Institute of Information Technology, Kurnool</option>
+                                        <option value="lucknow">Indian Institute of Information Technology, Lucknow</option>
+                                        <option value="manipur">Indian Institute of Information Technology, Manipur</option>
+                                        <option value="nagpur">Indian Institute of Information Technology, Nagpur</option>
+                                        <option value="pune">Indian Institute of Information Technology, Pune</option>
+                                        <option value="ranchi">Indian Institute of Information Technology, Ranchi</option>
+                                        <option value="sonepat">Indian Institute of Information Technology, Sonepat</option>
+                                        <option value="srirangam">Indian Institute of Information Technology, Srirangam</option>
+                                        <option value="una">Indian Institute of Information Technology, Una</option>
+                                        <option value="vadodara">Indian Institute of Information Technology, Vadodara</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s12" id="college_other">
-                                    <input placeholder="College Name" type="text" class="validate" name="college">
+                                    <input placeholder="College Name" type="text" class="validate" name="college" required="true">
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input placeholder="City" type="text" class="validate" name="city" required>
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <select name="state">
-                                        <option value="" disabled selected>Choose your State</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
+                                        <option value="" disabled selected>Choose State</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="New Delhi">New Delhi</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Puducherry">Puducherry</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="West Bengal">West Bengal</option>
                                     </select>
                                     <label>State</label>
                                 </div>
@@ -294,7 +339,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                     <div class="input-field col s12 m10 offset-m1">
                                         <form class="register_group">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="text" class="col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
+                                            <input type="text" class="validate col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
                                             <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
                                         </form>
                                     </div>
@@ -306,10 +351,10 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                     <form class="group_details">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" name="group_name" id="group_name" placeholder="Enter Group Name">
+                                            <input type="text" class="validate" name="group_name" id="group_name" placeholder="Enter Group Name" required="true">
                                         </div>
                                         <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}">
+                                            <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="input-field col s12 m10 offset-m1">
                                             <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
@@ -341,6 +386,38 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <div class="btn-container col s12 m9">
                             <button class="register col s6 m5 btn" data-event-id="duet_dance" data-registered="0" data-event-type="group">Register</button>
                             <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        <div id="modal-duet_dance" class="group-modal modal col s12 m4">
+                            <div class="modal-content row">
+                                <h4 class="col s12">Group Event</h4>
+                                <div class="group-options col s12">
+                                    <h6 class="col s12" style="text-align: left">This is a group event....</h6>
+                                    <div class="input-field col s12 m10 offset-m1">
+                                        <form class="register_group">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="text" class="col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
+                                            <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="duet_dance" data-registered="0" data-event-type="group">Register</button>
+                                        </form>
+                                    </div>
+                                    <div class="col s12 divider"></div>
+                                    <h5 class="col s12">OR</h5>
+                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
+                                </div>
+                                <div class="group-details col s12" style="display:none">
+                                    <form class="group_details">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <input type="text" name="group_name" id="group_name" placeholder="Enter Group Name">
+                                        </div>
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <input type="text" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}">
+                                        </div>
+                                        <div class="input-field col s12 m10 offset-m1">
+                                            <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         @endif
                     </div>
@@ -534,6 +611,18 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <a href="#writing" class="col s12 tab">Creative Writing</a>
                         <a href="#gd" class="col s12 tab">Group Discussion</a>
                         <a href="#extemp" class="col s12 tab">Extempore</a>
+                    </div>
+                    <div class="col s12 m9 event-desc active" id="jam">
+                        <h5 class="col s4"></h5>
+                        <p class="col s12">
+                        Encounter the unyielding spirit of game!!
+                        </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="spell_bee" data-registered="0" data-event-type="single">Register</button>
+                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc active" id="spell">
                         <h5 class="col s4"></h5>
@@ -804,12 +893,17 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
         @endif
 
         <script>
-            var reg_events = {!!html_entity_decode($reg_events)!!};
+            var reg_events_single = {!!html_entity_decode($reg_events_single)!!};
+            var reg_events_group = {!!html_entity_decode($reg_events_group)!!};
             var reg_btn = $('.events .event-desc button.register');
 
-            for(i in reg_events){
-                $('.events .event-desc').find("[data-event-id='" + reg_events[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
-            }
+            console.log(reg_events_single);
+            console.log(reg_events_group);
+
+            for(i in reg_events_single)
+                $('.events .event-desc').find("[data-event-id='" + reg_events_single[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
+            for(i in reg_events_group)
+                $('.events .event-desc').find("[data-event-id='" + reg_events_group[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
         </script>
     </body>
 

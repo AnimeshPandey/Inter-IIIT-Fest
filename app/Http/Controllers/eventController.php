@@ -11,14 +11,15 @@ class eventController extends Controller
 {
 	public function index(){
 		if(Auth::check()){
-			$reg_events = registersfor::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
+			$reg_events_single = registersfor::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
 			$reg_events_group = ispartof::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
 		}
-		else
-			$reg_events = 0;
-			$reg_events_group;
+		else{
+			$reg_events_single = 0;
+			$reg_events_group = 0;
+        }
 		
-		return view('welcome', compact('reg_events','reg_events_group'));
+		return view('welcome', compact('reg_events_single','reg_events_group'));
 	}
 
     public function register(Request $data, $type){

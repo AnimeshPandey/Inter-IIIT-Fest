@@ -14,7 +14,8 @@
 
 html,body{
     height: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 a{
@@ -97,6 +98,7 @@ a{
     transition: 400ms;
     overflow-y: hidden;
     max-height: 85%;
+    transition: 400ms;
 }
 
 .main-container .modal .modal-content{
@@ -607,6 +609,10 @@ section.main h4.presents{
     box-shadow:0 2px 8px 0 rgba(0,0,0,0.1),0 2px 10px 0 rgba(0,0,0,0.15);
 }
 
+.events .group-modal.modal{
+    min-height: 315px;
+}
+
 .events .group-modal .modal-content .input-field{
     margin-top: 0px;
     margin-bottom: 10px;
@@ -628,6 +634,14 @@ section.main h4.presents{
 .events .group-modal .modal-content button.create-group{
     margin-top: -20px;
     text-transform: none;
+}
+
+.events .group-modal .affirm-group h5{
+    top: 50px;
+}
+
+.events .group-modal .affirm-group h6{
+    top: 100px;
 }
 
 .contact{

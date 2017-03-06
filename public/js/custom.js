@@ -136,22 +136,22 @@ $(function(){
         
         if(menu == "home"){
             $('.club-nav').hide();
-            $('.about, h1.header, .events, .contact').fadeOut(500);
+            $('.about, h1.header, .events, .contact').fadeOut();
             $('.'+menu).fadeIn();
         }
         else if(menu == "about"){
             $('.club-nav').hide();
-            $('.home, .events, .contact').fadeOut(500);
+            $('.home, .events, .contact').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "events"){
-            $('.home, .about, .contact').fadeOut(500);
+            $('.home, .about, .contact').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "contact"){
-            $('.home, .about, .events').fadeOut(500);
+            $('.home, .about, .events').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
@@ -165,12 +165,12 @@ $(function(){
         $('.events a.close-btn').fadeIn();
         setTimeout(function(){
             if(genre == "cultural"){
-                $('.events').find('.event-desc-container.active').fadeOut(200).removeClass('active');
+                $('.events').find('.event-desc-container.active').fadeOut().removeClass('active');
                 $('#dance').addClass('active').fadeIn();
                 $('[data-club-name = "dance"]').addClass('active');
             }
             else if(genre == "technical"){
-                $('.events').find('.event-desc-container.active').fadeOut(200).removeClass('active');
+                $('.events').find('.event-desc-container.active').fadeOut().removeClass('active');
                 $('#programming').addClass('active').fadeIn();
                 $('[data-club-name = "programming"]').addClass('active');
             }
@@ -179,8 +179,8 @@ $(function(){
 
     $('.events a.close-btn').on('click',function(){
         $('.main-btn-container').delay("fast").fadeIn();
-        $('.nav-option').fadeOut(500);
-        $('.events').find('.event-desc-container.active').fadeOut(200).removeClass('active');
+        $('.nav-option').fadeOut();
+        $('.events').find('.event-desc-container.active').fadeOut().removeClass('active');
         $(this).fadeOut();
     });
 
@@ -188,16 +188,24 @@ $(function(){
         clubName = $(this).attr('data-club-name');
         $('.club-nav').find('div.nav-option.active').removeClass('active');
         $(this).addClass('active');
-        $('.events').find('.event-desc-container.active').fadeOut(200).removeClass('active');
-        $('.events').find('#'+clubName).addClass('active').fadeIn(300);
+
+        $('.event-desc-container .event-name-tabs').find('a.active').removeClass('active');
+        $('.events #'+clubName+' .event-name-tabs a:first-child').addClass('active');
+        var event = $('.events #'+clubName+' .event-name-tabs a:first-child').attr('href');
+        
+        $('.event-desc-container').find('.event-desc.active').fadeOut().removeClass('active');
+        $('.event-desc-container').find(event).addClass('active').fadeIn();
+
+        $('.events').find('.event-desc-container.active').fadeOut().removeClass('active');
+        $('.events').find('#'+clubName).addClass('active').fadeIn();
     });
 
     $(".event-desc-container .event-name-tabs a").on('click', function(){
         eventName = $(this).attr('href');
         $('.event-desc-container .event-name-tabs').find('a.active').removeClass('active');
         $(this).addClass('active');
-        $('.event-desc-container').find('.event-desc.active').fadeOut(200).removeClass('active');
-        $('.event-desc-container').find(eventName).addClass('active').fadeIn(300);
+        $('.event-desc-container').find('.event-desc.active').fadeOut().removeClass('active');
+        $('.event-desc-container').find(eventName).addClass('active').fadeIn();
     });
 
     $(".events .event-desc").on('click','button.register', function(){
@@ -206,16 +214,14 @@ $(function(){
         var event_type = event_btn.attr("data-event-type");
         var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
-        event_btn.html('Registering....');
-
         if(event_type == 'single'){
+            event_btn.html('Registering....');
             var data = {'_token' : csrf_token, 'event' : event_id};
             
             $.post("/register/event/single", data, function(result,status){
                 if(status == "success"){
                     if(result.registered){
                         event_btn.html('Registered').prop('disabled', true).attr("data-registered",1);
-                        $('[data-event-id="'+event_id+'"]').attr('data-registered',1);
                     }
                     else{
                         alert("Error Registering");
@@ -241,10 +247,14 @@ $(function(){
         e.preventDefault();
         $.post("register/event/group", data, function(result,status){
             if(status == "success"){
-                if(flag == "OK"){
+                if(result.flag == "OK"){
                     btn.html('Registered').prop('disabled', true).attr('data-registered',1);
+                    $('[data-event-id="'+event_id+'"]').html('Registered').prop('disabled',true).attr('data-registered',1);
+                    setTimeout(function(){
+                        $('#modal-'+event_id).closeModal();
+                    },1000);
                 }
-                else if(flag == "duplicate"){
+                else if(result.flag == "duplicate"){
 
                 }
                 else{
@@ -266,7 +276,7 @@ $(function(){
             if(status == "success"){
                 if(result.created){
                     $('.events .event-desc .group-modal .group-details').fadeOut();
-                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12>Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Use it to register for group events.</h6></div>');            
+                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12">Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Use it to register for group events.</h6></div>');            
                 }
                 else{
                     alert('Some Error has occurred!!');
@@ -281,7 +291,9 @@ $(function(){
     $('.events .event-desc .group-modal').on('click','button.create-group',function(){
         $('.events .event-desc .group-modal h4').html('Group Details').fadeIn();
         $('.events .event-desc .group-modal .group-options').fadeOut();
-        $('.events .event-desc .group-modal .group-details').fadeIn();
+        setTimeout(function(){
+            $('.events .event-desc .group-modal .group-details').fadeIn('slow');
+        },500);
     });
 
 })

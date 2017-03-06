@@ -85,7 +85,7 @@ class registerController extends Controller
 
         $group = new group;
 
-        $group->name = $data->group_name;
+        $group->group_name = $data->group_name;
         $group->college = $data->group_college;
 
         $group->save();
