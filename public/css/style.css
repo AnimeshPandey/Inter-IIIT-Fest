@@ -96,7 +96,7 @@ a{
     border-radius: 0px;
     border: 7px solid rgba(182, 182, 182, 0.5);
     transition: 400ms;
-    overflow-y: hidden;
+    overflow-y: auto;
     max-height: 85%;
     transition: 400ms;
 }

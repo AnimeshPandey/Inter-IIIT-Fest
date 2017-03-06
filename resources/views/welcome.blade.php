@@ -28,25 +28,21 @@
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
-            @if(Auth::user()->city != null)
                 <div class="login-btn col 12 m2">
+            @if(Auth::check())
                     <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
-                    <ul id='user_dropdown' class='dropdown-content'>
-                        <li><a href="#!">{{ Auth::user()->name }}</a></li>
-                        <li><a href="#!">Registered Events</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/logout">Logout</a></li>
-                    </ul>
                 </div>
+            @else
+                    <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
+                </div>
+            @endif
+            @if(Auth::check() && Auth::user()->city != null)
                 <div id="user-modal modal" id="user">
                     <div class="modal-content">
                             
                     </div>
                 </div>
-            @elseif(Auth::user()->city == null)
-                <div class="login-btn col 12 m2">
-                    <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
-                </div>
+            @elseif( !Auth::check() || (Auth::check() && Auth::user()->city == null))
                 <div id="login" class="login-modal modal col s12 m6 offset-m3">
                     <div class="modal-content row">
                         <h4 class="col s12">Register / Login</h4>
