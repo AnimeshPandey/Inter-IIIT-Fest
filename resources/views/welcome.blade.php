@@ -28,7 +28,7 @@
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
-            @if(Auth::check())
+            @if(Auth::user()->city != null)
                 <div class="login-btn col 12 m2">
                     <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
                     <ul id='user_dropdown' class='dropdown-content'>
@@ -43,7 +43,7 @@
                             
                     </div>
                 </div>
-            @else
+            @elseif(Auth::user()->city == null)
                 <div class="login-btn col 12 m2">
                     <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
                 </div>
@@ -127,30 +127,30 @@
                                 <div class="input-field col s12" id="college_iiit" style="display: none;">
                                     <select name="college_iiit">
                                         <option value="default" disabled selected>Select your Institute</option>
-                                        <option value="allahabad">Indian Institute of Information Technology, Allahabad</option>
-                                        <option value="chittor">Indian Institute of Information Technology, Chittoor, Sri City</option>
-                                        <option value="dharwad">Indian Institute of Information Technology, Dharwad</option>
-                                        <option value="guwahati">Indian Institute of Information Technology, Guwahati</option>
-                                        <option value="gwalior">Indian Institute of Information Technology and Management, Gwalior</option>
-                                        <option value="jabalpur">Indian Institute of Information Technology, Design and Manufacturing, Jabalpur</option>
-                                        <option value="kalyani">Indian Institute of Information Technology, Kalyani</option>
-                                        <option value="kancheepuram">Indian Institute of Information Technology, Design and Manufacturing, Kancheepuram</option>
-                                        <option value="kota">Indian Institute of Information Technology, Kota</option>
-                                        <option value="kottayam">Indian Institute of Information Technology, Kottayam</option>
-                                        <option value="kurnool">Indian Institute of Information Technology, Kurnool</option>
-                                        <option value="lucknow">Indian Institute of Information Technology, Lucknow</option>
-                                        <option value="manipur">Indian Institute of Information Technology, Manipur</option>
-                                        <option value="nagpur">Indian Institute of Information Technology, Nagpur</option>
-                                        <option value="pune">Indian Institute of Information Technology, Pune</option>
-                                        <option value="ranchi">Indian Institute of Information Technology, Ranchi</option>
-                                        <option value="sonepat">Indian Institute of Information Technology, Sonepat</option>
-                                        <option value="srirangam">Indian Institute of Information Technology, Srirangam</option>
-                                        <option value="una">Indian Institute of Information Technology, Una</option>
-                                        <option value="vadodara">Indian Institute of Information Technology, Vadodara</option>
+                                        <option value = "IIIT, Allahabad">Indian Institute of Information Technology, Allahabad</option>
+                                        <option value = "IIIT, Chittor">Indian Institute of Information Technology, Chittoor, Sri City</option>
+                                        <option value = "IIIT, Dharwad">Indian Institute of Information Technology, Dharwad</option>
+                                        <option value = "IIIT, Guwahati">Indian Institute of Information Technology, Guwahati</option>
+                                        <option value = "IIITM, Gwalior">Indian Institute of Information Technology and Management, Gwalior</option>
+                                        <option value = "IIITDM, Jabalpur">Indian Institute of Information Technology, Design and Manufacturing, Jabalpur</option>
+                                        <option value = "IIIT, Kalyani">Indian Institute of Information Technology, Kalyani</option>
+                                        <option value = "IIITDM, Kancheepuram">Indian Institute of Information Technology, Design and Manufacturing, Kancheepuram</option>
+                                        <option value = "IIIT, Kota">Indian Institute of Information Technology, Kota</option>
+                                        <option value = "IIIT, Kottayam">Indian Institute of Information Technology, Kottayam</option>
+                                        <option value = "IIIT, Kurnool">Indian Institute of Information Technology, Kurnool</option>
+                                        <option value = "IIIT, Lucknow">Indian Institute of Information Technology, Lucknow</option>
+                                        <option value = "IIIT, Manipur">Indian Institute of Information Technology, Manipur</option>
+                                        <option value = "IIIT, Nagpur">Indian Institute of Information Technology, Nagpur</option>
+                                        <option value = "IIIT, Pune">Indian Institute of Information Technology, Pune</option>
+                                        <option value = "IIIT, Ranchi">Indian Institute of Information Technology, Ranchi</option>
+                                        <option value = "IIIT, Sonepat">Indian Institute of Information Technology, Sonepat</option>
+                                        <option value = "IIIT, Srirangam">Indian Institute of Information Technology, Srirangam</option>
+                                        <option value = "IIIT, Una">Indian Institute of Information Technology, Una</option>
+                                        <option value = "IIIT, Vadodara">Indian Institute of Information Technology, Vadodara</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s12" id="college_other">
-                                    <input placeholder="College Name" type="text" class="validate" name="college" required="true">
+                                    <input placeholder="College Name" type="text" class="validate" name="college_other">
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <input placeholder="City" type="text" class="validate" name="city" required>

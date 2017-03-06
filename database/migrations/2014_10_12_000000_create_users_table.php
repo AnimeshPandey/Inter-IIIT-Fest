@@ -20,19 +20,18 @@ class CreateUsersTable extends Migration
             $table->string('email',50)->unique();
             $table->string('password',100);
             $table->bigInteger('contact')->nullable();
-            $table->string('city',15)->nullable();
-            $table->string('state',15)->nullable();
-            $table->string('college',50)->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('college')->nullable();
             $table->enum('gender',["Male","Female"]);
             $table->enum('iiitflag',["Yes","No"])->nullable();
-            $table->string('social_id',20)->default("Custom");
-            $table->date('date_of_birth',8);
+            $table->string('social_id')->default("Custom");
+            $table->date('date_of_birth');
             $table->enum('package',["Yes","No"])->nullable();
             $table->rememberToken();
-            $table->timestamps();
             $table->boolean('confirmed')->default(0); //2/3/17
             $table->string('confirmation_code')->nullable(); //2/3/17
-            
+            $table->timestamps();
         });
     }
 
