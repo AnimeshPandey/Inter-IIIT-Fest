@@ -91,6 +91,7 @@ $(function(){
                     setTimeout(function(){
                         $('#login').closeModal();
                     }, 2000);
+                    window.location.reload();
                 }
                 else{
                     alert('Some Error has occurred.');   
