@@ -9,7 +9,12 @@ use App\ispartof;
 
 class eventController extends Controller
 {
-	public function index(){
+
+    public function index(){
+        return view('index');
+    }
+
+	public function beta(){
 		if(Auth::check()){
 			$reg_events_single = registersfor::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
 			$reg_events_group = ispartof::where('fest_id',Auth::user()->fest_id)->pluck('event_id');

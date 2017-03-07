@@ -137,24 +137,31 @@ $(function(){
         
         if(menu == "home"){
             $('.club-nav').hide();
-            $('.about, h1.header, .events, .contact').fadeOut();
+            $('.about, h1.header, .events, .contact, .team').fadeOut();
             $('.'+menu).fadeIn();
         }
         else if(menu == "about"){
             $('.club-nav').hide();
-            $('.home, .events, .contact').fadeOut();
+            $('.home, .events, .contact, .team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "events"){
-            $('.home, .about, .contact').fadeOut();
+            $('.home, .about, .contact, .team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "contact"){
-            $('.home, .about, .events').fadeOut();
+            $('.club-nav').hide();
+            $('.home, .about, .events, .team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
+        }
+        else if(menu == 'team'){
+            $('.club-nav').hide();
+            $('.home, .about, .events, .contact').fadeOut();
+            $('h1.header').html(menu).fadeIn();
+            $('.'+menu).fadeIn();   
         }
     });
 
@@ -295,6 +302,18 @@ $(function(){
         setTimeout(function(){
             $('.events .event-desc .group-modal .group-details').fadeIn('slow');
         },500);
+    });
+
+    $('.team .team-nav').on('click','a.team-tab',function(){
+        var team_tab = $(this);
+        var name = team_tab.html();
+        
+        $('.team .team-nav').find('a.team-tab.active').removeClass('active');
+        team_tab.addClass('active').fadeIn();
+
+        $('.team .team-container h4').html(name).fadeIn();
+        $('.team .team-container').find('.team-card-container.active').removeClass('active');
+        $('.team .team-container '+ team_tab.attr('href')).addClass('active').fadeIn();
     });
 
 })

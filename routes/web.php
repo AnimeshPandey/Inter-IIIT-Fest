@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'eventController@index');
+Route::get('/beta', 'eventController@beta');
+
 Route::post('/getmsg','AjaxController@index');
 Route::get('/events',function(){
 	return view('events');

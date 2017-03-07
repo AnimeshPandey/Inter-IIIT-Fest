@@ -4,10 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link href="https://fonts.googleapis.com/css?family=Pacifico|Josefin+Sans|Raleway:200,400" rel="stylesheet">
         <link rel="stylesheet" href="/fonts/font-awesome-4.6.3/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
         <link rel="shortcut icon" href="/img/IIITDMJ%20LOGO.png">
         <link rel="stylesheet" href="/css/mario.css"/>
         <link rel="stylesheet" href="/css/materialize.min.css">
@@ -17,10 +17,10 @@
         <title>Inter IIIT Cultural &amp; Technical Fest</title>
     </head>
 
-    <body> <!-- oncontextmenu="return false;"> -->
+    <body>
 
         <div class="main-container row">
-            <div class="main-nav col s12 m8 offset-m2 wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s">
+            <div class="main-nav col s12 m10 offset-m1 wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s">
                 <a class="col s12 m2" id="home">Home</a>
                 <a class="col s12 m2" id="about">About</a>
                 <a class="col s12 m2" id="events">Events</a>
@@ -28,183 +28,14 @@
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
-                <div class="login-btn col 12 m2">
-            @if(Auth::check())
-                    <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
-                </div>
-            @else
-                    <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
-                </div>
-            @endif
-            @if(Auth::check() && Auth::user()->city != null)
-                <div id="user-modal modal" id="user">
-                    <div class="modal-content">
-                            
-                    </div>
-                </div>
-            @elseif( !Auth::check() || (Auth::check() && Auth::user()->city == null))
-                <div id="login" class="login-modal modal col s12 m6 offset-m3">
-                    <div class="modal-content row">
-                        <h4 class="col s12">Register / Login</h4>
-                        <div class="col s6 register-btn-container">
-                            <div class="col s10 offset-s1">
-                                <a href="/auth/google" class="google col s12 btn-flat"><i class="fa fa-google"></i> Signup with Google</a>
-                                <a href="/auth/facebook" class="fb col s12 btn-flat"><i class="fa fa-facebook"></i> Signup with Facebook</a>
-                                <a href="#" class="custom col s12 btn-flat"><i class="fa fa-user"></i>Register Now</a>
-                            </div>
-                        </div>
-                        <div class="col s6 login-form">
-                            <form class="login_form">
-                                <h6 class="col s12 red-text"></h6>
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="input-field col s12">
-                                    <input placeholder="Email" name="email" type="email" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input placeholder="Password" name="password" type="password" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <button class="btn-flat col s8 offset-s2">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col s12 register-form">
-                            <form class="register_form">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="input-field col s12">
-                                    <input placeholder="Email" name="email" type="email" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input placeholder="Name" name="name" type="text" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input placeholder="Password" id="password" name="password" type="password" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input placeholder="Confirm Password" id="cnfPassword" name="cnfPassword" type="password" class="validate" required>
-                                </div>
-                                <div class="input-field col s12">
-                                    <button class="btn-flat col s8 offset-s2">Register</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col s12 details-form">
-                            <h6 class="col s12">Kindly fill this form to continue...</h6>
-                            <form class="details_form">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <div class="input-field col s12 m6">
-                                    <input type="text" class="validate" name="festid" id="festid" readonly="true">
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <input type="text" class="validate" name="name" id="name" required>
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <select name="gender">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <label>Gender</label>
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="Date of Birth" type="date" class="datepicker" name="date_of_birth" required>
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <p>
-                                        <input type="checkbox" id="iiitswitch" />
-                                        <label for="iiitswitch">Are you from an IIIT ?</label>
-                                        <input type="hidden" id="iiitflag" name="iiitflag" />
-                                    </p>
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="Contact No." type="tel" class="validate" name="contact_other">
-                                </div>
-                                <div class="input-field col s12" id="college_iiit" style="display: none;">
-                                    <select name="college_iiit">
-                                        <option value="default" disabled selected>Select your Institute</option>
-                                        <option value = "IIIT, Allahabad">Indian Institute of Information Technology, Allahabad</option>
-                                        <option value = "IIIT, Chittor">Indian Institute of Information Technology, Chittoor, Sri City</option>
-                                        <option value = "IIIT, Dharwad">Indian Institute of Information Technology, Dharwad</option>
-                                        <option value = "IIIT, Guwahati">Indian Institute of Information Technology, Guwahati</option>
-                                        <option value = "IIITM, Gwalior">Indian Institute of Information Technology and Management, Gwalior</option>
-                                        <option value = "IIITDM, Jabalpur">Indian Institute of Information Technology, Design and Manufacturing, Jabalpur</option>
-                                        <option value = "IIIT, Kalyani">Indian Institute of Information Technology, Kalyani</option>
-                                        <option value = "IIITDM, Kancheepuram">Indian Institute of Information Technology, Design and Manufacturing, Kancheepuram</option>
-                                        <option value = "IIIT, Kota">Indian Institute of Information Technology, Kota</option>
-                                        <option value = "IIIT, Kottayam">Indian Institute of Information Technology, Kottayam</option>
-                                        <option value = "IIIT, Kurnool">Indian Institute of Information Technology, Kurnool</option>
-                                        <option value = "IIIT, Lucknow">Indian Institute of Information Technology, Lucknow</option>
-                                        <option value = "IIIT, Manipur">Indian Institute of Information Technology, Manipur</option>
-                                        <option value = "IIIT, Nagpur">Indian Institute of Information Technology, Nagpur</option>
-                                        <option value = "IIIT, Pune">Indian Institute of Information Technology, Pune</option>
-                                        <option value = "IIIT, Ranchi">Indian Institute of Information Technology, Ranchi</option>
-                                        <option value = "IIIT, Sonepat">Indian Institute of Information Technology, Sonepat</option>
-                                        <option value = "IIIT, Srirangam">Indian Institute of Information Technology, Srirangam</option>
-                                        <option value = "IIIT, Una">Indian Institute of Information Technology, Una</option>
-                                        <option value = "IIIT, Vadodara">Indian Institute of Information Technology, Vadodara</option>
-                                    </select>
-                                </div>
-                                <div class="input-field col s12" id="college_other">
-                                    <input placeholder="College Name" type="text" class="validate" name="college_other">
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="City" type="text" class="validate" name="city" required>
-                                </div>
-                                <div class="input-field col s12 m6">
-                                    <select name="state">
-                                        <option value="" disabled selected>Choose State</option>
-                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                        <option value="Assam">Assam</option>
-                                        <option value="Bihar">Bihar</option>
-                                        <option value="Chhattisgarh">Chhattisgarh</option>
-                                        <option value="Goa">Goa</option>
-                                        <option value="Gujarat">Gujarat</option>
-                                        <option value="Haryana">Haryana</option>
-                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                        <option value="Jharkhand">Jharkhand</option>
-                                        <option value="Karnataka">Karnataka</option>
-                                        <option value="Kerala">Kerala</option>
-                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                        <option value="Maharashtra">Maharashtra</option>
-                                        <option value="Manipur">Manipur</option>
-                                        <option value="Meghalaya">Meghalaya</option>
-                                        <option value="Mizoram">Mizoram</option>
-                                        <option value="Nagaland">Nagaland</option>
-                                        <option value="New Delhi">New Delhi</option>
-                                        <option value="Odisha">Odisha</option>
-                                        <option value="Puducherry">Puducherry</option>
-                                        <option value="Punjab">Punjab</option>
-                                        <option value="Rajasthan">Rajasthan</option>
-                                        <option value="Sikkim">Sikkim</option>
-                                        <option value="Tamil Nadu">Tamil Nadu</option>
-                                        <option value="Telangana">Telangana</option>
-                                        <option value="Tripura">Tripura</option>
-                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                        <option value="Uttarakhand">Uttarakhand</option>
-                                        <option value="West Bengal">West Bengal</option>
-                                    </select>
-                                    <label>State</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <button class="btn-flat col s8 offset-s2">Register</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            @endif
-
-            <!-- <footer class="col s12">
+<!--
+            <footer class="col s12">
                 <a class="col s12 m1 offset-m4" id="sponsors">Sponsors</a>
                 <a class="col s12 m1" id="schedule">Schedule</a>
                 <a class="col s12 m1" href="#" target="_blank">Teaser</a>
                 <a class="col s12 m1" id="web">Web Team</a>
-            </footer> -->
-
+            </footer>
+-->
             <a href="https://www.facebook.com/iiitdm.jbp/" target="_blank" id="fb"><i class="fa fa-facebook"></i></a>
             <section class="home mask row">
                 <section class="col s12 m10 head valign-wrapper">
@@ -224,7 +55,7 @@
                         <img src="/img/coollogo.png" class="wow zoomIn" data-wow-duration="1s" data-wow-delay="3s">
                     </div>
                     <div class="links">
-                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="/IIITDMJ_Fest_Brochure.pdf" target="_blank">
+                    	<a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="/IIITDMJ_Fest_Brochure.pdf" target="_blank">
                             <img class="link-icon" src="/img/brochure.png">
                             <h5 class="link-text">Brochure</h5>
                         </a>
@@ -234,11 +65,11 @@
                         </a>
                     </div>
                 </section>
-            </section>
+        </section>
             <h1 class="header col s10 offset-s1 m2 offset-m5">About</h1>
             <section class="about container col">
                 <p class="col s12">Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur is an institute of national importance is one of the premier emerging institutes of India. It shall be a Global Centre of excellence in engineering education and research by building itself as an Enterprise of Knowledge. It has been a launching pad for their journey of self-development and hence begins their participation in extra-curricular activities in campus and beyond.<br><br>
-The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG &amp; ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
+The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG & ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
 </p>
             </section>
             <section class="club-nav nav-left">
@@ -284,6 +115,12 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                     <h5 class="col nav-label">Arts</h5>
                     <img class="col" src="/img/icons/arts.png">
                 </div>
+<!--
+                <div class="nav-option cultural" data-club-name="heritage">
+                    <h5 class="col nav-label">Heritage</h5>
+                    <img class="col" src="/img/icons/heritage.png">
+                </div>
+-->
                 <div class="nav-option technical" data-club-name="robotics" style="margin-top:100%">
                     <img class="col" src="/img/icons/robo.png">
                     <h5 class="col nav-label">Robotics</h5>
@@ -300,6 +137,12 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                     <img class="col" src="/img/icons/cad.png">
                     <h5 class="col nav-label">CAD</h5>
                 </div>
+<!--
+                <div class="nav-option technical">
+                    <img class="col" src="/img/IIITDMJ%20LOGO.png">
+                    <h5 class="col nav-label">Club-name</h5>
+                </div>
+-->
             </section>
             <section class="events container col s12 m10 offset-m1 l10 offset-l1">
                 <div class="main-btn-container col s3 offset-s2 cultural">
@@ -322,100 +165,24 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including hip hop, Jazz, salsa,   Contemporary, folk dances.
                         </p>
-                        @if(Auth::check())
+<!--
                         <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
+                            <button class="col s6 m5 btn">Register</button>
+                            <button class="col s6 m5 offset-m2 btn">View Package</button>
                         </div>
-                        <div id="modal-dancellennium" class="group-modal modal col s12 m4">
-                            <div class="modal-content row">
-                                <h4 class="col s12">Group Event</h4>
-                                <div class="group-options col s12">
-                                    <h6 class="col s12" style="text-align: left">This is a group event....</h6>
-                                    <div class="input-field col s12 m10 offset-m1">
-                                        <form class="register_group">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="text" class="validate col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
-                                            <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
-                                        </form>
-                                    </div>
-                                    <div class="col s12 divider"></div>
-                                    <h5 class="col s12">OR</h5>
-                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
-                                </div>
-                                <div class="group-details col s12" style="display:none">
-                                    <form class="group_details">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" class="validate" name="group_name" id="group_name" placeholder="Enter Group Name" required="true">
-                                        </div>
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
-                                        </div>
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+-->
                     </div>
                     <div class="col s12 m9 event-desc" id="fof">
                         <h5 class="col s6">Solo Dance Competition</h5>
                         <p class="col s12">
                             A daring platform to showcase your moves and compete against the best dancers in the country, master the skill of expression, energy and emotions.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="solo_dance" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="carinosa">
                         <h5 class="col s6">Duet Dance Competition</h5>
                         <p class="col s12">
                             Come into an alliance with your partner if you can groove to the rhythm of your comrade and showcase your grace. You rely on physical skills and chemistry, but up until now, that chemistry’s been pretty heterosexual. Do so with all the chemistry in the world put in 2 souls.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="duet_dance" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        <div id="modal-duet_dance" class="group-modal modal col s12 m4">
-                            <div class="modal-content row">
-                                <h4 class="col s12">Group Event</h4>
-                                <div class="group-options col s12">
-                                    <h6 class="col s12" style="text-align: left">This is a group event....</h6>
-                                    <div class="input-field col s12 m10 offset-m1">
-                                        <form class="register_group">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="text" class="col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
-                                            <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="duet_dance" data-registered="0" data-event-type="group">Register</button>
-                                        </form>
-                                    </div>
-                                    <div class="col s12 divider"></div>
-                                    <h5 class="col s12">OR</h5>
-                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
-                                </div>
-                                <div class="group-details col s12" style="display:none">
-                                    <form class="group_details">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" name="group_name" id="group_name" placeholder="Enter Group Name">
-                                        </div>
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <input type="text" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}">
-                                        </div>
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="arts">
@@ -432,72 +199,36 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         Let the colors flow, designs show and flash your imagination bright. Have you ever felt like designing your own clothes? Well here is your chance, don&#39;t let it go. Participate in Tshirt painting and who knows what you might end up with?
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="tshirt_painting" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="waste">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             There is a lot of stuff that we often throw out thinking it is useless, well it isn&#39;t. Here is your chance to steal the show with all the waste  you throw and take prizes away for sure,Participate in best out of waste and show us your creativity.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="best_of_waste" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="poster">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             "A picture speaks more than a thousand words". Posters are the best way to describe a particular situation or circumstances in a minimalist manner . Each poster is unique in its own accord. So let the horses of your imagination run loose and participate in the poster making competition.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="poster_making" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="paper">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             We have two hands, two eyes and 1 brain. They main purpose of these senses is to create. Create something unique with the materials provided and stand a chance to win awesome prizes. Paper is  simple yet powerful thing,so use this power bestowed on you and create!
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="paper_cutting" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="doodling">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Let your thoughts flow on paper and doodle all you want, all you like, all you can. It's easy and fun,and surely it's something we all do in class, So why not take it to the next level? And there are prizes for grabs too!  So why wait, just participate!
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="doodling" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="rangoli">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Traditional Indian art of Rangoli is a custom in our country since ages. It's the first form of art that most of us come across since our childhood. Festivals, events are all lightened up by the Rangolis. As we say, no event is complete without a rangoli, so let the freak flag fly and create an art takes everybody's breath away. Participate in rangoli and show us what you got!
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="rangoli" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="drama">
@@ -511,36 +242,18 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         This is one man show . So pour your emotions and let the actor inside you cone out and say it all to the audience.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="monoact" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="nukkad">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             Get up raise your voice and make the crowd think. Come and showcase the creativity in you against the odd of not having the stage set. There are many pressing issues that needs to be addressed, use the art of entertainment and convey the message to the community through this street play event.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="nukkad" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="oneact">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             We all have a story to tell, the stage is set and ready to see you showcasing the grace and fineness of your acting skills in the stage play event of this Inter IIIT Techno-Cultural Festival.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="oneact" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="music">
@@ -555,48 +268,24 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <p class="col s12">
                         Get ready to get mesmerized by the whimsical performances by the singing sensations of the country in the first ever Inter IIIT Techno-Cultural Festival. This will surely take you to the magical world of music.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="solo_singing" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="duet">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             The audience will surely be enthralled by the nightingale volices of the duo.This event will portray plethora of music ranging from Sufi to Rock and Indian Classical to Folk. So Gear up to showcase your talent and set the stage on fire.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="duet" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="unplug">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             The participants will surely blow your mind. It is a platform where the bands play acoustic instruments to fascinate the audience with their amusing performances.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="unplugged" data-registered="0" data-event-type="group">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="instrumental">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                             In music, an instrumental solo piece is a composition played by the performer. So get ready for some heart touching performances by the young and talented youth of the country.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="instrumental" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="literary">
@@ -608,77 +297,35 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                         <a href="#gd" class="col s12 tab">Group Discussion</a>
                         <a href="#extemp" class="col s12 tab">Extempore</a>
                     </div>
-                    <div class="col s12 m9 event-desc active" id="jam">
-                        <h5 class="col s4"></h5>
-                        <p class="col s12">
-                        Encounter the unyielding spirit of game!!
-                        </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="spell_bee" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
-                    </div>
                     <div class="col s12 m9 event-desc active" id="spell">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Encounter the unyielding spirit of game!!
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="spell_bee" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="debate">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Cogitate Expound Debate.This event is a  contest of argumentation between two teams or individuals. So come out and fight for your say.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="debate" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="writing">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Manoeuvre yourself into a new world and start making things up. Showcase your creative and imaginative skills through your writing in our Creative Writing Event and let the horses of your imagination run loose.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="writing" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="gd">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Discuss Engage Canvass Dissent OVER and OUT.. The fierce battle of opinions, fought with weapons of words, where the warriors will be armoured by the language of their bodies and charioteered by the call of their intellect, shall heat up the atmosphere.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="gd" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                     <div class="col s12 m9 event-desc" id="extemp">
                         <h5 class="col s4"></h5>
                         <p class="col s12">
                         Spur the moment by your presence of mind and get ready to amaze the audience by the awareness, confidence and fluency in language.
                         </p>
-                        @if(Auth::check())
-                        <div class="btn-container col s12 m9">
-                            <button class="register col s6 m5 btn" data-event-id="extempore" data-registered="0" data-event-type="single">Register</button>
-                            <button class="package col s6 m5 offset-m2 btn">View Package</button>
-                        </div>
-                        @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="programming">
@@ -1161,38 +808,10 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
             </section>
         </div>
         
-        
         <script src="/js/jquery-2.1.4.js"></script>
         <script src="/js/materialize.min.js"></script>
         <script src="/js/wow.min.js"></script>
         <script src="/js/custom.js"></script>
-        @if(Auth::check() && Auth::user()->city == null)
-            <script>
-                $(function(){
-                    $('#login').openModal({dismissible : false});
-                    $('.login-modal .modal-content h4').html('User Details').fadeIn();
-                    $('.login-modal .modal-content .login-form, .login-modal .modal-content .register-btn-container').fadeOut();
-                    $(document).off('click','.lean-overlay');
-                    $('.login-modal .details-form').fadeIn();
-                    $('.login-modal .details-form #festid').val('{{ Auth::user()->fest_id }}');
-                    $('.login-modal .details-form #name').val('{{ Auth::user()->name }}');
-                });  
-            </script>
-        @endif
-
-        <script>
-            var reg_events_single = {!!html_entity_decode($reg_events_single)!!};
-            var reg_events_group = {!!html_entity_decode($reg_events_group)!!};
-            var reg_btn = $('.events .event-desc button.register');
-
-            console.log(reg_events_single);
-            console.log(reg_events_group);
-
-            for(i in reg_events_single)
-                $('.events .event-desc').find("[data-event-id='" + reg_events_single[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
-            for(i in reg_events_group)
-                $('.events .event-desc').find("[data-event-id='" + reg_events_group[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
-        </script>
     </body>
 
 </html>
