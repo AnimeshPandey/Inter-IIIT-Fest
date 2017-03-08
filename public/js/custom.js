@@ -246,45 +246,21 @@ $(function(){
         }
     });
 
-    $('.events .event-desc .group-modal').on('submit','.register_group',function(e){
-        var btn = $(this).find('button');
-        var event_id = btn.attr('data-event-id');
-        var data = $(this).serialize() + '&event_id='+event_id;
+    $('.events .event-desc .group-modal').on('submit','.group_details',function(e){
+        var form = $(this);
+        var data = form.serialize();
+        var event_id = form.find('[name = event_id]').attr('value');
+        $('.event .event-desc').find('[data-event-id='+ event_id +']').attr('data-registered',1).html('Registered').prop('disabled',true);
 
-        btn.html('Registering....');
         e.preventDefault();
         $.post("register/event/group", data, function(result,status){
             if(status == "success"){
-                if(result.flag == "OK"){
-                    btn.html('Registered').prop('disabled', true).attr('data-registered',1);
-                    $('[data-event-id="'+event_id+'"]').html('Registered').prop('disabled',true).attr('data-registered',1);
-                    setTimeout(function(){
-                        $('#modal-'+event_id).closeModal();
-                    },1000);
-                }
-                else if(result.flag == "duplicate"){
-
-                }
-                else{
-                    alert('Some Error has occurred!! Kindly report this to the web team.');
-                }
-            }
-            else if(status == "error"){
-                alert("Server Error, Contact web team for assistance.");
-                btn.html('Register');
-            }
-        });
-    });
-
-    $('.events .event-desc .group-modal').on('submit','.group_details',function(e){
-        var data = $(this).serialize();
-
-        e.preventDefault();
-        $.post("register/group", data, function(result,status){
-            if(status == "success"){
                 if(result.created){
+                    form.find('input').prop('disabled',true);
+                    form.find('button').html('Saved').prop('disabled',true).fadeIn();
                     $('.events .event-desc .group-modal .group-details').fadeOut();
-                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12">Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Use it to register for group events.</h6></div>');            
+                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12">Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Keep it safe for future references.</h6></div>');            
+                    
                 }
                 else{
                     alert('Some Error has occurred!!');
@@ -296,6 +272,20 @@ $(function(){
         });
     });
 
+    $('.events .event-desc .group-modal').on('click','button.add-member',function(){
+        $('.events .event-desc .group-modal .members.input-field').append('<input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="Enter Fest ID (Team Member)"><button class="save-member btn-flat col s3 offset-s1">Save</button>')
+    });
+
+    $('.events .event-desc .group-modal .group-details').on('click','button.save-member',function(){
+        $(this).prev('input').prop('readonly',true);
+        $(this).html('Edit').removeClass('save-member').addClass('edit-member');
+    });
+
+    $('.events .event-desc .group-modal .group-details').on('click','button.edit-member',function(){
+        $(this).prev('input').prop('readonly',false);
+        $(this).html('Save').removeClass('edit-member').addClass('save-member');
+    });
+
     $('.events .event-desc .group-modal').on('click','button.create-group',function(){
         $('.events .event-desc .group-modal h4').html('Group Details').fadeIn();
         $('.events .event-desc .group-modal .group-options').fadeOut();
@@ -303,6 +293,8 @@ $(function(){
             $('.events .event-desc .group-modal .group-details').fadeIn('slow');
         },500);
     });
+
+
 
     $('.team .team-nav').on('click','a.team-tab',function(){
         var team_tab = $(this);

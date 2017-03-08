@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\registersfor;
 use App\ispartof;
+use App\group;
 
 class eventController extends Controller
 {
@@ -47,15 +48,34 @@ class eventController extends Controller
     		// 	return Response()->json(['flag' => 'duplicate']);
     		// }
 
-    		$group_reg = new ispartof;
+            $group = new group;
 
-    		$group_reg->group_id = $data->group_id;
-    		$group_reg->fest_id = Auth::user()->fest_id;
-    		$group_reg->event_id = $data->event_id;
+            $group->group_name = $data->group_name;
+            $group->college = $data->group_college;
 
-    		$group_reg->save();
+            $group->save();
 
-    		return Response()->json(['flag' => 'OK']);
+            $id = $group->id;
+            $count = 170000 + $id;
+            $groupid = "TCFG".$count;
+
+            $group->group_id = $groupid;
+
+            $group->save();
+
+            // return Response()->json(['created' => 1, "groupid" => $groupid]);
+
+            foreach($data->members as $member_id){
+                $group_reg = new ispartof;
+
+                $group_reg->group_id = $group->group_id;
+                $group_reg->event_id = $data->event_id;
+                $group_reg->fest_id = $member_id;
+
+                $group_reg->save();
+            }
+
+    		return Response()->json(['created' => 1 ,'groupid' => $groupid]);
     	}
     }
 }

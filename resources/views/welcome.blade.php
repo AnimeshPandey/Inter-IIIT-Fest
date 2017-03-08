@@ -224,11 +224,11 @@
                         <img src="/img/coollogo.png" class="wow zoomIn" data-wow-duration="1s" data-wow-delay="3s">
                     </div>
                     <div class="links">
-                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="/IIITDMJ_Fest_Brochure.pdf" target="_blank">
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="{{asset('IIITDMJ_Fest_Brochure.pdf')}}" target="_blank" download>
                             <img class="link-icon" src="/img/brochure.png">
                             <h5 class="link-text">Brochure</h5>
                         </a>
-                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="/Inter_IIIT_Rule_Book.pdf" target="_blank">
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="{{ asset('Inter_IIIT_Rule_Book.pdf') }}" target="_blank" download>
                             <img class="link-icon" src="/img/book.png">
                             <h5 class="link-text">Rule Book</h5>
                         </a>
@@ -327,34 +327,29 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                             <button class="register col s6 m5 btn" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
                             <button class="package col s6 m5 offset-m2 btn">View Package</button>
                         </div>
-                        <div id="modal-dancellennium" class="group-modal modal col s12 m4">
+                        <div id="modal-dancellennium" class="group-modal modal col s12 m6">
                             <div class="modal-content row">
                                 <h4 class="col s12">Group Event</h4>
                                 <div class="group-options col s12">
-                                    <h6 class="col s12" style="text-align: left">This is a group event....</h6>
-                                    <div class="input-field col s12 m10 offset-m1">
-                                        <form class="register_group">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="text" class="validate col s12" name="group_id" id="group_id" placeholder="Enter Group Id" required="true">
-                                            <button class="btn-flat col s6 offset-s3 m6 offset-m3" data-event-id="dancellennium" data-registered="0" data-event-type="group">Register</button>
-                                        </form>
-                                    </div>
-                                    <div class="col s12 divider"></div>
-                                    <h5 class="col s12">OR</h5>
+                                    <h6 class="col s12">This is a group event....</h6>
                                     <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
                                 </div>
                                 <div class="group-details col s12" style="display:none">
                                     <form class="group_details">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <div class="input-field col s12 m10 offset-m1">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="event_id" value="dancellennium">
+                                        <div class="input-field col s12 m6">
                                             <input type="text" class="validate" name="group_name" id="group_name" placeholder="Enter Group Name" required="true">
                                         </div>
-                                        <div class="input-field col s12 m10 offset-m1">
+                                        <div class="input-field col s12 m6">
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
-                                        <div class="input-field col s12 m10 offset-m1">
-                                            <button class="submit-group btn-flat col s8 offset-s2" type="submit">Create Group</button>
+                                        <div class="members input-field col s12">
+                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
+                                            <button class="save-member btn-flat col s3 offset-s1">Save</button>
                                         </div>
+                                        <button class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
                                     </form>
                                 </div>
                             </div>
