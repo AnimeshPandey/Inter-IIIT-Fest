@@ -582,16 +582,19 @@ section.main h4.presents{
     font-family: "Josefin Sans" , sans-serif;
     font-weight: 700;
     letter-spacing: 0.75px;
+    padding:0px;
 }
 
-.events .event-desc-container .event-desc p{
-    margin: 10px 0px;
+.events .event-desc-container .event-desc, .events .event-desc-container .event-desc p{
+    margin: 0px 0px;
     line-height: 1.25;
     letter-spacing: 1px;
     word-spacing: 1.2px;
     font-size: 15px;
     font-weight: 500;
     color: rgba(0,0,0,0.78);
+    padding: 0px 15px;
+    line-height: 22px;
 }
 
 .events .event-desc-container .btn-container{
