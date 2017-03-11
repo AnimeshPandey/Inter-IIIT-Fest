@@ -244,8 +244,8 @@ section.main h4{
     text-align: center;
     font-size: 24px;
     letter-spacing: 1px;
-    font-weight: 500;
-    font-family: "Raleway" , sans-serif;
+    /*font-weight: 500;*/
+    /*font-family: "Raleway" , sans-serif;*/
 }
 
 section.main h3{
@@ -577,24 +577,23 @@ section.main h4.presents{
 }
 
 .events .event-desc-container .event-desc h5{
-    margin: 3px 0px;
+    margin: 10px 0px;
     font-size: 22px;
     font-family: "Josefin Sans" , sans-serif;
     font-weight: 700;
     letter-spacing: 0.75px;
-    padding:0px;
+    padding:0px 15px;
 }
 
-.events .event-desc-container .event-desc, .events .event-desc-container .event-desc p{
+ .events .event-desc-container .event-desc p{
     margin: 0px 0px;
-    line-height: 1.25;
     letter-spacing: 1px;
     word-spacing: 1.2px;
     font-size: 15px;
     font-weight: 500;
-    color: rgba(0,0,0,0.78);
-    padding: 0px 15px;
-    line-height: 22px;
+    color: rgba(0,0,0,0.7);
+    padding: 10px 15px;
+    line-height: 25px;
 }
 
 .events .event-desc-container .btn-container{
@@ -663,6 +662,10 @@ section.main h4.presents{
 .events .group-modal .group-details .btn-flat{
     height: 35px;
     font-size: 14px;
+}
+
+.events .group-modal .save-member.btn-flat,.events .group-modal .save-member.edit-flat{
+    margin-top: 14px;
 }
 
 .events .group-modal .btn-flat{

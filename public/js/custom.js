@@ -273,7 +273,7 @@ $(function(){
     });
 
     $('.events .event-desc .group-modal').on('click','button.add-member',function(){
-        $('.events .event-desc .group-modal .members.input-field').append('<input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="Enter Fest ID (Team Member)"><button class="save-member btn-flat col s3 offset-s1">Save</button>')
+        $('.events .event-desc .group-modal .members.input-field').append('<input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="Enter Fest ID (Team Member)"><button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>')
     });
 
     $('.events .event-desc .group-modal .group-details').on('click','button.save-member',function(){
