@@ -190,6 +190,11 @@ a{
     box-shadow:0 2px 8px 0 rgba(0,0,0,0.1),0 2px 10px 0 rgba(0,0,0,0.15);
 }
 
+.main-container .modal .modal-content .btn-flat:disabled{
+    background-color: gray;
+    color: white;
+}
+
 .main-container .login-modal .modal-content .register-form,.main-container .login-modal .modal-content .details-form{
     display: none;
 }
@@ -323,7 +328,7 @@ section.main h4.presents{
     text-transform: capitalize;
 }
 
-.main-container .container{
+.main-container .container.col{
     width: 90%;
     max-width: 90%;
     height: 86%;
@@ -496,7 +501,7 @@ section.main h4.presents{
 
 .events .close-btn{
     position: fixed;
-    bottom: 70px;
+    bottom: 80px;
     left: calc(50% - 12.5px);
     height: 50px;
     width: 50px;
@@ -513,17 +518,16 @@ section.main h4.presents{
 }
 
 .events .event-desc-container.offset-m1{
-    margin-left: 6%;
+    margin-left: 9%;
 }
 
 .events .event-desc-container.m10{
-    width: 88%;
+    width: 82%;
 }
 
 .events .event-desc-container{
     position: relative;
-    height: 60%;
-    top: 18%;
+    height: 70%;
     padding: 0px;
     display: none;
 }
@@ -664,8 +668,16 @@ section.main h4.presents{
     font-size: 14px;
 }
 
-.events .group-modal .save-member.btn-flat,.events .group-modal .save-member.edit-flat{
+.events .group-modal .group_member{
+    margin-top: 10px;
+}
+
+.events .group-modal .save-member.btn-flat,.events .group-modal .edit-member.btn-flat,.events .group-modal .delete-member.btn-flat{
     margin-top: 14px;
+}
+
+.events .group-modal .delete-member.btn-flat{
+    background-color: grey;
 }
 
 .events .group-modal .btn-flat{
@@ -722,8 +734,6 @@ section.main h4.presents{
 }
 
 .main-container .team.container{
-    width: 90%;
-    margin-left: 5%;
     height: 80%;
     display: none;
 }
@@ -818,8 +828,112 @@ section.main h4.presents{
 .main-container .team .team-container .team-card h5{
     text-align: center;
     font-family: "Raleway" ,sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     position: relative;
     top: -30px;
+    padding: 0px;
+}
+
+.main-container .mega{
+    display: none;
+}
+
+.main-container .mega .mega-container{
+    position: relative;
+    height: 90%;
+    padding: 0;
+    background-color: rgba(255,255,255,0.9);
+    z-index: 9999;
+}
+
+.main-container .mega .mega-container h4{
+    font-family: "Josefin Sans" ,sans-serif;
+    text-align: center;
+    margin-top: 160px;
+    line-height: 1.5;
+    font-size: 30px;
+}
+
+.mega .mega-container .event.col{
+    height: 100%;
+    padding: 0px;
+    cursor: pointer;
+    background-color: firebrick;
+    transition: 1000ms ease;
+}
+
+.mega .mega-container .event h3{
+    text-align: center;
+    font-family: "Josefin Sans",sans-serif;
+/*    font-weight: 700;*/
+    transition: 400ms;
+    position: relative;
+    top: 70%;
+    font-size: 30px;
+    letter-spacing: 2px;
+    height: 70px;
+    line-height: 35px;
+    color: white;
+    text-shadow: 1px 0px #dddddd;
+    z-index: 2;
+    padding: 0px;
+}
+
+.mega .mega-container .event div{
+    height: 100%;
+    z-index: 1;
+    transition: 200ms;
+    padding: 0px;
+}
+
+.mega .mega-container .event div:hover{
+    border: 10px solid #333;
+    transition: 200ms;
+}
+
+.mega .mega-container .event div:hover h3{
+    transform: scale(1.2);
+}
+
+.mega .mega-container .event #dance{
+    background-color: goldenrod;
+}
+
+.mega .mega-container .event #nukkad{
+    background-color: cadetblue;
+}
+
+.mega .mega-container .event #dj{
+    background-color: forestgreen;
+}
+
+.mega .mega-container .event #aaveg{
+    background-color: coral;
+}
+
+.mega .mega-container .event #hackathon{
+    background-color: teal;
+}
+
+.mega .mega-container .event #robowar{
+    background-color: firebrick;
+}
+
+.mega .mega-container .mega-modal.modal{
+    position: fixed;
+    top: 1% !important;
+    width: 98%;
+    height: 98%;
+    max-height: 100%;
+}
+
+.mega .mega-container .mega-modal.modal#dj_war{
+    background-image: url(../img/dj2.jpg);
+    background-size: 100vw 100vh;
+}
+
+.mega .mega-container .mega-modal.modal .modal-content{
+    height: 100%;
+    background-color: rgba(0,0,0,0.75)
 }

@@ -142,25 +142,31 @@ $(function(){
         }
         else if(menu == "about"){
             $('.club-nav').hide();
-            $('.home, .events, .contact, .team').fadeOut();
+            $('.home, .events, .contact, .team, .mega').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "events"){
-            $('.home, .about, .contact, .team').fadeOut();
+            $('.home, .about, .contact, .team, .mega').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "contact"){
             $('.club-nav').hide();
-            $('.home, .about, .events, .team').fadeOut();
+            $('.home, .about, .events, .team, .mega').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == 'team'){
             $('.club-nav').hide();
-            $('.home, .about, .events, .contact').fadeOut();
+            $('.home, .about, .events, .contact, .mega').fadeOut();
             $('h1.header').html(menu).fadeIn();
+            $('.'+menu).fadeIn();   
+        }
+        else if(menu == 'mega'){
+            $('.club-nav').hide();
+            $('.home, .about, .events, .contact, .team').fadeOut();
+            $('h1.header').html("Mega Events").fadeIn();
             $('.'+menu).fadeIn();   
         }
     });
@@ -250,7 +256,8 @@ $(function(){
         var form = $(this);
         var data = form.serialize();
         var event_id = form.find('[name = event_id]').attr('value');
-        $('.event .event-desc').find('[data-event-id='+ event_id +']').attr('data-registered',1).html('Registered').prop('disabled',true);
+
+        form.find('button.reg-member').html('Registering...').prop('disabled',true).fadeIn();
 
         e.preventDefault();
         $.post("register/event/group", data, function(result,status){
@@ -259,11 +266,12 @@ $(function(){
                     form.find('input').prop('disabled',true);
                     form.find('button').html('Saved').prop('disabled',true).fadeIn();
                     $('.events .event-desc .group-modal .group-details').fadeOut();
-                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12">Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Keep it safe for future references.</h6></div>');            
-                    
+                    $('.event .event-desc').find('[data-event-id='+ event_id +']').attr('data-registered',1).html('Registered').prop('disabled',true);
+                    $('.events .event-desc .group-modal .modal-content').append('<div class="affirm-group col s12"><h5 class="col s12">Your Group ID is <span class="green-text">'+result.groupid+'</span></h5><h6 class="col s12">Keep it safe for future references.</h6></div>');                                
                 }
                 else{
                     alert('Some Error has occurred!!');
+                    form.find('button.reg-member').html('Register Group').prop('disabled',false).fadeIn();
                 }
             }
             else if(status == "error"){
@@ -273,7 +281,11 @@ $(function(){
     });
 
     $('.events .event-desc .group-modal').on('click','button.add-member',function(){
-        $('.events .event-desc .group-modal .members.input-field').append('<input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="Enter Fest ID (Team Member)"><button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>')
+        $('.events .event-desc .group-modal .members.input-field').append('<div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="Enter Fest ID (Team Member)" required><button type="button" class="save-member btn-flat col s2 offset-s2">Save</button><button type="button" class="delete-member btn-flat col s2">Delete</button></div>');
+    });
+
+    $('.events .event-desc .group-modal').on('click','button.delete-member',function(){
+        this.closest('.member').remove();
     });
 
     $('.events .event-desc .group-modal .group-details').on('click','button.save-member',function(){
@@ -294,7 +306,42 @@ $(function(){
         },500);
     });
 
+    $('.events .group-modal .group-details').on('keyup',".group_member",function(){
+        var elem = $(this);
+        var fest_id = elem.val(); 
 
+        if(fest_id.length > 3)
+        {  
+
+            $.ajax({
+                type : 'POST',
+                url  : '/checkfestid',
+                data : {
+                    _token : $('input[name="_token"]').val(),
+                    festid : fest_id
+                },
+                success : function(result){
+                    if(result.count == 0){
+                        elem.next('.save-member').prop('disabled',true).html('Invalid Fest ID');
+                        elem.parents().siblings('.reg-member').prop("disabled" ,true);
+                    }
+                    else{
+                        elem.next('.save-member').prop('disabled',false).html('Save');
+                        elem.parents().siblings('.reg-member').prop("disabled" ,false);
+                    }
+                },
+                error : function(){
+                    alert("Server Error, Contact web team for assistance");
+                }
+            });
+
+            return false;
+        }
+        else
+        {
+            $("#error-username").html('');
+        }
+    });
 
     $('.team .team-nav').on('click','a.team-tab',function(){
         var team_tab = $(this);

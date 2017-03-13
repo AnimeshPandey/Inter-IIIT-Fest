@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" class="no-js">
     <head>
@@ -24,7 +23,7 @@
                 <a class="col s12 m2" id="home">Home</a>
                 <a class="col s12 m2" id="about">About</a>
                 <a class="col s12 m2" id="events">Events</a>
-                <a class="col s12 m2" id="mega_events">Mega Events</a>
+                <a class="col s12 m2" id="mega">Mega Events</a>
                 <a class="col s12 m2" id="team">Team</a>
                 <a class="col s12 m2" id="contact">Contact</a>
             </div>
@@ -33,7 +32,7 @@
                     <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
                 </div>
             @else
-                    <!-- <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a> -->
+                    <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
                 </div>
             @endif
             @if(Auth::check() && Auth::user()->city != null)
@@ -235,7 +234,7 @@
                     </div>
                 </section>
             </section>
-            <h1 class="header col s10 offset-s1 m2 offset-m5">About</h1>
+            <h1 class="header col s10 offset-s1 m4 offset-m4">About</h1>
             <section class="about container col">
                 <p class="col s12">Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur is an institute of national importance is one of the premier emerging institutes of India. It shall be a Global Centre of excellence in engineering education and research by building itself as an Enterprise of Knowledge. It has been a launching pad for their journey of self-development and hence begins their participation in extra-curricular activities in campus and beyond.<br><br>
 The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of two of inimitable fests of IIITDMJ, namely TARANG &amp; ABHIKALPAN. The fest will come as a vast pool of awe inspiring events enabling participants from all over India to promulgate their talent and explore their passion in the field of culture as well as technology.
@@ -305,7 +304,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                     <h5 class="col nav-label">CAD</h5>
                 </div>
             </section>
-            <section class="events container col s12 m10 offset-m1 l10 offset-l1">
+            <section class="events container col s12">
                 <div class="main-btn-container col s3 offset-s2 cultural">
                     <div class="blur-mask col s12"></div>
                     <a class="main-btn col s12 cultural" data-genre="cultural">Cultural</a>
@@ -362,11 +361,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -437,11 +436,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -499,11 +498,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -548,11 +547,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -616,11 +615,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -683,11 +682,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -771,11 +770,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -822,11 +821,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -916,11 +915,11 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -970,11 +969,14 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                            <div class="member col s12">
+                                                <input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                                <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                                <button type="button" class="delete-member btn-flat col s2">Delete</button>
+                                            </div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1081,11 +1083,11 @@ For the second round only a maximum of two teams from each institute will qualif
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1224,11 +1226,11 @@ b)  Depending on the performance of the prelims, 5 participants will proceed to 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1271,11 +1273,11 @@ If you love breaking rules,passing system security this challenge is made for yo
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1370,11 +1372,11 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1413,11 +1415,11 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1476,11 +1478,11 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1528,11 +1530,11 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1579,11 +1581,11 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1599,7 +1601,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                     <div class="col s12 m9 event-desc active" id="dubsmash">
                         
                         <p class="col s12">
-                        Dubsmash is a video messaging that lets users add soundtracks to videos recorded on their phones – often matching a clip of themselves performing a song or film scene with audio from the original.
+                        Dubsmash is a video messaging that lets users add soundtracks to videos recorded on their phones – often matching a clip of themselves performing a song or film scene with audio from the original.<br>You are required to mail your submissions to <strong>arpit.jain@iiitdmj.ac.in</strong>
                         </p><h5 class="col s12">Coordinators</h5><p>
                         1. Arpit Jain (8527941542)
                         </p>
@@ -1618,7 +1620,8 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
 7. It is imperative that at least one of the actors in the short film registers at the control tent to confirm the authenticity of the short film or do online registration and send your video along with abhikalpan id.<br>
 8. Abhikalpan fest will not be responsible for any issues arising out of non-compatibility of the videos. <br>
 9. Obscenity of any kind is not allowed and shall lead to disqualification. <br>
-10. The decision of the judge's and the organizing team will be final and binding.
+10. The decision of the judge's and the organizing team will be final and binding.<br>
+11. You are required to mail your submissions to <strong>shubhamchak@iiitdmj.ac.in</strong>
                         </p><h5 class="col s12">Coordinators</h5><p>
                         1. Shubham Chak (8989903725)
                         </p>
@@ -1788,11 +1791,11 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1868,11 +1871,11 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -1976,11 +1979,11 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                             <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
                                         </div>
                                         <div class="members input-field col s12">
-                                            <input type="text" class="col s8 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}">
-                                            <button type="button" class="save-member btn-flat col s3 offset-s1">Save</button>
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
-                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Create Group</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
                                     </form>
                                 </div>
                             </div>
@@ -2017,13 +2020,17 @@ The teams which get disqualified due to disobeying any of the competition rules 
                     </div>
                     <div class="col s12 m9 event-desc active" id="cad">
                         <p class="col s12">
+                        “Imagination is more important than Knowledge”- 
+                                                                               Albert Einstein<br>
+Every moment we imagine numerous stuffs. Sometimes we lead our imagination towards a happy & fruitful ending. We are engineers and the world knows we are the most creative creatures.
+Now the platform is ready. Come and show us to what extent you can stretch your thoughts so that you come up with a great idea or an all-new innovation. All you need some basic knowledge of Cad software. You will face some situations where, before starting a huge project, you will think for its feasibility, its cost, its productivity. At that time CAD can help you. Without any cost, you can deal with all the afore said problems. Get ready for the experience to explore yourself,let’s see how quick you are! how efficient you are! and most importantly how imaginative you are!!
                             </p><h5 class="col s12">Coordinators</h5><p>
                             1. Fakir Mohan Patra (9479328864)
                         </p>
                     </div>
                 </div>
             </section>
-            <section class="contact container col s12 m10 offset-m1">
+            <section class="contact container col s12">
                 <div class="contact-card-container col s12">
                     <h4 class="col s12 m10 offset-m1">For any queries contact -</h4>
                     <div class="contact-card col s4 m3">
@@ -2049,7 +2056,7 @@ The teams which get disqualified due to disobeying any of the competition rules 
                     </div>
                 </div>
             </section>
-            <!-- <section class="team container col s12">
+            <section class="team container col s12">
                 <div class="team-nav col s12 m3">
                     <a class="team-tab col s12 active" href="#faculty">Faculty Advisors</a>
                     <a class="team-tab col s12" href="#event">Event Management and Infra</a>
@@ -2065,282 +2072,287 @@ The teams which get disqualified due to disobeying any of the competition rules 
                     <div class="team-card-container col s12 active" id="faculty">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/pkjain.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. P.K Jain</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/chatterjees.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. Shekhar Chatterjee</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/nMKP-Pic.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. M.K Panda</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/neeraj.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. Neeraj Jaiswal</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/rgupta.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. Ruchir Gupta</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/mkbajpai.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. M.K Bajpai</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/kusum.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Dr. Kusum Bharti</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="event">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/abhay.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Abhay Singh Thakur</h5><p>
+                            <h5 class="col s12">Abhay Singh Thakur</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/jugal.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Jugal Rewar</h5><p>
+                            <h5 class="col s12">Jugal Rewar</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/vipul.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Vipul Gupta</h5><p>
+                            <h5 class="col s12">Vipul Gupta</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/praneet.JPG">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Praneet Bhatnagar</h5><p>
+                            <h5 class="col s12">Praneet Bhatnagar</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="marketing">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/mohit.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Ankit Sahu</h5><p>
+                            <h5 class="col s12">Mohit Kumawat</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/ankit.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Mohit Kumawat</h5><p>
+                            <h5 class="col s12">Ankit Sahu</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/arun.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">G. Arun Kumar</h5><p>
+                            <h5 class="col s12">G. Arun Kumar</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/shubham.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Shubham Khillarkar</h5><p>
+                            <h5 class="col s12">Shubham Khillarkar</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="design">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/rohit.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Rajwani</h5><p>
+                            <h5 class="col s12">Rohit Rajwani</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/samay.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Samay Jain</h5><p>
+                            <h5 class="col s12">Samay Jain</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/sneha.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">U. Snehalekha</h5><p>
+                            <h5 class="col s12">Snehalekha</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/shobab.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">G. Shobab</h5><p>
+                            <h5 class="col s12">G. Shobab</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="helpdesk">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/rksuman.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Rohit Suman</h5><p>
+                            <h5 class="col s12">Rohit Suman</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/raghu.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Raghuram</h5><p>
+                            <h5 class="col s12">Raghuram</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/sushant.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">M. Sushant</h5><p>
+                            <h5 class="col s12">M. Sushant</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="public">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/aditi.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Aditi Bhatt</h5><p>
+                            <h5 class="col s12">Aditi Bhatt</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/aparimita.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Aparimita Singh</h5><p>
+                            <h5 class="col s12">Aparimita Singh</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="hospitality">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/sunny.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Sunny Rajak</h5><p>
+                            <h5 class="col s12">Sunny Rajak</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/aparna.JPG">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Aparna Wahane</h5><p>
+                            <h5 class="col s12">Aparna Wahane</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/teja.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">K. Sai Teja</h5><p>
+                            <h5 class="col s12">K. Sai Teja</h5>
                         </div>
                     </div>
                     <div class="team-card-container col s12" id="finance">
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/sumanth.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Sumanth Chaudhary</h5><p>
+                            <h5 class="col s12">Sumanth Chaudhary</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
-                                <img src="/img/me.jpg">
+                                <img src="/img/team/atul.jpg">
                             </div>
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            </p><h5 class="col s12">Atul Dholpure</h5><p>
+                            <h5 class="col s12">Atul Dholpure</h5>
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
+            <section class="mega container col s12">
+                <div class="mega-container col s12">
+                    <h4 class="col s12">The Registrations for Mega Event will begin at 18:00 hours on 15-03-2017!!<br> So stay tuned......</h4>
+                </div>
+            </section>
         </div>
         
         

@@ -31,6 +31,7 @@ Route::post('/register','registerController@Signup');
 Route::post('/register/details','registerController@details');
 
 Route::post('/register/event/{type}','eventController@register');
+Route::post('/checkfestid', 'eventController@checkfestid');
 
 //2/3/17
 Route::get('register/verify/{confirmationCode}', [

@@ -7,12 +7,22 @@ use Auth;
 use App\registersfor;
 use App\ispartof;
 use App\group;
+use App\User;
 
 class eventController extends Controller
 {
 
     public function index(){
-        return view('index');
+        if(Auth::check()){
+            $reg_events_single = registersfor::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
+            $reg_events_group = ispartof::where('fest_id',Auth::user()->fest_id)->pluck('event_id');
+        }
+        else{
+            $reg_events_single = 0;
+            $reg_events_group = 0;
+        }
+        
+        return view('welcome', compact('reg_events_single','reg_events_group'));
     }
 
 	public function beta(){
@@ -77,5 +87,13 @@ class eventController extends Controller
 
     		return Response()->json(['created' => 1 ,'groupid' => $groupid]);
     	}
+    }
+
+    public function checkfestid(Request $data){
+
+        $count = User::where('fest_id',$data->festid)->get()->count();
+
+        return response()->json(['count' => $count]);
+
     }
 }

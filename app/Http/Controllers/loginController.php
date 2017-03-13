@@ -42,7 +42,6 @@ class loginController extends Controller
             $user = User::create([
                         'name'     => $socialuser->name,
                         'email'    => $socialuser->email,
-                        //'provider' => $provider,
                         'social_id' => $socialuser->id
                     ]);
 
