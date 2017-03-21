@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Input;
 
 class registerController extends Controller
 {
+
+    public function checkemail(Request $data){
+
+        $count = User::where('email',$data->emailid)->get()->count();
+
+        return response()->json(['count' => $count]);
+
+    }
+
     public function confirm($confirmation_code)
     {
         if( ! $confirmation_code){

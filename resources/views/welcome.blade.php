@@ -29,12 +29,11 @@
             </div>
                 <div class="login-btn col 12 m2">
             @if(Auth::check())
-                    <a class="btn-flat btn col 12 dropdown-button" href="#" data-activities="user_dropdown">{{ Auth::user()->fest_id }}</a>
-                </div>
+                    <a class="btn-flat btn col 12 dropdown-button" href="/logout" data-activities="user_dropdown">{{ Auth::user()->fest_id }}(Logout)</a>
             @else
                     <a class="btn-flat col 12 modal-trigger" href="#login">Login / Register</a>
-                </div>
             @endif
+                </div>
             @if(Auth::check() && Auth::user()->city != null)
                 <div id="user-modal modal" id="user">
                     <div class="modal-content">
@@ -47,8 +46,8 @@
                         <h4 class="col s12">Register / Login</h4>
                         <div class="col s6 register-btn-container">
                             <div class="col s10 offset-s1">
-                                <a href="/auth/google" class="google col s12 btn-flat"><i class="fa fa-google"></i> Signup with Google</a>
-                                <a href="/auth/facebook" class="fb col s12 btn-flat"><i class="fa fa-facebook"></i> Signup with Facebook</a>
+                                <a href="/auth/google" class="google col s12 btn-flat"><i class="fa fa-google"></i> Signin with Google</a>
+                                <a href="/auth/facebook" class="fb col s12 btn-flat"><i class="fa fa-facebook"></i> Signin with Facebook</a>
                                 <a href="#" class="custom col s12 btn-flat"><i class="fa fa-user"></i>Register Now</a>
                             </div>
                         </div>
@@ -72,6 +71,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="input-field col s12">
                                     <input placeholder="Email" name="email" type="email" class="validate" required>
+                                    <h6 class="email-error col s12 red-text" style="text-align: center"></h6>
                                 </div>
                                 <div class="input-field col s12">
                                     <input placeholder="Name" name="name" type="text" class="validate" required>
@@ -81,6 +81,7 @@
                                 </div>
                                 <div class="input-field col s12">
                                     <input placeholder="Confirm Password" id="cnfPassword" name="cnfPassword" type="password" class="validate" required>
+                                    <h6 class="pass-error col s12 red-text"></h6>
                                 </div>
                                 <div class="input-field col s12">
                                     <button class="btn-flat col s8 offset-s2">Register</button>
@@ -139,7 +140,7 @@
                                         <option value = "IIIT, Pune">Indian Institute of Information Technology, Pune</option>
                                         <option value = "IIIT, Ranchi">Indian Institute of Information Technology, Ranchi</option>
                                         <option value = "IIIT, Sonepat">Indian Institute of Information Technology, Sonepat</option>
-                                        <option value = "IIIT, Srirangam">Indian Institute of Information Technology, Srirangam</option>
+                                        <option value = "IIIT, Trichy">Indian Institute of Information Technology, Trichy</option>
                                         <option value = "IIIT, Una">Indian Institute of Information Technology, Una</option>
                                         <option value = "IIIT, Vadodara">Indian Institute of Information Technology, Vadodara</option>
                                     </select>
@@ -197,12 +198,9 @@
                 </div>
             @endif
 
-            <!-- <footer class="col s12">
-                <a class="col s12 m1 offset-m4" id="sponsors">Sponsors</a>
-                <a class="col s12 m1" id="schedule">Schedule</a>
-                <a class="col s12 m1" href="#" target="_blank">Teaser</a>
-                <a class="col s12 m1" id="web">Web Team</a>
-            </footer> -->
+            <footer class="col s12">
+                <a class="col s12 m2 offset-m5" id="web-team">Web Team</a>
+            </footer>
 
             <a href="https://www.facebook.com/iiitdm.jbp/" target="_blank" id="fb"><i class="fa fa-facebook"></i></a>
             <section class="home mask row">
@@ -223,13 +221,23 @@
                         <img src="/img/coollogo.png" class="wow zoomIn" data-wow-duration="1s" data-wow-delay="3s">
                     </div>
                     <div class="links">
-                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="{{asset('IIITDMJ_Fest_Brochure.pdf')}}" target="_blank" download>
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="2s" href="{{asset('IIITDMJ_Fest_Brochure.pdf')}}" target="_blank" download>
                             <img class="link-icon" src="/img/brochure.png">
                             <h5 class="link-text">Brochure</h5>
                         </a>
-                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="4s" href="{{ asset('Inter_IIIT_Rule_Book.pdf') }}" target="_blank" download>
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="2s" href="{{ asset('Inter_IIIT_Rule_Book.pdf') }}" target="_blank" download>
                             <img class="link-icon" src="/img/book.png">
                             <h5 class="link-text">Rule Book</h5>
+                        </a>
+                    </div>
+                    <div class="links left">
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="2s" href="#" id="sponsors">
+                            <img class="link-icon" src="/img/sponsor.png">
+                            <h5 class="link-text">Sponsors</h5>
+                        </a>
+                        <a class="link-card wow fadeIn" data-wow-duration="0.75s" data-wow-delay="2s" href="{{ asset('/img/schedule.jpg') }}" target="_blank" download>
+                            <img class="link-icon" src="/img/calendar.png">
+                            <h5 class="link-text">Schedule</h5>
                         </a>
                     </div>
                 </section>
@@ -362,7 +370,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -385,8 +393,8 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
 6.  Participants can use props suited to their performance which doesn’t cause damage in any other way.<br>
 7.  Decision of the judges and will be considered as final and binding and will not be changed under any circumstances. Violation of any of the above will lead to immediate disqualification.
                         </p><h5 class="col s12">Coordinators</h5><p>
-                        1. Varnika Jain(9457673359)<br>  
-                        2. Tushita Singh(9410005067)
+                        1. Abhisek Pachauri(9479713514)  <br>
+                            2. Pragati Saini(9407407593)
                         </p>
                         @if(Auth::check())
                         <div class="btn-container col s12 m9">
@@ -410,8 +418,8 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
 8.  Decision of the judges will be considered as final and binding and will not be changed under any circumstances.<br>
 9.  Indecent behaviour on stage shall not be tolerated. Violation of any of the above will lead to immediate disqualification.
                             </p><h5 class="col s12">Coordinators</h5><p>
-                            1. Abhisek Pachauri(9479713514)  <br>
-                            2. Pragati Saini(9407407593)
+                            1. Varnika Jain(9457673359)<br>  
+                            2. Tushita Singh(9410005067)
                         </p>
                         @if(Auth::check())
                         <div class="btn-container col s12 m9">
@@ -437,7 +445,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -499,7 +507,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -548,7 +556,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -616,7 +624,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -683,7 +691,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -771,7 +779,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -822,7 +830,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -835,10 +843,69 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="music">
                     <div class="col s12 m3 event-name-tabs">
+                        <a href="#aaveg" class="col s12 tab active">Aaveg</a>
                         <a href="#solo" class="col s12 tab active">Solo Singing</a>
                         <a href="#duet" class="col s12 tab">Duet Singing</a>
                         <a href="#unplug" class="col s12 tab">Unplugged</a>
                         <a href="#instrumental" class="col s12 tab">Solo Instrumental</a>
+                    </div>
+                    <div class="col s12 m9 event-desc" id="aaveg">                
+                        <h5 class="col s12">The Rock Band Show</h5>
+                        <p class="col s12">
+                            Get ready to witness a terrific battle of bands. Some excitement, some passion and
+
+lots of music. <br>Aaveg- the Rock Band competition is the most widely awaited mega event of
+
+IIIDTMJ Fest.<br> Every year, bands from across the nation fight it out to be
+
+awarded the best band in Aaveg. <br>Its a treat for audience as well as the artists. So let the headbanging
+
+begin…
+
+                        </p>
+                        <h5 class="col s12">Rules</h5>
+                        <p class="col s12">
+                            1.  Time limit: 15 minutes including sound check. (Both prelims and finale). <br>
+2.  Your performance should be of rock genre and language. <br>
+3.  You may perform more than one songs provided they don’t exceed the time limit.<br>
+4.  Number of band members should not fall below 3 and should not exceed 10.<br>
+5.  You may use as many instruments as you wish. Please check the availability of the instrument with the organizing team prior to the event. In case of non-availability, you will have to arrange the instruments on your own. <br>
+6.  Judging Criteria: Composition, Sur, Taal, Voice Quality and Modulation. <br>
+7.  The decision of the judges will be final & abiding.
+                        </p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="aaveg" data-registered="0" data-event-type="group">Register</button>
+                            <!-- <button class="package col s6 m5 offset-m2 btn">View Package</button> -->
+                        </div>
+                        <div id="modal-duet" class="group-modal modal col s12 m6">
+                            <div class="modal-content row">
+                                <h4 class="col s12">Group Event</h4>
+                                <div class="group-options col s12">
+                                    <h6 class="col s12">This is a group event....</h6>
+                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
+                                </div>
+                                <div class="group-details col s12" style="display:none">
+                                    <form class="group_details">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="event_id" value="aaveg">
+                                        <div class="input-field col s12 m6">
+                                            <input type="text" class="validate" name="group_name" id="group_name" placeholder="Enter Group Name" required="true">
+                                        </div>
+                                        <div class="input-field col s12 m6">
+                                            <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
+                                        </div>
+                                        <div class="members input-field col s12">
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
+                                        </div>
+                                        <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="col s12 m9 event-desc active" id="solo">
                         
@@ -916,7 +983,7 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -972,7 +1039,6 @@ The Inter IIIT Techno-Cultural Fest, being launched this year, is an amalgam of 
                                             <div class="member col s12">
                                                 <input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
                                                 <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
-                                                <button type="button" class="delete-member btn-flat col s2">Delete</button>
                                             </div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
@@ -1084,7 +1150,7 @@ For the second round only a maximum of two teams from each institute will qualif
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1167,7 +1233,8 @@ A discussion is vital to understand and to resolve the conflicts. Exhibiting you
                         
                         <p class="col s12">
                         Spur the moment by your presence of mind and get ready to amaze the audience by the awareness, confidence and fluency in language.
-                        </p><h5 class="col s12">Rules-</h5><p>
+                        </p><h5 class="col s12">Rules-</h5>
+                        <p class="col s12">
                         1.  Extempore will be an individual participation event only.<br>
 2.  The event will be conducted in two rounds:<br>
 a)  The participant will be given 3 minutes to speak on a specific situation for the first round.<br>
@@ -1175,7 +1242,7 @@ b)  Depending on the performance of the prelims, 5 participants will proceed to 
 3.  The situation and image provided will be given on the spot and the participant will be given a minute to prepare before speaking.<br>
 4.  The situation and image will be different for each candidate and the judging criteria will account for the variation in difficulty of the same.<br>
 5.  No indecency/ vulgarity will not be tolerated and will lead to disqualification of the participant.
-                        </p><h5 class="col s12">Coordinators</h5><p>
+                        </p><h5 class="col s12">Coordinators</h5><p class="col s12">
                         1. Mayank Sourabh (9479327707)<br> 
                         2. Ashish Gupta
                         </p>
@@ -1227,7 +1294,7 @@ b)  Depending on the performance of the prelims, 5 participants will proceed to 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1274,7 +1341,7 @@ If you love breaking rules,passing system security this challenge is made for yo
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1373,7 +1440,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1416,7 +1483,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1479,7 +1546,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1493,7 +1560,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                         
                         <p class="col s12">
                         Ever stared at flames dancing in the fireplace? Got lost in them? Lost track of time? Led Matrix is an electronic analogue to those dancing flames. Programming LED Matrices to for animations that capture your imagination is an art, and if you have it in you, come and show us what you got. So, IIITDM Jabalpur brings you the challenge of showing your creative thinking with the use of technology.</p>
-                        </p><h5 class="col s12">Rules-</h5><p>
+                        <h5 class="col s12">Rules-</h5><p>
                         1. Each team can consist of a maximum of 4 members. <br>
 2. The team members can be from different institutes or colleges.<br>
   3. The decision of judges will be final and binding.<br>
@@ -1531,7 +1598,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1582,7 +1649,7 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1632,8 +1699,52 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                         <a href="#bmc" class="col s12 tab active">Brand Presentation</a>
                     </div>
                     <div class="col s12 m9 event-desc active" id="bmc">
-                        </p><h5 class="col s12">Coordinators</h5><p>
-                        1. Daniel Sinha (9407407695)
+                        <h5 class="col s12">Description</h5>
+                        <p class="col s12">We live in the era of marketing. To succeed in the business world’s cut-throat competition, you need to have the shrewd mind of a trader along with captivating marketing skills. Effective brand presentation is the key to a flourishing business.</p>
+                        <h5 class="col s12">Rules</h5>
+                        <p class="col s12">1. Pick any brand of your choice and prepare a power point presentation describing the brand.<br>
+2. Elaborate and explain its working, success story, challenges, marketing strategy, SWOT analysis etc.<br>
+Team Size- One or Two.<br>
+Time limit- 6 minutes per team<br>
+In case of any dispute, the coordinator’s decision will be final.<br>
+Presentation has to be brought in a pen drive.</p>
+                        <h5 class="col s12">Judging Criteria</h5>
+                        <p class="col s12">Originality, Content, Presentation, Confidence</p>
+                        <h5 class="col s12">Coordinators</h5><p>
+                        1. Daniel Sinha (9407407695)</p>
+                        @if(Auth::check())
+                        <div class="btn-container col s12 m9">
+                            <button class="register col s6 m5 btn" data-event-id="bmc" data-registered="0" data-event-type="group">Register</button>
+                            <!-- <button class="package col s6 m5 offset-m2 btn">View Package</button> -->
+                        </div>
+                        <div id="modal-bmc" class="group-modal modal col s12 m6">
+                            <div class="modal-content row">
+                                <h4 class="col s12">Group Event</h4>
+                                <div class="group-options col s12">
+                                    <h6 class="col s12">This is a group event....</h6>
+                                    <button class="create-group btn-flat col s8 offset-s2">Create Group for this Event</button>
+                                </div>
+                                <div class="group-details col s12" style="display:none">
+                                    <form class="group_details">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="event_id" value="bmc">
+                                        <div class="input-field col s12 m6">
+                                            <input type="text" class="validate" name="group_name" id="group_name" placeholder="Enter Group Name" required="true">
+                                        </div>
+                                        <div class="input-field col s12 m6">
+                                            <input type="text" class="validate" name="group_college" id="group_college" placeholder="College" value="{{Auth::user()->college}}" required="true">
+                                        </div>
+                                        <div class="members input-field col s12">
+                                           <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
+                                        </div>
+                                        <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
+                                        <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     </div>
                 </div>
                 <div class="event-desc-container col s12 m10 offset-m1" id="robotics">
@@ -1642,131 +1753,21 @@ So don&#39;t miss a chance to be a part of this exhilarating quizing arena to ba
                         <a href="#minefield" class="col s12 tab">Minefield Escape</a>
                     </div>
                     <div class="col s12 m9 event-desc active" id="robowar">
-                        
+                        <h5 class="col s12">Description</h5>
                         <p class="col s12">
-                        </p><h5 class="col s12">Description</h5><p>
-                                           Imagine yourself in a situation when your country is surrounded by enemies on all sides and only you can rescue it to safety. It is your skills and knowledge that can beat the enemy out of your nation. It is time for a Robowars where either you crush away the enemy’s bot or get your own sliced into pieces.
-So get ready to fight for your life, to fight for your pride, to fight for your glory and let your bot shine to the entire world.<br>
-                                           </p><h5 class="col s12">Task</h5><p>
-                                           Design and construct a wired or wireless remote controlled robot capable of fighting a one on one tournament.<br>
-
-                                           </p><h5 class="col s12">Rules</h5><p>
-
-                                           </p><h5 class="col s12">Abstract</h5><p>
-
-The written abstract should be prepared on the following lines: <br>
-The weapon systems and power supply method should be explained in detail. <br>Picture(s) showing these should be attached. <br>
-In case of wireless remote, functioning of wireless remote and the frequency or any other wireless module used for wireless remote must be explained in detail. <br>
-Description of any unusual advantageous mechanism used. <br>The specifications of all the components used, including motors, suspension springs, remote controller, wires, battery etc. have to be mentioned.<br>
-You can email the portfolio minus the video and send the video later. <br>This will make sure that at least the abstract part of your portfolio reaches us before the deadline. <br>
-An email will be sent to the team leader confirming the receipt of the entry.<br>
-
-                                           </p><h5 class="col s12">Video Abstract</h5><p>
-
-The video should be of at least 1 minute with the unedited clip showing the machine performance to the fullest. <br>All destructive mechanism(s) being used must be shown working. <br>
-It is not necessary to explain the mechanisms in the video<br>
-Please note that this video abstract will not be the sole criteria for selection of your robot to perform at Robowars. <br>
-
-                                           </p><h5 class="col s12">Safety Rules</h5><p>
-
-Compliance with all event rules is mandatory. <br>It is expected that competitors stay within the rules and procedures of their own accord and do not require constant policing. <br>
-If you have a robot or weapon design that does not fit within the categories set forth in these rules or is in some way ambiguous or borderline, please contact the event organizers. <br>Safe innovation is always encouraged, but surprising the organizers with your brilliant exploitation of a loophole may cause your robot to be disqualified before it even competes.<br>
-Each event has safety inspections. <br>It is at their sole discretion that your robot is allowed to compete .<br>
-All weapons must have a safety cover on any sharp edges. <br>
-All participants build and operate robots at their own risk.<br>
-All the resources provided at the time of competition from the organizers should be strictly used only after the consent of the organizers. <br>
-Once the robots have entered into the arena, no team member can enter into the arena at any point of time. In case if a fight has to be halted in between and some changes have to be done in the arena or condition on the robot(s), it will be done by organizers only. <br>
-
-                                           </p><h5 class="col s12">Specifications</h5><p>
-                                           </p><h5 class="col s12">Dimensions and Fabrications</h5><p>
-
-The machine should fit in a box of dimension 350mm x 350mm x 350 mm (l x b x h) at any given point during the match. <br>The external device used to control the machine or any external tank is not included in the size constraint. <br>
-The machine should not exceed 12 kg of weight including the weight of pneumatic source/tank. <br>Weight of remote controller will not be counted.<br> Power Supply can be external or on-board.<br>
-
-                                           </p><h5 class="col s12">Mobility</h5><p>
-
-All robots must have easily visible and controlled mobility in order to compete. Methods of mobility include: <br>
-Rolling (wheels, tracks or the whole robot). <br>
-Non-wheeled robots having no rolling elements in contact with the floor and no continuous rolling or cam operated motion in contact with the floor, either directly or via a linkage. <br>Linear-actuated legs and novel non-wheeled drive systems come under this category. <br>
-Jumping and hopping is not allowed. <br>
-Flying (using airfoil, helium balloons, etc.) is not allowed.<br>
-
-                                           </p><h5 class="col s12">Robot Control Requirements</h5><p>
-The machine can be controlled through wireless or wired remote. Power supply can be external or on board. Refer below for further details on battery and power. <br>
-In case of wireless remote, there should be binding capability between transmitters and receivers. <br>The remotes with such facility will only be allowed. <br>The team must have at least two frequency wireless remote control circuit or two dual control circuits<br>
-Remote control systems from toys might be used. Remote control systems available in the market may also be used. <br>
-Nonstandard or self-made remote control systems must first be approved by the organizers. <br>
-
-                                           </p><h5 class="col s12">Battery and Power</h5><p>
-
-The machine can be powered electrically only. Use of an IC engine in any form is not allowed. <br>
-The Battery and other power source can be provided by the institute in case the team has no other source of power supply.<br>
-On board batteries must be sealed, immobilized-electrolyte types (such as gel cells, lithium, NiCad, NiMH, or dry cells). <br>
-The electric voltage between 2 points anywhere in the machine should not be more than 24V DC at any point of time. <br>
-It is suggested to have extra battery ready and charged up during competition so that on advancing to next level, you don’t have to wait or suffer due to uncharged battery. If teams don’t show up on allotted slot, they will be disqualified. <br>
-Change of battery will not be allowed during the match.<br>
-
-                                           </p><h5 class="col s12">Pneumatics</h5><p>
-
-Robot can use pressurized non-inflammable gases to actuate pneumatic devices. <br>Maximum allowed outlet nozzle pressure is 6 bar. <br>The storage tank and pressure regulators used by teams need to be certified and teams using pneumatics are required to produce the Safety and Security letters at the Registration Desk at the venue. <br>Failing to do so will lead to direct disqualification. <br>
-The maximum pressure in cylinder should not exceed the rated pressure at any point of time. <br>
-All pneumatic components on board a robot must be securely mounted. <br>
-
-                                           </p><h5 class="col s12">Hydraulics</h5><p>
-
-Robot can use non-inflammable liquid to actuate hydraulic devices e.g. cylinders. <br>
-All hydraulic components on-board must be securely mounted. <br>Special care must be taken while mounting pump, accumulator and armour to ensure that if ruptured direct fluid streams will not escape the robot. <br>
-All hydraulic liquids are required to be non-corrosive and your device should be leak proof. Maximum allowed pressure is 6 bars. <br>
-
-                                           </p><h5 class="col s12">Weapon Systems</h5><p>
-
-Robots can have any kind of magnetic weapons, cutters, flippers, saws, lifting devices, spinning hammers etc. as weapons with following exceptions and limitations: <br>
-Liquid projectiles.<br>
-Any kind of inflammable liquid.<br>
-Flame-based weapons. <br>
-Any kind of explosive or intentionally ignited solid or potentially ignitable solid. <br>
-Nets, tape, glue, or any other entanglement device. <br>
-High power magnets or electromagnets. <br>
-Radio jamming, Tasers, tesla coils, or any other high-voltage device. <br>
-Tethered or untethered projectiles. <br>
-Spinning weapons which do not come in contact with the arena at any point of time are allowed. <br>In no case should the arena be damaged by any bot.<br> The competition will be played on a knock-out basis. <br>
-
-
-                                           </p><h5 class="col s12">Judging</h5><p>
-                                           </p><h5 class="col s12">Criteria for Winning</h5><p>
-
-A robot is declared victorious if its opponent is immobilized. <br>
-A robot will be declared immobile if it cannot display linear motion of at least one inch in a timed period of 30 seconds. <br>A bot with one side of its drivetrain disabled will not be counted out if it can demonstrate some degree of controlled movement.<br>In case both the robots remain mobile after the end of the round then the winner will be decided subjectively.<br>
-A robot that is deemed unsafe by the judges after the match has begun will be disqualified and therefore declared the loser.<br>The match will be immediately halted and the opponent will be awarded a win.<br>
-If a robot is thrown out of the arena the match will stop immediately, and the robot still inside the arena will automatically be declared as the winner.<br>
-Robots cannot win by pinning or lifting their opponents.<br>Organizers will allow pinning or lifting for a maximum of 20 seconds per pin/lift then the attacker robot will be instructed to release the opponent. If, after being instructed to do so, the attacker is able to release but does not, their robot may be disqualified.<br>If two or more robots become entangled or a crushing or gripping weapon is employed and becomes trapped within another robot, then the competitors should make the timekeeper aware, the fight should be stopped and the robots separated by the safest means.<br>
-Points will be given on the basis of aggression, damage, control and strategy.<br>
-Aggressiveness – Aggressiveness is judged by the frequency, severity, boldness and effectiveness of attacks deliberately initiated by the robot against its opponent.<br>If a robot appears to have accidentally attacked an opponent, that act will not be considered Aggressiveness.<br>
-Control – Control means a robot is able to attack an opponent at its weakest point, use its weapons in the most effective way, and minimize the damage caused by the opponent or its weapons.<br>
-Damage – Through deliberate action, a robot either directly or indirectly reduces the functionality, effectiveness or defensibility of an opponent.<br>Damage is not considered relevant if a robot inadvertently harms itself.<br>
-
-Note: Qualification of a robot to next level is subjective and totally on the decision of the judges.<br>A robot winning in a round against its opponent doesn’t guarantee its entrance into the next round.<br>If the judges found the winner robot incompetent to enter into the next round, it may get disqualified. Judges can disqualify both the robots of a match from advancing to the next round. All the decisions taken by the judge will be final and binding to all. Any queries afterwards will not be entertained.<br>
-
-                                           </p><h5 class="col s12">Team Specifications</h5><p>
-
-Any team can participate in Robowars. <br>A team may consist of a maximum of 4 participants. <br>These participants can be from same or different institutes. <br><br>
-Team Name:<br>Every team must have a name which must be unique. Robowars reserves the right to reject entries from any Team whose name it deems inappropriate, offensive or conflicting. Organizers must be notified during if a Team's name has been changed.
-Team Representative: <br>Each team must specify their Team Representative (Leader) at the time of registration on the website. All important communications between us and the registered teams will be done through their Team Representative. The Team Representatives must submit valid contact details (phone no., email ID etc.) at the time of registration. <br><br>
-NOTE: During any kind of conversation, registration, communication, mails or submissions the team must identify themselves by their Team ID only provided at the time of registration and not by your team name. Please do not use your team name as your identification in any kind of communication with us.
-
-
-                                           </p><h5 class="col s12">Certificate Policy</h5><p>
-
-Certificate of Excellence will be given to all the winners. <br>
-Certificates of Participation will be given to all the teams who qualify two rounds of the competition. <br>
-The teams which get disqualified due to disobeying any of the competition rules will not be considered for the certificate.<br>
-
-
-                                           </p><h5 class="col s12">Coordinators</h5><p>
-                                            1. Vishal Agarwal (9479772972)<br>
-                                            2. Sachin Kumar Gupta (9424662293)
-
-
+                                The flagship event of any Robotics competition, Robowars, sees the age old
+                                entertainment of two robots battling it out in the center to be the last one standing.
+                                This presents a chance for the challenger to show their robotic acumen, intellect,
+                                and fighter spirit. Teams are encouraged to equip their bots with high torqued
+                                industrial motors, protective armour sheets, and well designed weapons to take
+                                down the enemy bot. Design and construct a remote controlled robot capable of
+                                fighting a one on one tournament.<br><br>
+                                For detailed information, download the doc from <a href="{{ asset('/robowar.pdf') }}" target="_blank" download>Here</a>
+                        </p>
+                        <h5 class="col s12">Coordinators</h5>
+                        <p class="col s12">
+                            1. Vishal Agarwal (9479772972)<br>
+                            2. Sachin Kumar Gupta (9424662293)
                         </p>
                     @if(Auth::check())
                         <div class="btn-container col s12 m9">
@@ -1792,7 +1793,7 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1872,7 +1873,7 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -1980,7 +1981,7 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                         </div>
                                         <div class="members input-field col s12">
                                            <div class="member col s12"><input type="text" class="group_member col s6 validate" name="members[]" id="group_member" placeholder="{{ Auth::user()->fest_id }} (Team Leader)" value="{{ Auth::user()->fest_id }}" required>
-                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button>
+                                            <button type="button" class="save-member btn-flat col s4 offset-s2">Save</button></div>
                                         </div>
                                         <button type="button" class="add-member btn-flat col s10 offset-s1 m3 offset-m2">Add Member</button>
                                         <button type="submit" class="reg-member btn-flat col s10 offset-s1 m3 offset-m2">Register Group</button>
@@ -2024,7 +2025,20 @@ The teams which get disqualified due to disobeying any of the competition rules 
                                                                                Albert Einstein<br>
 Every moment we imagine numerous stuffs. Sometimes we lead our imagination towards a happy & fruitful ending. We are engineers and the world knows we are the most creative creatures.
 Now the platform is ready. Come and show us to what extent you can stretch your thoughts so that you come up with a great idea or an all-new innovation. All you need some basic knowledge of Cad software. You will face some situations where, before starting a huge project, you will think for its feasibility, its cost, its productivity. At that time CAD can help you. Without any cost, you can deal with all the afore said problems. Get ready for the experience to explore yourself,let’s see how quick you are! how efficient you are! and most importantly how imaginative you are!!
-                            </p><h5 class="col s12">Coordinators</h5><p>
+                            </p>
+                            <h5 class="col s12">Task</h5>
+                            <p class="col s12">
+                              You will be asked to design 3-d models from 2-d diagrams. You will be asked to Design the parts and assemble them. You may be asked to simulate some mechanisms.<br>NOTE: We can provide you only two CAD software i.e. Solid works, CATIA</p>
+                              <h5 class="col s12">Judging Criteria</h5>
+                              <p class="col s12">
+                              All the decisions taken by the judge will be final and binding to all. Any queries afterwards will not be entertained.</p>
+                              <h5 class="col s12">Certificate Policy</h5>
+                              <p class="col s12">
+                              Certificate of Excellence will be given to all the winners. <br>
+Certificates of Participation will be given to others.
+</p>
+                              
+                            <h5 class="col s12">Coordinators</h5><p>
                             1. Fakir Mohan Patra (9479328864)
                         </p>
                     </div>
@@ -2063,7 +2077,7 @@ Now the platform is ready. Come and show us to what extent you can stretch your 
                     <a class="team-tab col s12" href="#marketing">Marketing and Sponsorship</a>
                     <a class="team-tab col s12" href="#design">Design and Development</a>
                     <a class="team-tab col s12" href="#helpdesk">Helpdesk and Security</a>
-                    <a class="team-tab col s12" href="#public">Public Realtions</a>
+                    <a class="team-tab col s12" href="#public">Public Relations</a>
                     <a class="team-tab col s12" href="#hospitality">Hospitality</a>
                     <a class="team-tab col s12" href="#finance">Finance and Accounts</a>
                 </div>
@@ -2133,6 +2147,15 @@ Now the platform is ready. Come and show us to what extent you can stretch your 
                             </div>
                             <h5 class="col s12">Dr. Kusum Bharti</h5>
                         </div>
+                        <div class="team-card col s12 m3">
+                            <div class="card-image col s12">
+                                <img src="/img/team/tulika.jpg">
+                            </div>
+                            <div class="card-link col s12">
+                                <a href="#" class="fa fa-envelope"></a>
+                            </div>
+                            <h5 class="col s12">Ms. Tulika</h5>
+                        </div>
                     </div>
                     <div class="team-card-container col s12" id="event">
                         <div class="team-card col s12 m3">
@@ -2151,7 +2174,7 @@ Now the platform is ready. Come and show us to what extent you can stretch your 
                             <div class="card-link col s12">
                                 <a href="#" class="fa fa-envelope"></a>
                             </div>
-                            <h5 class="col s12">Jugal Rewar</h5>
+                            <h5 class="col s12">Jugal Kishor Rewar</h5>
                         </div>
                         <div class="team-card col s12 m3">
                             <div class="card-image col s12">
@@ -2350,9 +2373,397 @@ Now the platform is ready. Come and show us to what extent you can stretch your 
             </section>
             <section class="mega container col s12">
                 <div class="mega-container col s12">
-                    <h4 class="col s12">The Registrations for Mega Event will begin at 18:00 hours on 15-03-2017!!<br> So stay tuned......</h4>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#dance_beats-modal">
+                        <div id="dance-tab" class="col s12">
+                            <h3 class="col s12">Dancellenium</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="dance_beats-modal">
+                        <div class="modal-content">
+                            <h3 class="col s12">Dancellenium</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                   1. There shall be one team representing the college in cultural Fest Championship.<br>
+2. Minimum 5 and Maximum 40 members are allowed in a team , with at least 3 and at most 20 members on stage at any point during the performance.<br>
+3. Participants should get their songs/music in mp3 format in a pen-drive. Live music is not allowed. The name of track should be the participants name followed by the college name.<br>
+4. The time limit of the performance will be 10+1 minutes(10 minutes for performance and additional 1 minute to setup and clear the stage).<br>
+5. Accessories, costumes have to be arranged by the participants.<br>
+6. The performance should be in the cohesion with the integrity of the fest.<br>
+                                        For more rules refer this event under the events section.
+                                    </p>
+                                </div>
+                                <div class="abstract col s12 m6 offset-m1">
+                                    <h5 class="head col s12">Description</h5>
+                                    <p class="desc col s12">
+                                    The inter-collegiate group dance competition is a platform for the best dancing troops across India to flaunt their hypnotic moves. The competition invites all dance forms including hip hop, jazz, salsa, contemporary, folk dances.
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">1. Shreyas pawar +91-8989034766<br>2. Rakshita Karmawat +91-9479875633<br></p>
+                                    <!-- <h5 class="head col s12">Prize Money</h5>
+                                    <p class="desc col s12">Worth 20K</p> -->
+                                </div>
+                                <div class="col s12">
+                                    @if(Auth::check())
+                                    <a href="#" data-event-id="dancellennium" data-registered=0 class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">You can register for this event under Dance Events</a>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#nukkad-modal">
+                        <div id="nukkad-tab" class="col s12">
+                            <h3 class="col s12">Nukkad Natak</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="nukkad-modal">
+                        <div class="modal-content">
+                            <h3 class="col s12">Nukkad Natak</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                    1. Team Size: 8-24 (including CAs & music accompanists)<br>
+2. The teams must submit a short video (about 10 minutes) of the Street Play to be performed before the mentioned deadline. Teams must perform the extended version of the same Street Play which they have sent at the time of video submission.<br>
+3. Prelims Time Limit: 10 minutes.<br>
+4. Finals Time Limit: 15-30 minutes. Points will be deducted on exceeding the time limit.<br>
+5. Judging Criteria: Acting, Voice (Sync, modulation and diction) Screenplay, Script, Audience Interaction & overall impact.<br>
+6. The team size represents the number of people registered as a team. Only these shall be allowed to perform the Street play.<br>
+                                        For more rules refer this event under the events section.
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">1. Anubhuti Gupta +91-9654329475 <br>
+2. Harshit Yadav</p>
+                                </div>
+                                <div class="abstract col s12 m6 offset-m1">
+                                    <h5 class="head col s12">Description</h5>
+                                    <p class="desc col s12">
+                                    Get up raise your voice and make the crowd think. <br>Come and showcase the creativity in you against the odd of not having the stage set. There are many pressing issues that needs to be addressed, use the art of entertainment and convey the message to the community through this street play event.
+                                    </p>
+                                    <!-- <h5 class="head col s12">Prize Money</h5>
+                                    <p class="desc col s12">Worth ₹ 30,000</p> -->
+                                    <!-- <h5 class="head col s12">Registration Fees</h5>
+                                    <p class="desc col s12">
+                                        Worth ₹ 25K
+                                    </p> -->
+                                </div>
+                                <div class="col s12">
+                                    @if(Auth::check())
+                                    <a href="#" data-event-id="nukkad" data-registered=0 class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">You can register for this event under Drama Events</a>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#dj_war">
+                        <div id="dj" class="col s12">
+                            <h3 class="col s12">DJ War</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="dj_war">
+                        <div class="modal-content">
+                            <h3 class="col s12">Vinyl Night</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                    1. Each contesting DJ will be given 30-35 + (5) minutes to play.<br>
+                                    2. Console will be provided by the organizers.<br>
+                                    3. Contestants are allowed to bring Laptops with pre-loaded software(Virtual DJ etc.), if they don't want to use consoles.<br>
+                                    4. Playing pre-loaded playlists or premixed mixes will lead to immediate disqualification.<br>
+                                    5. DJ's using turn tables need to carry their own catridges.<br>
+                                    6. For further queries or specialized requirements kindly contact event coordinator
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">Nakul Arya +91-8233783523</p>
+                                    <h5 class="head col s12">Registration Fees</h5>
+                                    <p class="desc col s12">
+                                        ₹ 2000
+                                    </p>
+                                </div>
+                                <div class="abstract col s12 m6 offset-m1">
+                                    <h5 class="head col s12">Description</h5>
+                                    <p class="desc col s12">
+                                    Something new, something fresh.<br>
+A music fueled by throbbing beats over rattling bass.<br> This is electronic music.<br>
+Young people move to the beat that the DJ is freshly scratching together.<br> 
+Vinyl records rubbed against the needle simultaneously functions to make the beats the young crowd dances to.<br>
+Could it be any better, a competition/war with a party. <br>
+
+The blended music and mixes will take you to a place you've not been before. <br>
+Let the underdogs out and rave begin. <br>
+The progressive trance of Djing is an art, let the world know about it and be a part.<br>
+
+Let the old tracks meet the new beats and a music of nostalgia begin. <br>
+Give sound to your expression, a chance to create your own music.<br>
+                                    </p>
+                                    <h5 class="head col s12">Prize Money</h5>
+                                    <p class="desc col s12">Worth ₹ 30,000</p>
+                                    
+                                </div>
+                                <div class="col s12">
+                                @if(Auth::check())
+                                    <button href="#vinyl-modal" class="vinyl modal-trigger btn-flat col s10 offset-s1 m2 offset-m5" data-event-id="vinyl" data-registered=0 data-event-type='single'>Register</button>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                                @if(Auth::check())
+                                <div id="vinyl-modal" class=" modal col s12 m6 offset-m3">
+                                    <div class="modal-content row">
+                                        <h4 class="col s12">Confirm Registration</h4>
+                                        <div class=" col s12">
+                                            <h6 class="col s12">Do you want to register for this event?</h6>
+                                            <button class="register-mega btn-flat col s3 offset-s2" data-event-id="vinyl" data-registered=0 data-event-type='single'>Confirm</button>
+                                            <button class="modal-close btn-flat col s3 offset-s2">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#aaveg-modal">
+                        <div id="aaveg-tab" class="col s12">
+                            <h3 class="col s12">Aaveg</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="aaveg-modal">
+                        <div class="modal-content">
+                            <h3 class="col s12">Aaveg</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                    1. Time limit: 15 minutes including sound check. (Both prelims and finale). <br>
+                                    2. Your performance should be of rock genre and language. <br>
+                                    3. You may perform more than one songs provided they don’t exceed the time limit.<br>
+                                    4. Number of band members should not fall below 3 and should not exceed 10.<br>
+                                    5. You may use as many instruments as you wish. Please check the availability of the instrument with the organizing team prior to the event. In case of non-availability, you will have to arrange the instruments on your own. <br>
+                                    6. Judging Criteria: Composition, Sur, Taal, Voice Quality and Modulation. <br>
+                                    7. The decision of the judges will be final & abiding.
+
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">Daniel Sinha +91-9407407695 </p>
+                                </div>
+                                <div class="abstract col s12 m6 offset-m1">
+                                    <h5 class="head col s12">Description</h5>
+                                    <p class="desc col s12">
+                            Get ready to witness a terrific battle of bands. Some excitement, some passion and
+
+lots of music. <br>Aaveg- the Rock Band competition is the most widely awaited mega event of
+
+IIIDTMJ Fest.<br> Every year, bands from across the nation fight it out to be
+
+awarded the best band in Aaveg. <br>Its a treat for audience as well as the artists. So let the headbanging
+
+begin…
+                                    </p>
+                                    <h5 class="head col s12">Prize Money</h5>
+                                    <p class="desc col s12">
+                                        Worth ₹ 35K
+                                    </p>
+                                    <h5 class="head col s12">Registration Fees</h5>
+                                    <p class="desc col s12">
+                                        ₹ 2000 per band
+                                    </p>
+                                </div>
+                                <div class="col s12">
+                                    @if(Auth::check())
+                                    <a href="#" data-event-id="aaveg" data-registered=0 class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">You can register for this event under Music Events</a>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#hackathon-modal">
+                        <div id="hackathon-tab" class="col s12">
+                            <h3 class="col s12">Hackathon</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="hackathon-modal">
+                        <div class="modal-content">
+                            <h3 class="col s12">Hackathon</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+<!--
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                    1. Time limit: 15 minutes including sound check. (Both prelims and finale). <br>
+                                    2. Your performance should be of rock genre and language. <br>
+                                    3. You may perform more than one songs provided they don’t exceed the time limit.<br>
+                                    4. Number of band members should not fall below 3 and should not exceed 10.<br>
+                                    5. You may use as many instruments as you wish. Please check the availability of the instrument with the organizing team prior to the event. In case of non-availability, you will have to arrange the instruments on your own. <br>
+                                    6. Judging Criteria: Composition, Sur, Taal, Voice Quality and Modulation. <br>
+                                    7. The decision of the judges will be final & abiding.
+
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">Daniel Sinha +91-9407407695 </p>
+                                </div>
+-->
+                                <div class="abstract col s12 m8 offset-m2">
+                                    <h5 class="head col s12" style="text-align:left">Description</h5>
+                                    <p class="desc col s12" style="text-align:center">
+                                    Who is a hacker? Hacker is an attitude of passionate curiosity. Hacker is a culture of excellence. Hacker is a mind set of innovation. Hackers built the internet. Hackers built the personal computer. Hackers built the mobile phone. Hackers built everything that is awesome today.
+                                    </p>
+                                    <h5 class="head col s12" style="text-align:left">Coordinator</h5>
+                                    <p class="desc col s12" style="text-align:left">Arpit Garg +91-9407468488 </p>
+                                </div>
+                                <div class="col s12">
+                                    @if(Auth::check())
+                                    <a href="#" data-event-id="hackathon" data-registered=0 class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">You can register for this event under Programming Events</a>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="event mega-btn col s4 m2 modal-trigger" href="#robowar-modal">
+                        <div id="robowar-tab" class="col s12">
+                            <h3 class="col s12">RoboWar</h3>
+                        </div>
+                    </a>
+                    <div class="modal mega-modal" id="robowar-modal">
+                        <div class="modal-content">
+                            <h3 class="col s12">RoboWar</h3>
+                            <a href="#" class="modal-close mega-close">x</a>
+                            <div class="body col s12">
+                                <div class="rules col s12 m5">
+                                    <h5 class="head col s12">Rules</h5>
+                                    <p class="desc col s12">
+                                    1. The aim of every match is to demolish and immobilise the other bot completely.<br>
+2. Duration of each match will be 4 minutes.<br>
+3. Maximum of 2 time outs of 30 seconds each are allowed during which teams can relocate their
+bots, but are not allowed to make any changes in the bot.<br>
+4. Striking should be done to the body parts only, communication cable or motor should not
+attacked. Direct hit to the motors and communication cable of the opponent’s bot is not allowed.<br>
+5. If communication cables of both bots get entangled and both bots can’t move,then time out
+will be given to both teams to straighten wires and bots will be placed back in same positions.<br>
+6. Any change in the rules by the judge shall be intimidated to the teams in the event arena.<br>
+                                        For more rules refer this event in the events section.
+                                    </p>
+                                </div>
+                                <div class="abstract col s12 m6 offset-m1">
+                                    <h5 class="head col s12">Description</h5>
+                                    <p class="desc col s12">
+                                    The flagship event of any Robotics competition, Robowars, sees the age old
+                                entertainment of two robots battling it out in the center to be the last one standing.
+                                This presents a chance for the challenger to show their robotic acumen, intellect,
+                                and fighter spirit. Teams are encouraged to equip their bots with high torqued
+                                industrial motors, protective armour sheets, and well designed weapons to take
+                                down the enemy bot. Design and construct a remote controlled robot capable of
+                                fighting a one on one tournament.<br><br>
+                                For detailed information, download the doc from <a href="{{ asset('/robowar.pdf') }}" target="_blank" download>Here</a>
+                                    </p>
+                                    <h5 class="head col s12">Coordinator</h5>
+                                    <p class="desc col s12">1. Vishal Agarwal +91-9479772972
+                                        <br>2. Sachin Kumar Gupta +91-9424662293 </p>
+                                    <!-- <h5 class="head col s12">Prize Money</h5>
+                                    <p class="desc col s12">Worth 20K</p> -->
+                                </div>
+                                <div class="col s12">
+                                    @if(Auth::check())
+                                    <a href="#" data-event-id="robowar" data-registered=0 class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">You can register for this event under Robotics Events</a>
+                                    @else
+                                    <a href="#" class="mega-btn btn-flat col s10 offset-s1 m6 offset-m3">Login to register</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
+            <section class="sponsors container col s12">
+                <div class="sponsors-container col s12">
+                    <div class="col s12">
+                        <h4 class="col s12 m4 offset-m4">Associate Sponsors</h4>
+                        <a target="_blank" href="http://www.brahmos.com/" class="sponsor-icon col s12 m3 offset-m3">
+                            <img class="col s8 offset-s2" src="/img/sponsors/brahmos.png">
+                        </a>
+                        <a target="_blank" href="https://www.onlinesbi.com/" class="sponsor-icon col s12 m3">
+                            <img class="col s8 offset-s2" src="/img/sponsors/sbi.png">
+                        </a>
+                    </div>
+                    <div class="col s12 m4">
+                        <h4 class="col s12 ">Technical Sponsor</h4>
+                        <a target="_blank" href="http://www.coviam.com/" class="sponsor-icon col s12 m8 offset-m2">
+                            <img class="col s10 offset-s1" src="/img/sponsors/coviam.png">
+                        </a>
+                    </div>
+                    <div class="col s12 m4">
+                        <h4 class="col s12">Education Sponsor</h4>
+                        <a target="_blank" href="http://www.time4education.com/" class="sponsor-icon col s12 m8 offset-m2">
+                            <img class="col s10 offset-s1" src="/img/sponsors/time.png">
+                        </a>
+                    </div>
+                    <div class="col s12 m4">
+                        <h4 class="col s12">Event Sponsor</h4>
+                        <a target="_blank" href="http://www.vassarlabs.com/" class="sponsor-icon col s12 m8 offset-m2">
+                            <img class="col s10 offset-s1" src="/img/sponsors/vassar.png">
+                        </a>
+                    </div>
+                    <div class="col s12 m12">
+                        <h4 class="col s12 m4 offset-m4" style="margin-right:250px;">Local Sponsors</h4>
+                        <a target="_blank" href="http://www.dominos.co.in/" class="sponsor-icon col s12 m2 offset-m1">
+                            <img class="col s8 offset-s2" src="/img/sponsors/dominos.png">
+                        </a>
+                        <a target="_blank" href="http://www.hotelanushree.com/" class="sponsor-icon col s12 m2">
+                            <img class="col s12" src="/img/sponsors/anushree.png" style="margin-top: 20px;">
+                        </a>
+                        <a target="_blank" href="https://online.pizzahut.co.in/" class="sponsor-icon col s12 m2">
+                            <img class="col s8 offset-s2" src="/img/sponsors/pizza.png">
+                        </a>
+                        <a target="_blank" href="http://www.coffeeculture.co.in/" class="sponsor-icon col s12 m2">
+                            <img class="col s8 offset-s2" src="/img/sponsors/cc.png">
+                        </a>
+                        <a href="#" class="sponsor-icon col s12 m2">
+                            <img class="col s10 offset-s1" src="/img/sponsors/hangerzone.jpg">
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="web-team container col s12">
+                <div class="web-container col s12">
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                    <div class="web-member col s6 m2">
+                        
+                    </div>
+                </div>
+            </section>
+
         </div>
         
         
@@ -2383,9 +2794,9 @@ Now the platform is ready. Come and show us to what extent you can stretch your 
             console.log(reg_events_group);
 
             for(i in reg_events_single)
-                $('.events .event-desc').find("[data-event-id='" + reg_events_single[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
+                $(document).find("[data-event-id='" + reg_events_single[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
             for(i in reg_events_group)
-                $('.events .event-desc').find("[data-event-id='" + reg_events_group[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
+                $(document).find("[data-event-id='" + reg_events_group[i] + "']").attr('data-registered',1).html('Registered').prop('disabled',true);
         </script>
     </body>
 

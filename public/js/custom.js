@@ -31,6 +31,65 @@ $(function(){
 
         },1000);
     });
+
+    $('.register-form').on('keyup',"[name='email']",function(){
+        var elem = $(this);
+        var email = elem.val(); 
+
+        if(email.length > 3)
+        {  
+
+            $.ajax({
+                type : 'POST',
+                url  : '/checkemail',
+                data : {
+                    _token : $('input[name="_token"]').val(),
+                    emailid : email
+                },
+                success : function(result){
+                    if(result.count > 0){
+                        elem.next('.email-error').html('Email ID already Registered!!').fadeIn();
+                        elem.parents().siblings('.input-field').find('button').prop("disabled" ,true).fadeIn();
+                    }
+                    else{
+                        elem.next('.email-error').html('').fadeIn();
+                        elem.parents().siblings('.input-field').find('button').prop("disabled" ,false).fadeIn();
+                    }
+                },
+                error : function(){
+                    alert("Server Error, Contact web team for assistance");
+                }
+            });
+
+            return false;
+        }
+        else
+        {
+            elem.next('.email-error').html('').fadeIn();
+        }
+    });
+
+    $('.register-form').on('keyup', '[name = "cnfPassword"]',function(){
+        var pass = $('.register-form [name="password"]').val();
+        var elem = $(this);
+        var cnf = elem.val();
+
+        if(cnf.length > 1){
+
+            if(cnf != pass){
+                elem.next('.pass-error').html('Password Mismatch!!').fadeIn();
+                elem.parents().siblings('.input-field').find('button').prop('disabled' , true);
+            }
+            else{
+                elem.next('.pass-error').html('').fadeIn();
+                elem.parents().siblings('.input-field').find('button').prop('disabled' , false);   
+            }
+        }
+        else{
+            elem.next('.pass-error').html('').fadeIn();
+        }
+
+    });
     
     $('.register-form').on('submit','.register_form',function(e){
         var reg_form = $(this);
@@ -75,6 +134,8 @@ $(function(){
             $('.login-modal .details-form #iiitflag').val('No');
         }
     });
+
+
 
     $('.details-form').on('submit','.details_form',function(e){
         var det_form = $(this);
@@ -129,7 +190,7 @@ $(function(){
     });
     
     
-    $(".main-nav a").on('click',function(){
+    $(".main-nav a, .main a.link-card, footer a").on('click',function(){
         var menu = $(this).attr('id');
         
         $('.main-nav').find('a.active').removeClass('active');
@@ -137,36 +198,51 @@ $(function(){
         
         if(menu == "home"){
             $('.club-nav').hide();
-            $('.about, h1.header, .events, .contact, .team').fadeOut();
+            $('.about, h1.header, .events, .contact, .team, .sponsors, .mega, .web-team').fadeOut();
             $('.'+menu).fadeIn();
         }
         else if(menu == "about"){
             $('.club-nav').hide();
-            $('.home, .events, .contact, .team, .mega').fadeOut();
+            $('.home, .events, .contact, .team, .mega, .sponsors, .web-team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "events"){
-            $('.home, .about, .contact, .team, .mega').fadeOut();
+            $('.main-btn-container').fadeIn();
+            $('.club-nav').hide();
+            $('.nav-option').fadeOut();
+            $('.home, .about, .contact, .team, .mega, .sponsors, .web-team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == "contact"){
             $('.club-nav').hide();
-            $('.home, .about, .events, .team, .mega').fadeOut();
+            $('.home, .about, .events, .team, .mega, .sponsors, .web-team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();
         }
         else if(menu == 'team'){
             $('.club-nav').hide();
-            $('.home, .about, .events, .contact, .mega').fadeOut();
+            $('.home, .about, .events, .contact, .mega, .sponsors, .web-team').fadeOut();
             $('h1.header').html(menu).fadeIn();
             $('.'+menu).fadeIn();   
         }
         else if(menu == 'mega'){
             $('.club-nav').hide();
-            $('.home, .about, .events, .contact, .team').fadeOut();
+            $('.home, .about, .events, .contact, .team, .sponsors, .web-team').fadeOut();
             $('h1.header').html("Mega Events").fadeIn();
+            $('.'+menu).fadeIn();   
+        }
+        else if(menu == 'sponsors'){
+            $('.club-nav').hide();
+            $('.home, .about, .events, .contact, .team, .mega, .web-team').fadeOut();
+            $('h1.header').html(menu).fadeIn();
+            $('.'+menu).fadeIn();   
+        }
+        else if(menu == 'web-team'){
+            $('.club-nav').hide();
+            $('.home, .about, .events, .contact, .team, .mega, .sponsors').fadeOut();
+            $('h1.header').html('Web Team').fadeIn();
             $('.'+menu).fadeIn();   
         }
     });
@@ -250,6 +326,32 @@ $(function(){
         else if(event_type == 'group'){
             $('#modal-'+event_id).openModal();
         }
+    });
+
+    $('.mega .mega-modal #vinyl-modal').on('click', 'button.register-mega', function(){
+        var event_btn = $(this);
+        var event_id = event_btn.attr("data-event-id");
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+        event_btn.html('Registering....');
+        var data = {'_token' : csrf_token, 'event' : event_id};
+        
+        $.post("/register/event/single", data, function(result,status){
+            if(status == "success"){
+                if(result.registered){
+                    event_btn.html('Registered').prop('disabled', true).attr("data-registered",1);
+                    $('.mega .mega-modal#dj_war .modal-content').find('[data-event-id = "vinyl"]').attr("data-registered",1).html('Registered').prop('disabled' , true);
+                    $('#vinyl-modal').closeModal();
+                }
+                else{
+                    alert("Error Registering");
+                }
+            }
+            else if(status == "error"){
+                alert("Server Error, Contact web team for assistance.");
+                event_btn.html('Register');
+            }
+        });
     });
 
     $('.events .event-desc .group-modal').on('submit','.group_details',function(e){
