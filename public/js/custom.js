@@ -208,6 +208,8 @@ $(function(){
             $('.'+menu).fadeIn();
         }
         else if(menu == "events"){
+            $('.events').find('.event-desc-container.active').removeClass('active');
+            $('.events a.close-btn').fadeOut();
             $('.main-btn-container').fadeIn();
             $('.club-nav').hide();
             $('.nav-option').fadeOut();

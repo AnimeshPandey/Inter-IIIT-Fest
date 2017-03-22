@@ -2744,22 +2744,40 @@ will be given to both teams to straighten wires and bots will be placed back in 
             <section class="web-team container col s12">
                 <div class="web-container col s12">
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Rohit</h4>
+                        <img src="/img/team/rohit.jpg">
+                        <h4 class="last name col s12">Rajwani</h4>
+                        <a href="mailto:rohitrajwani@iiitdmj.ac.in"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Animesh</h4>
+                        <img src="/img/web/animesh.jpg">
+                        <h4 class="last name col s12">Pandey</h4>
+                        <a href="mailto:animesh.pandey@iiitdmj.ac.in"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Ankita</h4>
+                        <img src="/img/web/ankita.jpg">
+                        <h4 class="last name col s12">Makker</h4>
+                        <a href="#"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Anuj</h4>
+                        <img src="/img/web/anuj.jpg">
+                        <h4 class="last name col s12">Upadhyay</h4>
+                        <a href="mailto:anuj.upadhyay@iiitdmj.ac.in"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Kanishka</h4>
+                        <img src="/img/web/kanishka.jpg">
+                        <h4 class="last name col s12">Munshi</h4>
+                        <a href="mailto:kanishkamunshi@iiitdmj.ac.in"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                     <div class="web-member col s6 m2">
-                        
+                        <h4 class="first name col s12">Mayank</h4>
+                        <img src="/img/web/mayank.jpg">
+                        <h4 class="last name col s12">Saurabh</h4>
+                        <a href="mailto:mayanksaurabh@iiitdmj.ac.in"><i class="col s12 fa fa-envelope"></i></a>
                     </div>
                 </div>
             </section>
